@@ -8,6 +8,9 @@
 - Streaming 답변 + 출처 메타데이터 표시
 - LCEL 체인 패턴
 """
+import warnings
+warnings.filterwarnings("ignore")
+
 import os
 import sys
 import time
