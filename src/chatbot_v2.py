@@ -7,6 +7,7 @@
 - Cross-Encoder Reranking: 관련 없는 결과 제거
 - Streaming 답변 + 출처 메타데이터 표시
 - LCEL 체인 패턴
+- Memory Bank: 세션 간 사용자 정보 기억
 """
 import warnings
 warnings.filterwarnings("ignore")
@@ -14,6 +15,7 @@ warnings.filterwarnings("ignore")
 import os
 import sys
 import time
+import json
 from pathlib import Path
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
@@ -47,6 +49,78 @@ RERANK_TOP_K = 3      # 리랭킹 후 최종 사용 수
 MAX_CONTEXT_CHARS = 4000  # 컨텍스트 최대 글자 수 (Groq 무료 한도 대응)
 RERANK_THRESHOLD = -100  # Cross-encoder 점수 기준 (한국어 문서는 음수 정상)
 MAX_CONTENT = 2000
+
+# ── 메모리뱅크 경로 ───────────────────────────────────────────────────
+MEMORY_PATH = Path(__file__).resolve().parent.parent / "data" / "memory" / "user_memory.json"
+MEMORY_PATH.parent.mkdir(parents=True, exist_ok=True)
+
+
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# 메모리뱅크: 세션 간 사용자 정보 저장/로드
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+def load_memory() -> dict:
+    """저장된 사용자 메모리 로드"""
+    if MEMORY_PATH.exists():
+        try:
+            return json.loads(MEMORY_PATH.read_text(encoding="utf-8"))
+        except Exception:
+            pass
+    return {"facts": [], "updated_at": ""}
+
+
+def save_memory(memory: dict) -> None:
+    """메모리를 파일에 저장"""
+    memory["updated_at"] = time.strftime("%Y-%m-%d %H:%M:%S")
+    MEMORY_PATH.write_text(json.dumps(memory, ensure_ascii=False, indent=2), encoding="utf-8")
+
+
+def extract_memory(user_input: str, assistant_answer: str, existing_facts: list[str]) -> list[str]:
+    """대화에서 기억할 만한 사용자 정보를 LLM으로 추출"""
+    existing_text = "\n".join(f"- {f}" for f in existing_facts) or "없음"
+    try:
+        response = llm_client.chat.completions.create(
+            model=LLM_MODEL,
+            messages=[
+                {"role": "system", "content": (
+                    "당신은 건강 상담 기록 분석가입니다.\n"
+                    "대화에서 사용자의 건강 관련 개인 정보만 추출하세요.\n"
+                    "추출 대상: 건강 목표, 알레르기/금기 식품, 복용 중인 보충제/약, 질환, 식단 방식, 나이/성별/체중 등\n"
+                    "규칙:\n"
+                    "- 추출된 사실이 있으면 한 줄에 하나씩 출력 (예: 목표: 체중 감량 10kg)\n"
+                    "- 기억할 정보가 없으면 '없음' 한 단어만 출력\n"
+                    "- 이미 알고 있는 정보와 중복이면 출력하지 않음\n"
+                    "- 일반적인 건강 정보나 질문 내용은 추출하지 않음\n"
+                    f"\n[이미 기억하고 있는 정보]\n{existing_text}"
+                )},
+                {"role": "user", "content": f"사용자 발화: {user_input}\n상담사 답변: {assistant_answer[:300]}"},
+            ],
+            max_tokens=150,
+            temperature=0.0,
+        )
+        result = response.choices[0].message.content.strip()
+        if result == "없음" or not result:
+            return []
+        new_facts = [line.strip().lstrip("- ") for line in result.split("\n") if line.strip() and line.strip() != "없음"]
+        return new_facts
+    except Exception:
+        return []
+
+
+def update_memory(user_input: str, assistant_answer: str) -> None:
+    """대화 후 메모리 업데이트 (새 정보만 추가)"""
+    memory = load_memory()
+    new_facts = extract_memory(user_input, assistant_answer, memory["facts"])
+    if new_facts:
+        memory["facts"].extend(new_facts)
+        save_memory(memory)
+
+
+def format_memory_for_prompt(memory: dict) -> str:
+    """메모리를 시스템 프롬프트용 텍스트로 변환"""
+    if not memory["facts"]:
+        return ""
+    facts_text = "\n".join(f"- {f}" for f in memory["facts"])
+    return f"[사용자 기억 정보 — 이전 대화에서 파악한 내용]\n{facts_text}\n"
 
 
 # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -323,8 +397,10 @@ def rag_chain(user_input: str, history: list[dict]) -> tuple[str, list[dict], li
     # 5. 컨텍스트 구성 + 출처
     context, sources = format_context_with_sources(ranked_docs)
 
-    # 6. 프롬프트 구성
-    system_msg = f"{SYSTEM_PROMPT}\n\n[참고 자료]\n{context}"
+    # 6. 프롬프트 구성 (메모리뱅크 주입)
+    memory = load_memory()
+    memory_text = format_memory_for_prompt(memory)
+    system_msg = f"{memory_text}{SYSTEM_PROMPT}\n\n[참고 자료]\n{context}"
 
     history_text = ""
     for msg in history[-6:]:
@@ -358,6 +434,12 @@ def rag_chain(user_input: str, history: list[dict]) -> tuple[str, list[dict], li
         {"role": "assistant", "content": full_answer},
     ]
 
+    # 메모리뱅크 업데이트 (백그라운드 — 오류 무시)
+    try:
+        update_memory(user_input, full_answer)
+    except Exception:
+        pass
+
     return full_answer, sources, updated_history
 
 
@@ -372,8 +454,16 @@ def main():
     print("  리랭킹: ms-marco-MiniLM Cross-Encoder (로컬, 무료)")
     print("  LLM: GPT-4o-mini (OpenAI — 질문 1회 약 0.1원)")
     print("  검색: Hybrid (벡터 + 키워드) + Multi-Query")
-    print("  종료: 'quit' 또는 '종료'")
+    print("  명령어: '메모리 보기' | '메모리 초기화' | 'quit'")
     print("=" * 60)
+
+    # 메모리뱅크 로드 및 표시
+    memory = load_memory()
+    if memory["facts"]:
+        print("\n[메모리뱅크] 이전 대화에서 기억한 정보:")
+        for f in memory["facts"]:
+            print(f"  - {f}")
+        print()
 
     history = []
 
@@ -389,6 +479,23 @@ def main():
         if user_input.lower() in ("quit", "exit", "종료"):
             print("챗봇을 종료합니다.")
             break
+
+        # 메모리 명령어 처리
+        if user_input == "메모리 보기":
+            mem = load_memory()
+            if mem["facts"]:
+                print("\n[메모리뱅크] 저장된 정보:")
+                for f in mem["facts"]:
+                    print(f"  - {f}")
+                print(f"  (마지막 업데이트: {mem.get('updated_at', '알 수 없음')})")
+            else:
+                print("[메모리뱅크] 저장된 정보가 없습니다.")
+            continue
+
+        if user_input == "메모리 초기화":
+            save_memory({"facts": []})
+            print("[메모리뱅크] 초기화 완료.")
+            continue
 
         print("🔍 검색 중... (Query Rewrite → Multi-Query → Hybrid Search → Rerank)")
         try:

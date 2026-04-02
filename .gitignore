@@ -11,6 +11,9 @@ __pycache__/
 *.py[cod]
 *.pyo
 
+# 메모리뱅크 (개인 대화 데이터)
+data/memory/user_memory.json
+
 # 생성된 데이터 (용량 큰 파일)
 data/generated/unified_knowledge_base.json
 data/generated/chatbot_qa_pairs.json
