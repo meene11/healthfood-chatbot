@@ -106,6 +106,21 @@ python src/parse_and_upload_v2.py
 python src/chatbot_v2.py
 ```
 
+### 6. 유사도 평가 실행
+
+```bash
+python src/evaluate.py
+```
+
+카테고리별 테스트 질문 14개로 검색 품질을 자동 측정합니다.
+
+| 출력 항목 | 설명 |
+|-----------|------|
+| combined_score | 벡터 + 키워드 결합 유사도 (0~1) |
+| rerank_score | 키워드 보너스 반영 최종 점수 |
+| 카테고리 적중률 | TOP1 결과가 기대 카테고리와 일치한 비율 |
+| 종합 등급 | A(우수) / B(양호) / C(보통) / D(미흡) |
+
 ## 프로젝트 구조
 
 ```
