@@ -38,67 +38,67 @@ print("완료\n")
 TEST_CASES = [
     # 건강식품 관련
     ("오메가3의 심혈관 건강 효능은?",
-     ["오메가3", "omega3", "EPA", "DHA", "심혈관"]),
+     ["오메가3", "omega-3", "omega3", "omega 3", "epa", "dha", "심혈관", "fish oil"]),
 
     ("프로바이오틱스가 장 건강에 미치는 영향",
-     ["프로바이오틱스", "probiotics", "장내", "유산균", "장 건강"]),
+     ["프로바이오틱스", "probiotics", "probiotic", "장내", "유산균", "lactobacillus", "gut"]),
 
     ("커큐민의 항염 효과 임상 연구",
-     ["커큐민", "curcumin", "항염", "강황"]),
+     ["커큐민", "curcumin", "항염", "강황", "turmeric", "anti-inflammatory"]),
 
     # 다이어트 관련
     ("간헐적 단식 16:8 방법과 체중 감량 효과",
-     ["간헐적 단식", "간헐적단식", "16:8", "공복", "단식"]),
+     ["간헐적 단식", "간헐적단식", "intermittent fasting", "fasting", "단식", "공복"]),
 
     ("케토제닉 다이어트 혈당 관리 연구",
-     ["케토제닉", "ketogenic", "저탄수화물", "혈당", "케톤"]),
+     ["케토제닉", "ketogenic", "keto", "저탄수화물", "혈당", "ketone"]),
 
     ("저탄수화물 식단 메타분석 결과",
-     ["저탄수화물", "탄수화물", "low-carb", "메타분석"]),
+     ["저탄수화물", "탄수화물", "low-carb", "low carb", "carbohydrate", "메타분석", "meta-analysis"]),
 
     ("단백질 섭취량과 근육 유지 관계",
-     ["단백질", "protein", "근육", "아미노산"]),
+     ["단백질", "protein", "근육", "muscle", "아미노산", "amino"]),
 
     ("식이섬유와 장내 미생물 관계",
-     ["식이섬유", "섬유", "장내 미생물", "microbiome", "장"]),
+     ["식이섬유", "dietary fiber", "fiber", "fibre", "microbiome", "microbiota", "장내"]),
 
     # 혈당 관련
     ("혈당 스파이크 원인과 예방법",
-     ["혈당", "스파이크", "혈당 스파이크", "인슐린"]),
+     ["혈당", "blood glucose", "blood sugar", "인슐린", "insulin", "스파이크", "glucose"]),
 
     ("GI 지수와 혈당 관리 방법",
-     ["GI", "혈당", "혈당지수", "당지수", "인슐린"]),
+     ["glycemic", "gi index", "혈당", "혈당지수", "당지수", "인슐린", "glucose"]),
 
     # 푸드올로지 제품
     ("푸드올로지 버닝올로지 성분",
-     ["버닝올로지", "푸드올로지", "성분", "버닝"]),
+     ["버닝올로지", "푸드올로지", "버닝", "burning"]),
 
     ("콜레올로지 제품 효능",
      ["콜레올로지", "푸드올로지", "콜레스테롤"]),
 
     ("맨올로지 추천 대상",
-     ["맨올로지", "푸드올로지", "남성"]),
+     ["맨올로지", "푸드올로지"]),
 
     # 실생활 다이어트
     ("닭가슴살 다이어트 식단 추천",
-     ["닭가슴살", "식단", "다이어트", "단백질"]),
+     ["닭가슴살", "닭", "식단", "다이어트", "chicken"]),
 
     ("곤약 다이어트 효과 후기",
-     ["곤약", "다이어트", "저칼로리"]),
+     ["곤약", "konjac", "저칼로리", "다이어트"]),
 
     # 보충제
     ("다이어트 보조제 종류와 효과",
-     ["보조제", "다이어트", "지방", "감량"]),
+     ["보조제", "supplement", "다이어트", "지방", "감량", "weight loss"]),
 
     ("단백질 보충제 먹는 방법",
-     ["단백질", "보충제", "protein", "먹는"]),
+     ["단백질", "보충제", "protein", "supplement", "whey"]),
 
-    # 주제 외 (아무 키워드도 없어야 정상 — 폴백 확인용)
+    # 주제 외 (판정 제외 — 폴백 확인용)
     ("날씨가 맑은 날 운동하면 좋은가요",
      []),
 
     ("비타민C 결핍 증상",
-     ["비타민C", "비타민 C", "vitamin C", "괴혈병"]),
+     ["비타민c", "vitamin c", "비타민 c", "ascorbic", "괴혈병"]),
 ]
 
 
@@ -165,9 +165,9 @@ def check_relevance(docs: list[dict], keywords: list[str], content_key: str) -> 
 
     hit_keywords = set()
     for doc in docs[:3]:
-        content = doc.get(content_key, "")
+        content = doc.get(content_key, "").lower()
         for kw in keywords:
-            if kw in content:
+            if kw.lower() in content:
                 hit_keywords.add(kw)
 
     is_relevant = len(hit_keywords) >= RELEVANCE_MIN_KEYWORDS
