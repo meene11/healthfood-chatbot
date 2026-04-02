@@ -454,7 +454,7 @@ def main():
     print("  리랭킹: ms-marco-MiniLM Cross-Encoder (로컬, 무료)")
     print("  LLM: GPT-4o-mini (OpenAI — 질문 1회 약 0.1원)")
     print("  검색: Hybrid (벡터 + 키워드) + Multi-Query")
-    print("  명령어: '메모리 보기' | '메모리 초기화' | 'quit'")
+    print("  명령어: '메모리보기' | '메모리초기화' | 'quit'")
     print("=" * 60)
 
     # 메모리뱅크 로드 및 표시
@@ -481,7 +481,7 @@ def main():
             break
 
         # 메모리 명령어 처리
-        if user_input == "메모리 보기":
+        if user_input == "메모리보기":
             mem = load_memory()
             if mem["facts"]:
                 print("\n[메모리뱅크] 저장된 정보:")
@@ -492,7 +492,7 @@ def main():
                 print("[메모리뱅크] 저장된 정보가 없습니다.")
             continue
 
-        if user_input == "메모리 초기화":
+        if user_input == "메모리초기화":
             save_memory({"facts": []})
             print("[메모리뱅크] 초기화 완료.")
             continue
