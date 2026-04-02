@@ -1,0 +1,88 @@
+SOURCE: Harvard T.H. Chan School of Public Health - The Nutrition Source
+URL: https://nutritionsource.hsph.harvard.edu/food-features/yogurt/
+RETRIEVED: 2026-04-01
+TYPE: University nutrition education resource
+LAST REVIEWED: November 2019
+
+========================================
+Yogurt
+The Nutrition Source
+Harvard T.H. Chan School of Public Health
+========================================
+
+INTRODUCTION
+
+Yogurt is "a staple food in several cultures, originating from countries in Western Asia and the Middle East." The word's etymology is traced to Turkish "yoğurmak," meaning to thicken, coagulate, or curdle. Historical accounts describe nomadic herders using animal skin pouches to ferment milk through body heat, creating a food with longer shelf life than plain milk.
+
+PRODUCTION PROCESS
+
+Yogurt is made by combining heated milk with bacteria (Lactobacillus bulgaricus and Streptococcus thermophilus). Additional lactobacilli and bifidobacteria may be added. The bacteria convert lactose to lactic acid, thickening the milk and creating its characteristic tart flavor. The fermentation requires temperatures of 110-115°F.
+
+Historical Health References: References to yogurt's health benefits date to 6000 BCE in Indian Ayurvedic texts. Bulgarian microbiologist Stamen Grigorov discovered Lactobacillus bulgaricus in the 1900s and researched its specific health effects.
+
+Modern Forms: Today's yogurt comes in plain varieties and with "added fruit or sweeteners. Thickeners and stabilizers such as gelatin and pectins may also be added."
+
+LACTOSE TOLERANCE
+
+Individuals with lactose intolerance may tolerate yogurt better due to lower lactose concentration from bacterial fermentation. Plant-based yogurts offer an alternative without lactose.
+
+NUTRITIONAL CONTENT
+
+Yogurt provides:
+- Protein
+- Calcium
+- Phosphorus
+- B vitamins (riboflavin and B12 in animal-based yogurt)
+
+YOGURT AND HEALTH
+
+Gut Microbiome Research:
+Research focuses on yogurt's live bacterial content, also found in kefir, kimchi, and sauerkraut. Some bacterial strain deficiencies may influence risk of obesity, type 2 diabetes, irritable bowel syndrome, and chronic inflammatory diseases including Crohn's disease, ulcerative colitis, and rheumatoid arthritis. Plant-based diets support diverse gut microbiota more than diets low in fruits and vegetables but high in meat.
+
+Weight Management:
+A 20-year study of three large cohorts (120,877 participants) found "yogurt consumption appeared to protect from weight gain." The mechanism may involve colonic bacteria changes.
+
+Heart Disease and Diabetes:
+"Daily yogurt intake may also protect against heart disease and type 2 diabetes." Two meta-analyses found an "18% and 14% lower risk of developing type 2 diabetes with daily yogurt intake." The mechanism may involve reduced inflammation or improved insulin action.
+
+ENVIRONMENTAL CONSIDERATIONS
+
+Dairy production demands significant land, water, and natural resources. Ruminant animals generate methane, a potent greenhouse gas. The "planetary health diet" recommends 250 grams daily of dairy (range 0-500g), approximately one 8-ounce cup of yogurt.
+
+PURCHASING GUIDE
+
+Key Terms:
+- Greek yogurt / strained yogurt: Whey is removed, creating thicker consistency while preserving tartness
+- Plant-based yogurts: Made from soy, coconut, nuts, rice, and other sources; may lack live bacteria; often lower in protein and calcium unless fortified
+- Probiotic: Contains specific live bacteria strains; manufacturers add additional strains for claimed benefits, though optimal amounts and strains aren't well-researched
+- CFUs (colony forming units): Number of living bacteria per gram; yogurt typically contains at least 1,000,000 CFUs to display "Live and Active Cultures" seal; research doesn't support claims that higher amounts or multiple strains provide additional benefits
+
+TIPS FOR CHOOSING YOGURT
+
+- Choose plain, unsweetened yogurt; add herbs/spices for savory dishes or fresh fruit and spices for sweet preparations
+- Some yogurts contain 20-25 grams sugar per 5-ounce container; if sugar appears in top four ingredients, consider lower-sugar options
+- Plant-based options may lack protein and calcium unless fortified - check label
+- Some calcium is removed during Greek yogurt straining; commercial versions may add it back - check labels
+
+DID YOU KNOW?
+
+- Greek yogurt didn't originate in Greece; the term became popular through a Greek commercial company; Britain alone regulates the term
+- The fermentation process makes yogurt more digestible for lactose-intolerant individuals than regular milk
+
+HOMEMADE YOGURT RECIPE
+
+1. Heat 1/2 gallon milk in 3-quart saucepan over medium heat until small bubbles appear; stir periodically
+2. Cool to 110-115°F; transfer to glass or ceramic bowl
+3. Whisk in 1/2 cup plain yogurt with live cultures or starter package; cover and wrap in towel
+4. Heat oven to warm setting 1-2 minutes; turn off (leave light on) and place yogurt inside; let sit 4+ hours
+5. Refrigerate or strain through cheesecloth/coffee filter for Greek-style texture (several hours)
+6. Store in refrigerator for about 7 days
+
+REFERENCES
+
+1. Malik VS, et al. Long-term consumption of sugar-sweetened and artificially sweetened beverages and risk of mortality in US adults. Circulation. 2019.
+2. Mozaffarian D, et al. Changes in diet and lifestyle and long-term weight gain in women and men. N Engl J Med. 2011.
+3. Gijsbers L, et al. Consumption of dairy foods and diabetes incidence: a dose-response meta-analysis of observational studies. Am J Clin Nutr. 2016.
+4. Chen M, et al. Dairy consumption and risk of type 2 diabetes: 3 cohorts of US adults and an updated meta-analysis. BMC Med. 2014.
+
+[Last reviewed: November 2019]

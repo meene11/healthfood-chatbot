@@ -1,0 +1,81 @@
+SOURCE: NIH Office of Dietary Supplements
+URL: https://ods.od.nih.gov/factsheets/Probiotics-Consumer/
+RETRIEVED: 2026-04-01
+TYPE: Government health fact sheet
+
+========================================
+Probiotics
+Fact Sheet for Consumers
+National Institutes of Health | Office of Dietary Supplements
+========================================
+
+DEFINITION
+
+"Probiotics are live microorganisms (such as bacteria and yeasts) that provide health benefits when they are taken in sufficient amounts."
+
+HOW THEY WORK
+
+"Probiotics act mainly in the digestive tract." Once there, they may enhance digestive function and other health aspects.
+
+FOOD SOURCES
+
+Probiotics naturally occur in fermented foods including:
+- Yogurt
+- Cheese
+- Sourdough bread
+- Pickles
+- Kombucha
+- Miso
+- Kimchi
+- Sauerkraut
+
+Manufacturers also add probiotics to cereals, juices, milks, nutrition bars, and infant formulas.
+
+HEALTH EFFECTS BEING STUDIED
+
+Atopic Dermatitis (Eczema):
+Some studies suggest pregnant women taking probiotics, with infant supplementation afterward, may lower dermatitis risk in children.
+
+Diarrhea:
+Research indicates certain probiotic strains may shorten acute infectious diarrhea in children by approximately one day, though results vary by strain and condition.
+
+Antibiotic-Associated Diarrhea:
+"Some probiotic strains might help reduce the risk of antibiotic-associated diarrhea in children and adults."
+
+Inflammatory Bowel Disease (IBD):
+Probiotics combined with medications may slightly reduce ulcerative colitis symptom severity but show no clear benefit for Crohn's disease.
+
+Irritable Bowel Syndrome (IBS):
+Effects vary by strain and duration of use for managing symptoms.
+
+Cholesterol:
+Some studies show slight reductions in total and LDL cholesterol levels; other studies show no benefit.
+
+Weight Management:
+Results remain inconclusive.
+
+SAFETY CONSIDERATIONS
+
+Most probiotics are safe for healthy people and have been safely used in foods or dietary supplements for decades. However:
+- They may cause gas in some individuals.
+- The FDA has raised concerns about use in preterm infants.
+- They may pose risks for seriously ill individuals.
+- They may pose risks for people with compromised immune systems.
+
+CHOOSING PRODUCTS
+
+When selecting probiotic products, check labels for:
+- Specific genus, species, and strain name
+- CFU (colony forming unit) counts
+- Expiration dates
+- Storage requirements
+
+Consult healthcare providers about which product to choose, appropriate dosage, and duration of use.
+
+NOTE: No official recommended amounts exist for healthy adults regarding probiotics.
+
+DISCLAIMER
+
+This fact sheet by the National Institutes of Health (NIH) Office of Dietary Supplements (ODS) provides information that should not take the place of medical advice. We encourage you to talk to your health care providers about your interest in, questions about, or use of dietary supplements.
+
+Updated: 2023

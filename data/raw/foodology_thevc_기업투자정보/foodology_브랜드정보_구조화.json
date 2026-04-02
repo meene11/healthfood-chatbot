@@ -1,0 +1,137 @@
+{
+  "brand": "FOODOLOGY (푸드올로지)",
+  "operator": "(주)어댑트 / Adapt Inc.",
+  "ceo": "박정하",
+  "founded": "2017-03-31",
+  "business_number": "315-87-00581",
+  "address": "서울특별시 강남구 삼성로 534 싹아트센터 4층 (우편번호 06166)",
+  "phone": "1660-1910",
+  "email": {
+    "cs": "cs@adaptkorea.com",
+    "marketing": "mkt@adaptkorea.com",
+    "export": "export@adaptkorea.com"
+  },
+  "website": "https://food-ology.co.kr",
+  "tagline": "K-이너뷰티 브랜드 / 라이프솔루션 기반 D2C 미디어커머스",
+  "brand_promise": ["최고 품질 건강기능식품", "고객 만족 최우선", "불만족 시 100% 환불 보장"],
+  "certifications": ["GMP (우수건강기능식품제조기준)", "식약처 인증"],
+  "awards": [
+    "2018년 고객선호브랜드지수 1위",
+    "2020~2023년 소비자 서비스만족대상 4년 연속",
+    "2023~2024년 올해의 헬스케어 브랜드파워 1위",
+    "올리브영 어워즈 슬리밍 부문 1위 (2022, 2023, 2024, 2025 - 4년 연속)"
+  ],
+  "revenue_history": {
+    "2020": "264억원",
+    "2021": "488억원",
+    "2022": "1087억원 (창사 이래 최대, 전년대비 +125%)",
+    "2023": "1912억원",
+    "2024": "2000억원 이상",
+    "2025_target": "3000억원 이상"
+  },
+  "employees": 275,
+  "investment": {
+    "round": "Series A",
+    "year": 2019,
+    "amount": "120억원",
+    "lead_investor": "아주IB투자",
+    "investors": ["이노폴리스", "KB증권", "산은캐피탈", "현대기술투자"]
+  },
+  "product_lines": {
+    "다이어트라인": {
+      "콜레올로지 컷 PRO (빨간통)": {
+        "description": "체지방 감소 + 항산화 + 콜레스테롤 개선",
+        "key_ingredients": ["녹차추출물(카테킨)", "바나바잎추출물", "아연", "홍경천추출물", "비타민B1/B2/B6", "판토텐산", "셀레늄"],
+        "form": "정제(캡슐)",
+        "serving": "600mg × 60정 (30일분)",
+        "price_kurly": "46,000원 (정가 69,800원)"
+      },
+      "맨올로지 컷 PRO (파란통)": {
+        "description": "남성용 체지방 감소 + 간 건강 + 지구력",
+        "key_ingredients": ["가르시니아캄보지아추출물(HCA 2800mg)", "밀크씨슬(실리마린 130mg)", "옥타코사놀(400mg)", "BCAA", "L-아르기닌", "마카", "타우린"],
+        "form": "정제(캡슐)"
+      },
+      "콜레올로지 컷팅 젤리": {
+        "description": "탄수화물 집중컷 다이어트 젤리",
+        "form": "젤리 스틱",
+        "serving": "25g × 10포",
+        "price_kurly": "23,800원 (정가 43,000원)",
+        "awards": "일본 앳코스메 칼로리 서포트 보충제 부문 24주 연속 1위 (2025)"
+      },
+      "버닝올로지 디데이": {
+        "description": "단기 집중 다이어트",
+        "key_ingredients": ["미역등복합추출물(잔티젠)", "가르시니아캄보지아추출물", "녹차추출물(카테킨)", "돌외잎주정추출분말"],
+        "form": "파우더 포"
+      },
+      "톡스올로지 클렌즈 비움 PRO": {
+        "description": "48시간 디톡스 클렌즈",
+        "key_ingredients": ["옥수수수염/레몬밤 추출복합물(CL-5 MOA)", "난소화성말토덱스트린", "52종 과일야채"],
+        "form": "액상 병"
+      }
+    },
+    "마인드풀 (웰니스라인)": {
+      "지중해 올리브오일": {
+        "description": "스페인산 피쿠알 품종 엑스트라버진 올리브오일 캡슐",
+        "sales_record": "출시 6개월(2024.6~12) 누적 판매 2000만 캡슐",
+        "form": "캡슐"
+      },
+      "지중해 올리브 레몬 샷": {
+        "description": "올리브오일 캡슐 + 레몬즙 병 세트 (올레샷)",
+        "launched": "2026-01",
+        "form": "캡슐 + 액상"
+      },
+      "지중해 레몬그린티": {"description": "수분 보충 + 부기 관리"},
+      "지중해 레몬버베나": {"description": "체지방 감소 기능성 (식약처 인정)"},
+      "지중해 아티초크": {"description": "지방 소화 + 다이어트"}
+    },
+    "이너뷰티 (핑크라인)": {
+      "콜라겐올로지 부스터 샷": {
+        "description": "GELITA사 베리솔(VERISOL)콜라겐 5000mg",
+        "ad_model": "김이나"
+      },
+      "히알올로지": {},
+      "세라올로지": {}
+    },
+    "활력라인": {
+      "터보 붐": {"description": "국내산 아르기닌 (장어 36배)", "ad_model": "윤성빈"},
+      "에너지 붐": {},
+      "블랙킹타임": {}
+    }
+  },
+  "ad_models": [
+    {"name": "서현", "line": "브랜드 메인 모델", "year": 2021},
+    {"name": "옥택연(택연)", "line": "맨올로지 컷 (파란통)", "year": 2023},
+    {"name": "신봉선", "line": "40대 다이어트 프로젝트 / 신봉선 다이어트 세트", "achievement": "체지방 11kg 감량"},
+    {"name": "강남", "line": "강남 자기관리 세트"},
+    {"name": "윤성빈", "line": "활력라인 (터보붐/에너지붐/블랙킹타임)", "year": 2023},
+    {"name": "김이나", "line": "이너뷰티 핑크라인", "year": 2023}
+  ],
+  "distribution": {
+    "online": ["공식몰(food-ology.co.kr)", "올리브영", "마켓컬리", "무신사", "코스트코", "SSF샵", "카카오톡딜", "GS샵"],
+    "global": ["일본 큐텐(Qoo10)", "일본 라쿠텐", "미국 틱톡샵(TikTok Shop)"]
+  },
+  "global_performance": {
+    "japan": {
+      "entry_year": 2022,
+      "atcosme_ranking": "칼로리 서포트 보충제 부문 24주 연속 1위 (2025)",
+      "qoo10": "메가와리 식품/서플리먼트 4분기 연속 1위 (2025)"
+    },
+    "north_america": {
+      "tiktok_shop_entry": "2025-06",
+      "tiktok_tier": "Tier 5 (입점 2개월 만에 달성)",
+      "revenue_growth": "전년 동기 대비 378% 증가 (2025년 1~10월)",
+      "viral": "유튜버 니코카도 아보카도 영상 2500만 조회수"
+    }
+  },
+  "collected_date": "2026-04-01",
+  "sources": [
+    "https://food-ology.co.kr/shopinfo/company.html",
+    "https://www.adaptkorea.com/",
+    "https://thevc.kr/adapt",
+    "https://www.mt.co.kr/future/2022/12/28/2022122816261277579",
+    "https://www.hankyung.com/article/2023053068391",
+    "https://fashionbiz.co.kr/article/221456",
+    "https://www.segyebiz.com/newsView/20251218508849",
+    "https://www.ezyeconomy.com/news/articleView.html?idxno=230749"
+  ]
+}

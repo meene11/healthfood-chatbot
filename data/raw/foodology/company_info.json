@@ -1,0 +1,98 @@
+{
+  "crawled_at": "2026-04-01",
+  "source_urls": [
+    "https://food-ology.co.kr/shopinfo/company.html",
+    "https://www.adaptkorea.com/bbs/content.php?co_id=company",
+    "https://thevc.kr/adapt",
+    "https://www.hankyung.com/article/2023053068391"
+  ],
+  "brand": {
+    "name": "FOODOLOGY (푸드올로지)",
+    "website": "https://food-ology.co.kr",
+    "type": "K-이너뷰티 건강기능식품 브랜드",
+    "philosophy": "단순히 다이어트 효과에만 머무르지 않고, 일상 전반에 활력을 주는 고품질 건강기능식품을 만들겠다",
+    "tagline": "두 마리 토끼 잡기 — 다이어트 효과와 전체적 건강 효과 동시 추구",
+    "core_principles": [
+      "최고 품질의 건강기능식품 제조",
+      "고객 만족을 최우선 가치로",
+      "책임감 있는 지속적 고객 케어"
+    ],
+    "certifications": [
+      "GMP (우수건강기능식품제조기준) — 식품의약품안전처 인증",
+      "건강기능식품 인증 (주요 제품 전체)"
+    ],
+    "awards": [
+      {"year": 2018, "name": "고객선호브랜드지수 1위", "category": "건강솔루션", "issuer": "스포츠서울, G밸리뉴스"},
+      {"year": "2020-2023", "name": "소비자서비스만족대상 4년 연속", "category": "건강솔루션", "issuer": "한국경제"},
+      {"year": "2023-2024", "name": "헬스케어 브랜드 파워대상 1위", "category": "맞춤형 건강솔루션", "issuer": "주간동아, G밸리뉴스"},
+      {"year": 2024, "name": "한국브랜드만족지수 1위", "category": "건강기능식품", "issuer": "한국비즈니스데일리"},
+      {"year": 2021, "name": "골든걸 에디터 픽", "category": "가을 뷰티 아이템", "issuer": "동아일보"}
+    ],
+    "distribution_channels": [
+      "공식 홈페이지 (food-ology.co.kr)",
+      "올리브영 (슬리밍 카테고리 1위)",
+      "코스트코 코리아",
+      "컬리(마켓컬리)",
+      "SSG/이마트",
+      "11번가",
+      "롯데아이몰",
+      "ODK Shop"
+    ],
+    "manufacturing_partners": [
+      "코스맥스바이오 (충북 제천)",
+      "BL Healthcare",
+      "Novex"
+    ],
+    "services": {
+      "consultation": "1:1 건강 상담 서비스",
+      "content": ["약사 매거진", "영양사 식단 플랜"],
+      "shipping": "평일 14시 이전 주문 당일 출고",
+      "subscription": "반값 정기배송 (~50% 할인)",
+      "refund": "3개월 내 100% 환불 보장",
+      "customer_service": "1660-1910 / cs@adaptkorea.com"
+    }
+  },
+  "parent_company": {
+    "name": "(주)어댑트 / adapt Inc.",
+    "founded": "2017-03-31",
+    "ceo": "박정하 (Park Jung-ha)",
+    "business_registration": "315-87-00581",
+    "address": "서울 강남구 삼성로 534 색아트센터 4층 (06166)",
+    "website": "https://www.adaptkorea.com",
+    "employees": "약 275명 (2026년 2월 기준)",
+    "business_model": "D2C 미디어커머스 (광고마케팅 기반 PB 상품 유통)",
+    "description": "고객들의 일상 속 불편함을 발견하고, 브랜드를 통해 해결하는 라이프솔루션 기반의 D2C 미디어커머스 기업",
+    "funding": {
+      "last_round": "Series A",
+      "date": "2019-11",
+      "total_investors": 7
+    },
+    "patents": 1,
+    "financial_performance": {
+      "2022_healthcare_revenue_krw": 74300000000,
+      "2022_healthcare_yoy_growth": "252%",
+      "2022_total_revenue_krw": 110000000000,
+      "2022_total_yoy_growth": "125%",
+      "milestone": "창업 7년 만에 연 매출 2000억원 달성",
+      "avg_annual_growth": "400% 이상",
+      "global_markets": "12개국 이상"
+    },
+    "brand_portfolio": [
+      {"name": "FOODOLOGY (푸드올로지)", "category": "K-이너뷰티 / 건강기능식품"},
+      {"name": "OBgE (오브제)", "category": "남성 케어"},
+      {"name": "FULLY (풀리)", "category": "비건 고기능 스킨케어"},
+      {"name": "95PROBLEM (95프로블럼)", "category": "바이오 케어 & 뷰티 케어"},
+      {"name": "epais (에이페)", "category": "고기능 헤어 솔루션"},
+      {"name": "L'Absence", "category": "니치 향수"}
+    ],
+    "contact": {
+      "customer_service": "1660-1910",
+      "cs_email": "cs@adaptkorea.com",
+      "marketing_email": "mkt@adaptkorea.com",
+      "export_email": "export@adaptkorea.com",
+      "hr_email": "hr@adaptkorea.com",
+      "hr_phone": "02-6952-3396",
+      "business_hours": "평일 10:00-17:00 (점심 12:30-14:00), 주말/공휴일 휴무"
+    }
+  }
+}

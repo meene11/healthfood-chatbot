@@ -1,0 +1,111 @@
+{
+  "source": {
+    "title": "Omega-3 Fatty Acids - Health Professional Fact Sheet",
+    "organization": "NIH Office of Dietary Supplements (ODS)",
+    "url": "https://ods.od.nih.gov/factsheets/Omega3FattyAcids-HealthProfessional/",
+    "crawled_at": "2026-04-01"
+  },
+  "content": {
+    "definition": "Omega-3s are polyunsaturated fatty acids (PUFAs) with a carbon-carbon double bond located three carbons from the methyl end.",
+    "types": [
+      {
+        "name": "ALA (Alpha-linolenic acid)",
+        "carbons": 18,
+        "source": "plant-based",
+        "note": "Essential fatty acid; body converts to EPA/DHA at less than 15% efficiency"
+      },
+      {
+        "name": "EPA (Eicosapentaenoic acid)",
+        "carbons": 20,
+        "source": "marine"
+      },
+      {
+        "name": "DHA (Docosahexaenoic acid)",
+        "carbons": 22,
+        "source": "marine",
+        "note": "Concentrated in brain and retina tissue"
+      }
+    ],
+    "recommended_intake_ALA_grams_per_day": {
+      "children_1_3": 0.7,
+      "children_4_8": 0.9,
+      "children_9_13_male": 1.2,
+      "children_9_13_female": 1.0,
+      "teen_14_18_male": 1.6,
+      "teen_14_18_female": 1.1,
+      "adult_19_50_male": 1.6,
+      "adult_19_50_female": 1.1,
+      "adult_51plus_male": 1.6,
+      "adult_51plus_female": 1.1
+    },
+    "health_benefits": {
+      "cardiovascular": {
+        "summary": "Higher consumption associated with lower heart failure risk",
+        "key_trials": [
+          {
+            "name": "REDUCE-IT",
+            "finding": "High-dose EPA (4g/day) reduced cardiovascular events by 25%"
+          },
+          {
+            "name": "VITAL & ASCEND",
+            "finding": "1g/day showed modest myocardial infarction reduction"
+          },
+          {
+            "name": "STRENGTH",
+            "finding": "No benefit from combined EPA/DHA formulation"
+          }
+        ],
+        "AHA_recommendation": "1-2 seafood servings weekly; 1g/day EPA+DHA for existing coronary disease"
+      },
+      "pregnancy_infant": {
+        "preterm_birth_risk_reduction": "11% overall; 42% for early preterm",
+        "recommendation": "8-12 oz weekly seafood; minimum 250mg/day EPA+DHA",
+        "note": "DHA accumulates rapidly in fetal brain during third trimester"
+      },
+      "cancer": {
+        "VITAL_trial": "No significant effect on cancer incidence or mortality for breast, prostate, or colorectal cancers"
+      },
+      "cognitive_function": {
+        "observational": "Protective effects against dementia suggested",
+        "clinical_trials": "No benefits shown in cognitively healthy older adults; may modestly improve mild cognitive impairment"
+      },
+      "AMD": {
+        "observational": "Benefit suggested",
+        "AREDS2_trial": "LC omega-3 supplementation for up to 5 years did not reduce AMD progression risk"
+      },
+      "dry_eye": "Mixed results; no consensus on optimal dose",
+      "rheumatoid_arthritis": "Reduces anti-inflammatory drug and corticosteroid use; inconsistent effects on pain and swelling"
+    },
+    "food_sources": [
+      {"food": "Flaxseed oil (1 Tbsp)", "ALA_g": 7.26},
+      {"food": "Walnuts (1 oz)", "ALA_g": 2.57},
+      {"food": "Salmon, cooked (3 oz)", "ALA_g": 1.24, "DHA_g": 0.59},
+      {"food": "Herring, cooked (3 oz)", "ALA_g": 0.94, "DHA_g": 0.77}
+    ],
+    "supplement_types": [
+      {
+        "type": "Fish oil (typical 1000mg)",
+        "EPA_mg": 180,
+        "DHA_mg": 120
+      },
+      {
+        "type": "Krill oil",
+        "note": "Phospholipid form; bioavailability comparable to fish oil"
+      },
+      {
+        "type": "Algal oil",
+        "note": "Vegetarian source; ~100-300mg DHA per serving"
+      }
+    ],
+    "safety": {
+      "upper_limit_EFSA": "5g/day EPA+DHA appears safe long-term",
+      "upper_limit_FDA_supplement": "5g/day",
+      "adverse_effects_mild": ["unpleasant taste", "heartburn", "nausea", "diarrhea"],
+      "high_dose_concern": "High doses (2-15g/day) may increase bleeding time",
+      "atrial_fibrillation_risk": "4g/day slightly increased atrial fibrillation risk in CVD patients"
+    },
+    "drug_interactions": {
+      "warfarin_anticoagulants": "Antiplatelet effects; 3-6g/day doesn't significantly affect INR but periodic monitoring warranted"
+    }
+  }
+}

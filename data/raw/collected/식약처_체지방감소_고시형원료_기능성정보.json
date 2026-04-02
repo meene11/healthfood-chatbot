@@ -1,0 +1,70 @@
+{
+  "source": "식품안전나라 (https://www.foodsafetykorea.go.kr/portal/healthyfoodlife/functionalityView.do?viewNo=05)",
+  "category": "체지방 감소",
+  "collected_date": "2026-04-01",
+  "body_fat_definition": {
+    "description": "신체는 수분, 지방, 단백질과 소량의 당질로 구성되어 있으며, 체지방은 피하지방과 내장지방으로 구분됩니다.",
+    "risks": [
+      "제2형 당뇨병 위험 증가",
+      "고혈압 위험 증가",
+      "관상동맥질환 위험 증가"
+    ],
+    "benefits_of_reduction": [
+      "혈압 저하",
+      "인슐린 저항성 감소",
+      "혈중 지질 개선"
+    ],
+    "risk_factors": [
+      "소비 에너지보다 많은 섭취 에너지",
+      "과식",
+      "단순당 음료",
+      "야식",
+      "음주"
+    ]
+  },
+  "reduction_methods": {
+    "primary": "식사관리와 신체활동을 통한 에너지 평형 조절",
+    "exercise_recommendation": "주당 150분의 규칙적 운동"
+  },
+  "functional_mechanisms": [
+    "체지방 감소",
+    "지방 소화/흡수 억제",
+    "지방 합성 억제",
+    "지방 분해 촉진"
+  ],
+  "approved_ingredients": {
+    "고시형": [
+      {
+        "name": "가르시니아캄보지아추출물",
+        "active_component": "하이드록시시트르산(HCA)",
+        "daily_intake": "HCA 기준 750~2800mg",
+        "mechanism": "ATP-구연산 분해효소(ACL) 억제 → 지방산 합성 억제, 식욕 억제"
+      },
+      {
+        "name": "공액리놀레산(CLA)",
+        "active_component": "공액리놀레산",
+        "daily_intake": "1500~4200mg",
+        "mechanism": "체지방 감소 및 제지방 증가"
+      },
+      {
+        "name": "녹차추출물",
+        "active_component": "카테킨",
+        "daily_intake": "카테킨 기준 300~1000mg",
+        "mechanism": "에너지 소비 증가, 지방산화 촉진"
+      },
+      {
+        "name": "키토산·키토올리고당",
+        "active_component": "키토산",
+        "daily_intake": "키토산 기준 3~4.5g",
+        "mechanism": "장내 지방 흡착 후 체외 배출"
+      }
+    ],
+    "개별인정형_count": "80여 가지",
+    "개별인정형_examples": [
+      "L-카르니틴",
+      "히비스커스추출물",
+      "콜레우스포스콜리추출물",
+      "대두배아추출물등복합물"
+    ]
+  }
+}

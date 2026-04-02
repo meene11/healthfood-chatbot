@@ -1,0 +1,96 @@
+{
+  "source": {
+    "title": "Next-Generation Probiotics as Novel Therapeutics for Improving Human Health: Current Trends and Future Perspectives",
+    "organization": "PMC (PubMed Central) / Frontiers in Nutrition",
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10972033/",
+    "crawled_at": "2026-04-01",
+    "type": "systematic_review"
+  },
+  "content": {
+    "strains_studied": {
+      "lactobacillus": [
+        "L. rhamnosus",
+        "L. plantarum",
+        "L. acidophilus",
+        "L. reuteri"
+      ],
+      "bifidobacterium": [
+        "B. longum",
+        "B. lactis",
+        "B. bifidum"
+      ],
+      "next_generation": [
+        "Faecalibacterium prausnitzii",
+        "Akkermansia muciniphila",
+        "Christensenella minuta",
+        "Parabacteroides species"
+      ]
+    },
+    "health_conditions_addressed": [
+      "IBS (과민성대장증후군)",
+      "IBD (염증성장질환): Crohn's disease, Ulcerative colitis",
+      "Cancer prevention: colorectal, gastric, breast, cervical",
+      "Metabolic diseases: obesity, type 2 diabetes, NAFLD",
+      "Cardiovascular health: inflammation, cholesterol regulation",
+      "Neuropsychological: depression, anxiety, autism, Alzheimer's",
+      "Infectious disease resistance: bacterial and viral",
+      "Skin health: acne, atopic dermatitis, wound healing"
+    ],
+    "mechanisms_of_action": [
+      {
+        "mechanism": "SCFA production (Short-Chain Fatty Acids)",
+        "effect": "Reduce inflammation and strengthen intestinal barriers"
+      },
+      {
+        "mechanism": "Immune modulation",
+        "effect": "Cytokine regulation and T-cell activation"
+      },
+      {
+        "mechanism": "Competitive exclusion",
+        "effect": "Outcompete pathogens for nutrients and space"
+      },
+      {
+        "mechanism": "Barrier reinforcement",
+        "effect": "Enhanced mucus production and epithelial integrity"
+      },
+      {
+        "mechanism": "Bioactive compound synthesis",
+        "effect": "Antimicrobial peptides and vitamin production"
+      }
+    ],
+    "key_clinical_findings": [
+      {
+        "strain": "B. bifidum",
+        "finding": "Reduced IBS symptoms in 47% of patients receiving treatment"
+      },
+      {
+        "strain": "L. rhamnosus GG",
+        "finding": "Improved insulin sensitivity in obese diabetic individuals"
+      },
+      {
+        "strain": "B. longum",
+        "finding": "Decreased fasting blood glucose in diabetic mice"
+      },
+      {
+        "strain": "L. plantarum PS128",
+        "finding": "Showed behavioral improvements in autistic children"
+      },
+      {
+        "strain": "Akkermansia muciniphila",
+        "finding": "Enhanced cancer immunotherapy responses"
+      },
+      {
+        "strain": "L. acidophilus + B. longum combination",
+        "finding": "Significant reduction in inflammation; improvement in immune and intestinal barrier function; decrease of Bacteroides vulgatus"
+      }
+    ],
+    "recommendations": [
+      "Personalized approaches using metagenomic sequencing for individual optimization",
+      "Advanced delivery systems including encapsulation and targeted formulations",
+      "Synthetic biology integration via CRISPR and gene editing for enhanced efficacy",
+      "Combination therapies with prebiotics, postbiotics, or conventional treatments",
+      "Rigorous clinical validation before widespread therapeutic implementation"
+    ],
+    "research_limitations": "Findings remain inconclusive due to inconsistent study designs, small sample sizes, and varying patient responses"
+  }
+}

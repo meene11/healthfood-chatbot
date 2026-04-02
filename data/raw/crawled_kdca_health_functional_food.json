@@ -1,0 +1,47 @@
+{
+  "source": {
+    "title": "건강기능식품 | 국가건강정보포털",
+    "organization": "질병관리청 (KDCA)",
+    "url": "https://health.kdca.go.kr/healthinfo/biz/health/gnrlzHealthInfo/gnrlzHealthInfo/gnrlzHealthInfoView.do?cntnts_sn=6548",
+    "crawled_at": "2026-04-01"
+  },
+  "content": {
+    "definition": "건강기능식품은 인체에 유용한 기능성을 가진 원료나 성분을 사용하여 제조, 가공한 식품으로, 식품의약품안전처에서 기능성과 안전성을 승인한 제품이다.",
+    "characteristics": [
+      "포장에 '건강기능식품' 문구 또는 인증마크 표시",
+      "기능성 원료의 효능이 명시됨",
+      "의약품과 달리 질병 치료/예방이 아닌 건강 유지 목적"
+    ],
+    "functionality_types": {
+      "disease_risk_reduction": {
+        "label": "질병 발생 위험 감소 기능",
+        "examples": ["골다공증 위험 감소 (칼슘, 비타민D)", "충치 위험 감소 (자일리톨)"]
+      },
+      "physiologically_active": {
+        "label": "생리활성 기능",
+        "count": "약 40여 종",
+        "examples": ["기억력, 수면 개선", "눈 건강, 피부 보습", "혈당/혈압 조절", "장 건강, 면역 기능"]
+      },
+      "nutrient_function": {
+        "label": "영양소 기능",
+        "count": "28종",
+        "examples": ["비타민", "무기질", "단백질", "식이섬유"]
+      }
+    },
+    "selection_checklist": [
+      "포장의 '건강기능식품' 마크 확인",
+      "기능성 표시 확인",
+      "영양정보 검토",
+      "섭취량·방법 확인",
+      "주의사항 검토"
+    ],
+    "precautions": [
+      "정해진 섭취량 준수",
+      "여러 제품 동시 섭취 주의",
+      "특정 질환자는 의사 상담 필수",
+      "의약품과의 상호작용 확인",
+      "부작용 발생 시 즉시 중단"
+    ],
+    "limitations": "생리활성 기능은 소규모 임상시험으로도 인정되므로 의약품보다 근거 수준이 낮다. 질병 치료 목적으로 사용하면 안 된다."
+  }
+}

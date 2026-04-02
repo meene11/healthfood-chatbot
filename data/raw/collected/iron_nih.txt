@@ -1,0 +1,113 @@
+SOURCE: NIH Office of Dietary Supplements
+URL: https://ods.od.nih.gov/factsheets/Iron-Consumer/
+RETRIEVED: 2026-04-01
+TYPE: Government health fact sheet
+
+========================================
+Iron
+Fact Sheet for Consumers
+National Institutes of Health | Office of Dietary Supplements
+========================================
+
+KEY FUNCTIONS
+
+Iron serves critical roles in the body:
+- Helps create hemoglobin for oxygen transport in red blood cells
+- Creates myoglobin for muscle oxygen supply
+- Supports hormone production
+- Supports growth and development
+
+RECOMMENDED INTAKE
+
+Daily requirements vary by age and sex:
+
+Life Stage                    | Recommended Amount
+------------------------------|-------------------
+Infants birth-6 months        | 0.27 mg
+Infants 7-12 months           | 11 mg
+Children 1-3 years            | 7 mg
+Children 4-8 years            | 10 mg
+Children 9-13 years           | 8 mg
+Teen boys 14-18 years         | 11 mg
+Teen girls 14-18 years        | 15 mg
+Adult men 19-50 years         | 8 mg
+Adult women 19-50 years       | 18 mg
+Adults 51+ years              | 8 mg
+Pregnant teens                | 27 mg
+Pregnant women                | 27 mg
+Breastfeeding teens           | 10 mg
+Breastfeeding women           | 9 mg
+
+NOTE: Vegetarians require nearly double these amounts since plant-based iron (nonheme iron) absorbs less efficiently than iron from animal sources (heme iron).
+
+FOOD SOURCES
+
+Iron appears naturally in:
+- Lean meats, seafood, poultry (heme iron - more readily absorbed)
+- Beans, lentils, spinach, peas (nonheme iron)
+- Nuts, dried fruits
+- Tofu, fortified cereals and breads
+
+The body absorbs nonheme iron from plants better when consumed alongside animal proteins or vitamin C-rich foods such as citrus fruits and broccoli.
+
+SUPPLEMENTATION FORMS
+
+Iron supplements typically contain:
+- Ferrous sulfate
+- Ferrous gluconate
+- Ferric citrate
+- Ferric sulfate
+
+IMPORTANT WARNING: All iron-containing supplements carry warning labels about keeping them away from children, as accidental overdose represents a leading cause of fatal poisoning in young children.
+
+WHO IS AT RISK OF DEFICIENCY?
+
+Higher-risk populations include:
+- Adolescent girls and women with heavy menstrual bleeding
+- Pregnant women
+- Frequent blood donors
+- People with gastrointestinal disorders (celiac disease, inflammatory bowel disease)
+- People with cancer
+- People with heart failure
+
+DEFICIENCY SYMPTOMS
+
+- Weakness and fatigue
+- Difficulty concentrating
+- Reduced ability to fight infection
+- In severe deficiency: iron-deficiency anemia (pale skin, shortness of breath, dizziness, headaches)
+
+HEALTH EFFECTS ON SPECIFIC CONDITIONS
+
+Anemia:
+Iron-deficiency anemia is the most common type of anemia worldwide. Supplementation can restore iron levels and improve symptoms.
+
+Pregnancy:
+Iron deficiency during pregnancy may contribute to premature birth and low birth weight. Pregnant women need significantly more iron than non-pregnant women.
+
+TOXICITY AND UPPER LIMITS
+
+Upper safe limit for adults: 45 mg/day from all sources
+
+Excessive iron intake causes:
+- Gastrointestinal distress
+- Constipation and nausea
+- Abdominal pain
+
+High doses can harm organ function, particularly the liver.
+
+HEMOCHROMATOSIS: People with this inherited iron-storage disorder must avoid iron supplements. Their bodies absorb too much iron, which can damage the liver, heart, and pancreas.
+
+DRUG INTERACTIONS
+
+Iron reduces the effectiveness of:
+- Levodopa (Parkinson's disease medication)
+- Levothyroxine (thyroid hormone medication)
+
+Calcium supplements may interfere with iron absorption - take at different times of day.
+
+Certain antibiotics (fluoroquinolones, tetracyclines) should not be taken at the same time as iron supplements.
+
+DISCLAIMER
+
+This fact sheet by the National Institutes of Health (NIH) Office of Dietary Supplements (ODS) provides information that should not take the place of medical advice.

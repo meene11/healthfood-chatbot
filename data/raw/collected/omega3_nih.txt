@@ -1,0 +1,164 @@
+SOURCE: NIH Office of Dietary Supplements
+URL: https://ods.od.nih.gov/factsheets/Omega3FattyAcids-Consumer/
+RETRIEVED: 2026-04-01
+TYPE: Government health fact sheet
+
+========================================
+Omega-3 Fatty Acids
+Fact Sheet for Consumers
+National Institutes of Health | Office of Dietary Supplements
+========================================
+
+TABLE OF CONTENTS
+- What are omega-3 fatty acids and what do they do?
+- How much omega-3s do I need?
+- What foods provide omega-3s?
+- What kinds of omega-3 dietary supplements are available?
+- Am I getting enough omega-3s?
+- What happens if I don't get enough omega-3s?
+- What are some effects of omega-3s on health?
+- Can omega-3s be harmful?
+- Do omega-3s interact with medications or other dietary supplements?
+- Omega-3s and healthful eating
+- Where can I find out more about omega-3s?
+- Disclaimer
+
+----------------------------------------
+WHAT ARE OMEGA-3 FATTY ACIDS AND WHAT DO THEY DO?
+----------------------------------------
+
+"Omega-3 fatty acids are found in foods, such as fish and flaxseed, and in dietary supplements, such as fish oil."
+
+The three primary types are alpha-linolenic acid (ALA), eicosapentaenoic acid (EPA), and docosahexaenoic acid (DHA). ALA appears primarily in plant oils including flaxseed, soybean, and canola oils. DHA and EPA are found in fish and seafood.
+
+"ALA is an essential fatty acid, meaning that your body can't make it, so you must get it from the foods and beverages you consume." Your body converts only small amounts of ALA into EPA and then DHA, making dietary sources of EPA and DHA practically necessary for increasing these omega-3 levels.
+
+Omega-3s comprise cell membranes throughout the body, with particularly high concentrations in retina, brain, and sperm cells. "Omega-3s also provide calories to give your body energy and have many functions in your heart, blood vessels, lungs, immune system, and endocrine system (the network of hormone-producing glands)."
+
+----------------------------------------
+HOW MUCH OMEGA-3S DO I NEED?
+----------------------------------------
+
+"Experts have not established recommended amounts for omega-3 fatty acids, except for ALA."
+
+Recommended Daily ALA Amounts by Life Stage:
+
+Life Stage                          | Recommended Amount
+------------------------------------|-------------------
+Birth to 12 months                  | 0.5 g
+Children 1-3 years                  | 0.7 g
+Children 4-8 years                  | 0.9 g
+Boys 9-13 years                     | 1.2 g
+Girls 9-13 years                    | 1.0 g
+Teen boys 14-18 years               | 1.6 g
+Teen girls 14-18 years              | 1.1 g
+Men                                 | 1.6 g
+Women                               | 1.1 g
+Pregnant teens and women            | 1.4 g
+Breastfeeding teens and women       | 1.3 g
+
+Note: Birth to 12 months = total omega-3s; all other values = ALA alone.
+
+----------------------------------------
+WHAT FOODS PROVIDE OMEGA-3S?
+----------------------------------------
+
+"Omega-3s are found naturally in some foods and are added to some fortified foods."
+
+Food sources include:
+- Fish and other seafood (cold-water fatty fish such as salmon, mackerel, tuna, herring, and sardines)
+- Nuts and seeds (flaxseed, chia seeds, walnuts)
+- Plant oils (flaxseed oil, soybean oil, canola oil)
+- Fortified foods (certain brands of eggs, yogurt, juices, milk, soy beverages, and infant formulas)
+
+----------------------------------------
+WHAT KINDS OF OMEGA-3 DIETARY SUPPLEMENTS ARE AVAILABLE?
+----------------------------------------
+
+"Omega-3 dietary supplements include fish oil, krill oil, cod liver oil, and algal oil (a vegetarian source that comes from algae). They provide a wide range of doses and forms of omega-3s."
+
+----------------------------------------
+AM I GETTING ENOUGH OMEGA-3S?
+----------------------------------------
+
+"Most people in the United States get enough ALA from the foods they eat. They also get small amounts of EPA and DHA. Recommended amounts of EPA and DHA have not been established."
+
+----------------------------------------
+WHAT HAPPENS IF I DON'T GET ENOUGH OMEGA-3S?
+----------------------------------------
+
+"A deficiency of omega-3s can cause rough, scaly skin and a red, swollen, itchy rash. Omega-3 deficiency is very rare in the United States."
+
+----------------------------------------
+WHAT ARE SOME EFFECTS OF OMEGA-3S ON HEALTH?
+----------------------------------------
+
+CARDIOVASCULAR DISEASE
+
+"Many studies show that eating fatty fish and other types of seafood as part of a healthy eating pattern helps keep your heart healthy and helps protect you from some heart problems."
+
+"The American Heart Association (AHA) recommends eating one to two servings of seafood per week to reduce your risk of some heart problems, especially if you consume the seafood in place of less healthy foods."
+
+For individuals with heart disease, "the AHA recommends consuming about 1 g per day EPA plus DHA, preferably from oily fish, but supplements are an option under the guidance of a health care provider." The AHA does not recommend omega-3 supplements for people without high cardiovascular disease risk.
+
+INFANT HEALTH AND DEVELOPMENT
+
+"During pregnancy and breastfeeding, eating 8 to 12 ounces per week of fish and other seafood may improve your baby's health."
+
+Recommended fish include those "higher in EPA and DHA and lower in mercury. Examples are salmon, herring, sardines, and trout."
+
+Evidence on EPA and DHA supplements during pregnancy is inconclusive. "Some studies show that taking these supplements may slightly increase a baby's weight at birth and the length of time the baby is in the womb, both of which may be beneficial."
+
+"Breast milk contains DHA. Most commercial infant formulas also contain DHA."
+
+CANCER PREVENTION
+
+"Some studies suggest that people who get more omega-3s from foods and dietary supplements may have a lower risk of breast cancer and perhaps colorectal cancer."
+
+However, "a large clinical trial found that omega-3 supplements did not reduce the overall risk of cancer or the risk of breast, prostate, or colorectal cancers."
+
+ALZHEIMER'S DISEASE, DEMENTIA, AND COGNITIVE FUNCTION
+
+"Some—but not all—research shows that people who consume more omega-3s from food such as fish may have a lower risk of developing Alzheimer's disease, dementia, and other problems with cognitive function."
+
+AGE-RELATED MACULAR DEGENERATION
+
+"Age-related macular degeneration (AMD) is a major cause of vision loss among older adults. Studies suggest that people who get higher amounts of omega-3s from the foods they eat may have a lower risk of developing AMD."
+
+However, "once someone has AMD, taking omega-3 supplements does not keep the disease from getting worse or slow down vision loss."
+
+DRY EYE DISEASE
+
+"Dry eye disease occurs when tears don't provide enough moisture, causing eye discomfort and vision problems. Some studies show that getting more omega-3s from foods or supplements—mainly EPA and DHA—helps relieve symptoms of dry eye disease."
+
+Recent research provides mixed results. "A large, recent study found that the symptoms of people with dry eye disease who took fish oil supplements of 2,000 mg EPA plus 1,000 mg DHA daily for 1 year did not improve any more than those who took a placebo (a dummy pill)."
+
+RHEUMATOID ARTHRITIS
+
+"Rheumatoid arthritis (RA) causes chronic pain, swelling, stiffness, and loss of function in the joints. Some clinical trials have shown that taking omega-3 supplements may help manage RA when taken together with standard RA medications and other treatments."
+
+OTHER CONDITIONS
+
+"Researchers are studying whether taking omega-3 dietary supplements may help lessen some of the symptoms of attention-deficit/hyperactivity disorder, childhood allergies, and cystic fibrosis. However, more research is needed to fully understand the potential benefits of omega-3s for these and other conditions."
+
+----------------------------------------
+CAN OMEGA-3S BE HARMFUL?
+----------------------------------------
+
+"The U.S. Food and Drug Administration recommends consuming no more than 5 g/day of EPA and DHA combined from dietary supplements."
+
+Side effects are "usually mild. They include an unpleasant taste in the mouth, bad breath, heartburn, nausea, stomach discomfort, diarrhea, headache, and smelly sweat."
+
+----------------------------------------
+DO OMEGA-3S INTERACT WITH MEDICATIONS OR OTHER DIETARY SUPPLEMENTS?
+----------------------------------------
+
+"Omega-3 dietary supplements may interact with the medications you take. For example, high doses of omega-3s may cause bleeding problems when taken with warfarin (Coumadin) or other anticoagulant medicines."
+
+----------------------------------------
+DISCLAIMER
+----------------------------------------
+
+This fact sheet by the National Institutes of Health (NIH) Office of Dietary Supplements (ODS) provides information that should not take the place of medical advice. We encourage you to talk to your health care providers (doctor, registered dietitian, pharmacist, etc.) about your interest in, questions about, or use of dietary supplements and what may be best for your overall health. Any mention in this publication of a specific product or service, or recommendation from an organization or professional society, does not represent an endorsement by ODS of that product, service, or expert advice.
+
+Updated: July 18, 2022

@@ -1,0 +1,357 @@
+{
+  "crawled_at": "2026-04-01",
+  "brand": "FOODOLOGY (푸드올로지)",
+  "source_urls": [
+    "https://food-ology.co.kr/product/톡스올로지-클렌즈-비움-pro/220/",
+    "https://food-ology.co.kr/product/버닝올로지-올인원/1172/",
+    "https://www.pillyze.com/products/17506/맨올로지-컷",
+    "https://www.pillyze.com/products/24342/콜레올로지-컷",
+    "https://www.pillyze.com/products/24343/톡스올로지-클렌즈-비움",
+    "https://www.pillyze.com/products/16863/버닝올로지-디데이",
+    "https://realdieter.com"
+  ],
+  "total_products": 14,
+  "products": [
+    {
+      "id": "fd_001",
+      "name": "콜레올로지 컷 (Colleology Cut)",
+      "nickname": "빨간통 다이어트",
+      "format": "캡슐/정제",
+      "serving_info": "60정 = 1개월분",
+      "target": "성인 여성 (20-40대)",
+      "pricing": {
+        "1month_krw": 45800,
+        "2months_per_month_krw": 39900,
+        "4months_per_month_krw": 29700,
+        "6months_per_month_krw": 27466
+      },
+      "dosage": "하루 1회, 2정을 물과 함께",
+      "health_function_claims": [
+        "체지방 감소",
+        "항산화",
+        "콜레스테롤 개선",
+        "스트레스 관련 피로 회복",
+        "에너지 생성",
+        "혈행 개선",
+        "면역 기능 정상 유지"
+      ],
+      "key_ingredients": [
+        {"name": "녹차추출물 (카테킨)", "function": "체지방 감소, 항산화, 콜레스테롤 개선"},
+        {"name": "바나바잎 추출물", "function": "식후 혈당 조절"},
+        {"name": "홍경천추출물 (로사빈)", "function": "스트레스 관련 피로 회복"},
+        {"name": "콜레우스포스콜리 (포스콜린)", "function": "체지방 감소"},
+        {"name": "은행잎추출물", "function": "혈행 개선"},
+        {"name": "비타민 B1, B2, B6", "function": "에너지 대사"},
+        {"name": "판토텐산", "function": "에너지 생성"},
+        {"name": "셀레늄", "function": "세포 산화적 손상 보호"},
+        {"name": "아연", "function": "면역 기능, 정상 세포 분열"},
+        {"name": "프락토올리고당", "function": "장 규칙성, 프리바이오틱"}
+      ],
+      "precautions": [
+        "카페인 함유 — 불면, 불안 가능성",
+        "어린이, 임산부, 수유부 섭취 불가",
+        "간 질환자, 약물 복용자는 전문가 상담 필요"
+      ],
+      "user_reviews": {
+        "benefits_reported": ["변비 개선 42%", "식욕 감소 30%", "복부 가스 감소 21%"],
+        "side_effects": ["설사 6%", "가스 참 6%", "효과 없음 3%"],
+        "convenience": ["복용법 간편 93%", "맛/향 좋음 90%"]
+      },
+      "certifications": "건강기능식품",
+      "refund_policy": "3개월 내 100% 환불"
+    },
+    {
+      "id": "fd_002",
+      "name": "맨올로지 컷 (Man Ology Cut)",
+      "nickname": "파란통 다이어트",
+      "format": "정제",
+      "serving_info": "120정 = 1개월분 (1,100mg/회)",
+      "target": "성인 남성 (직장인 포함)",
+      "pricing": {
+        "note": "맨올로지 컷 PRO 기준 (SSF Shop/삼성물산)"
+      },
+      "dosage": "하루 3회, 각 식사 후 2알 (총 6알/일)",
+      "health_function_claims": [
+        "체지방 감소",
+        "지구력 및 체력 증진",
+        "간 건강 개선"
+      ],
+      "key_ingredients": [
+        {"name": "가르시니아캄보지아 추출물 (HCA 2,800mg)", "function": "탄수화물의 지방 전환 억제, 체지방 감소"},
+        {"name": "밀크씨슬 추출물 (실리마린 130mg)", "function": "간 건강 개선"},
+        {"name": "옥타코사놀 함유 유지 (400mg)", "function": "지구력 및 체력 증진"},
+        {"name": "BCAA", "function": "근육 유지"},
+        {"name": "L-아르기닌", "function": "혈행, 근육 지원"},
+        {"name": "마카", "function": "활력"},
+        {"name": "타우린", "function": "에너지"},
+        {"name": "복합 비타민", "function": "전반적 건강"}
+      ],
+      "precautions": [
+        "어린이, 임산부, 수유부 섭취 불가",
+        "설사, 복통, 팽만감 가능성",
+        "약물 복용자는 전문가 상담 필요"
+      ],
+      "user_reviews": {
+        "benefits_reported": ["체중 감소 50%", "식욕 감소 33%", "체지방 감소 33%"],
+        "side_effects": ["가스 참 33%", "설사 16%", "효과 없음 16%"]
+      },
+      "variants": ["맨올로지 컷", "맨올로지 컷 PRO (80정/20일분)"],
+      "certifications": "건강기능식품"
+    },
+    {
+      "id": "fd_003",
+      "name": "톡스올로지 클렌즈 비움 PRO (Toxology Cleanse Bium PRO)",
+      "nickname": "보라 다이어트 / 3일 클렌즈",
+      "format": "액상 (50mL 병)",
+      "serving_info": "9병 = 3일분",
+      "target": "성인 (남녀 공용), 단기 클렌즈 목적",
+      "pricing": {
+        "9bottles_3days_krw": 29800,
+        "original_krw": 48000,
+        "18bottles_6days_krw": 27900,
+        "27bottles_9days_krw": 26600
+      },
+      "dosage": "1일 3회 (아침/점심/저녁), 1회 1병 — 그대로 또는 물/탄산수 500mL에 희석",
+      "health_function_claims": [
+        "체지방 감소 (건강기능식품 공인)",
+        "배변활동 원활",
+        "식후혈당 상승 억제",
+        "혈중 중성지질 개선"
+      ],
+      "key_ingredients": [
+        {"name": "옥수수수염레몬밤추출복합물 (CL-5 MoA)", "function": "체지방 감소"},
+        {"name": "난소화성말토덱스트린 (12,600mg)", "function": "배변활동 원활, 식후혈당 관리, 혈중지질 개선"},
+        {"name": "52종 과채류 (채소 28종 + 베리/과일 24종)", "function": "미량영양소 지원"},
+        {"name": "7종 비타민 & 미네랄", "function": "전반적 건강"},
+        {"name": "콜라겐, 엘라스틴, 밀크 세라마이드", "function": "피부 건강"}
+      ],
+      "precautions": [
+        "임산부, 수유부, 어린이 섭취 불가"
+      ],
+      "user_reviews": {
+        "benefits_reported": ["변비 개선 72%", "복부 가스 감소 27%", "식욕 감소 11%"],
+        "side_effects": ["가스 참 33%", "설사 22%", "속 불편 11%"],
+        "typical_results": "3일간 식이 조절 병행 시 2-7kg 감량 사례"
+      },
+      "variants": [
+        "톡스올로지 클렌즈 비움 PRO",
+        "톡스올로지 클렌즈 48시간 비움"
+      ],
+      "certifications": "건강기능식품"
+    },
+    {
+      "id": "fd_004",
+      "name": "버닝올로지 디데이 (Burning Ology D-Day)",
+      "nickname": "디데이 다이어트",
+      "format": "파우치 (포)",
+      "serving_info": "1포/일, 10포 = 10일분",
+      "target": "성인 (남녀 공용)",
+      "pricing": {
+        "1box_10packs_krw": 35800,
+        "2box_krw": 68800,
+        "3plus_box_per_box_krw": 29600
+      },
+      "dosage": "1일 1포, 물과 함께",
+      "health_function_claims": [
+        "체지방 감소",
+        "탄수화물 차단",
+        "지방 함량 감소",
+        "항산화 강화"
+      ],
+      "key_ingredients": [
+        {"name": "잔티젠 (후코잔틴 + 푸닉산, 600mg)", "function": "지방 연소, 대사 촉진, 항염, 항산화"},
+        {"name": "가르시니아캄보지아 추출물 (HCA)", "function": "탄수화물의 지방 전환 억제"},
+        {"name": "녹차추출물 (카테킨)", "function": "항산화, 체지방 감소 보조"},
+        {"name": "돌외주정추출분말 (다뮬린 A)", "function": "대사 지원"}
+      ],
+      "precautions": [
+        "카페인 함유 (녹차) — 불면, 불안 가능성",
+        "석류 성분 — 알레르기 반응 가능",
+        "에스트로겐 민감자 주의",
+        "과다 섭취 시 소화 장애 또는 구토",
+        "임산부, 수유부, 어린이 섭취 불가"
+      ],
+      "user_reviews": {
+        "typical_feedback": "3일 만에 3kg 감량 사례 (식이 조절 병행)",
+        "note": "개인차 있음, 식이 및 운동 병행 시 효과적"
+      },
+      "certifications": "건강기능식품"
+    },
+    {
+      "id": "fd_005",
+      "name": "버닝올로지 올인원 (Burning Ology All-in-One)",
+      "nickname": "올인원 혈압혈행혈당 다이어트",
+      "format": "멀티 성분 패킷 (3파트 구성)",
+      "serving_info": "1포/일 (점심 후), 1박스 = 10일분",
+      "target": "성인 (남녀 공용), 혈압·혈행·혈당 관리 + 다이어트 동시 목적",
+      "manufacturer": "코스맥스바이오 주식회사, 충북 제천",
+      "pricing": {
+        "single_krw": 35800,
+        "original_krw": 57000,
+        "1plus1_krw": 66400,
+        "2plus2_krw": 122400,
+        "4plus2_krw": 179400
+      },
+      "dosage": "1일 1포 (점심 식사 후)",
+      "health_function_claims": [
+        "혈압 관리",
+        "혈행 개선",
+        "혈당 관리",
+        "체지방 감소 (다이어트)"
+      ],
+      "key_ingredients": [
+        {
+          "component": "성분1 - 시서스 추출물 정제 (600mg)",
+          "ingredients": ["시서스 추출물 (Cissus quadrangularis)", "셀룰로스", "HPMC", "CMC칼슘", "이산화규소", "스테아린산마그네슘"]
+        },
+        {
+          "component": "성분2 - 바나바잎 추출물 정제 (400mg)",
+          "ingredients": ["바나바잎 추출물 (Lagerstroemia speciosa)", "셀룰로스", "프락토올리고당", "HPMC", "이산화규소"]
+        },
+        {
+          "component": "성분3 - 낫토균 배양물 & 비오틴 캡슐 (450mg)",
+          "ingredients": ["낫토균 배양물 분말", "비오틴 복합물", "셀룰로스", "레드비트주스분말", "이산화규소"],
+          "allergens": "우유, 토마토 함유"
+        }
+      ],
+      "precautions": [
+        "대두 함유",
+        "계란, 우유, 밀, 갑각류 등 동일 시설에서 제조",
+        "어린이, 임산부, 수유부 섭취 불가"
+      ],
+      "certifications": "건강기능식품 (광고사전심의: 241110949)",
+      "shelf_life": "제조일로부터 2년"
+    },
+    {
+      "id": "fd_006",
+      "name": "버닝올로지 티 (Burning Ology Tea)",
+      "nickname": "주황물 다이어트",
+      "format": "분말 파우치 (물에 타 먹는 형태)",
+      "target": "성인 (장 건강 + 다이어트 동시 목적)",
+      "health_function_claims": [
+        "체지방 감소",
+        "유산균 증식 (장 건강)",
+        "배변활동 개선",
+        "장내 마이크로바이옴 개선"
+      ],
+      "key_ingredients": [
+        {"name": "와일드망고종자 추출물 (엘라그산)", "function": "식욕 억제, 포만감"},
+        {"name": "신바이오틱스 (유산균 + 프리바이오틱스) — 1포당 10억 CFU", "function": "장 건강", "source": "DuPont Danisco"},
+        {"name": "20종 채소 추출물", "function": "미량영양소"},
+        {"name": "L-아르기닌", "function": "혈행 지원"},
+        {"name": "L-카르니틴", "function": "지방 대사"},
+        {"name": "과라나 (카페인)", "function": "에너지"}
+      ],
+      "user_reviews": {
+        "satisfaction": "4.9/5.0"
+      },
+      "vs_colleology_tea": {
+        "주황물(버닝)": "장 특화 — 유산균 고함량",
+        "빨간물(콜레)": "광범위 효과 — 기억력, 혈행"
+      },
+      "certifications": "건강기능식품"
+    },
+    {
+      "id": "fd_007",
+      "name": "콜레올로지 티 PRO 하비탈출 (Colleology Tea PRO)",
+      "nickname": "빨간물 다이어트",
+      "format": "분말 파우치 (물에 타 먹는 형태)",
+      "target": "성인 여성 (하체 비만, 하비 탈출 목적)",
+      "health_function_claims": [
+        "체지방 감소",
+        "기억력 개선",
+        "혈행 개선",
+        "배변활동 원활"
+      ],
+      "key_ingredients": [
+        {"name": "콜레우스포스콜리 추출물 (포스콜린, 500mg)", "function": "체지방 감소"},
+        {"name": "프락토올리고당", "function": "배변 원활, 프리바이오틱"},
+        {"name": "은행잎추출물", "function": "혈행 및 기억력 개선"},
+        {"name": "L-카르니틴", "function": "지방 대사"},
+        {"name": "테아닌", "function": "이완"},
+        {"name": "효소처리스테비아", "function": "천연 감미료"},
+        {"name": "9종 과일채소 추출 성분", "function": "미량영양소"}
+      ],
+      "user_reviews": {
+        "benefits_reported": ["변비 개선 42%", "붓기 개선 42%", "식욕 감소 29%"],
+        "side_effects": ["설사 19%", "속 불편 12%", "가스 참 9%"],
+        "satisfaction": "4.9/5.0"
+      },
+      "variants": ["콜레올로지 티 하비탈출 (오리지널)", "콜레올로지 티 PRO 하비탈출"],
+      "certifications": "건강기능식품"
+    },
+    {
+      "id": "fd_008",
+      "name": "콜레올로지 더블샷 10일 (Colleology Double Shot 10-day)",
+      "format": "집중 케어 제형",
+      "serving_info": "10일분",
+      "target": "단기 집중 체지방 감소 목적",
+      "certifications": "건강기능식품",
+      "note": "상세 성분 정보 미수집"
+    },
+    {
+      "id": "fd_009",
+      "name": "콜레올로지 컷 PRO (Colleology Cut PRO)",
+      "format": "정제",
+      "serving_info": "80정 = 20일분",
+      "note": "콜레올로지 컷 강화 버전, 상세 정보 미수집",
+      "certifications": "건강기능식품"
+    },
+    {
+      "id": "fd_010",
+      "name": "맨올로지 컷 PRO (Man Ology Cut PRO)",
+      "format": "정제",
+      "serving_info": "80정 = 20일분",
+      "target": "성인 남성",
+      "distribution": ["SSF Shop (삼성물산)", "기타"],
+      "note": "맨올로지 컷 강화 버전",
+      "certifications": "건강기능식품"
+    },
+    {
+      "id": "fd_011",
+      "name": "톡스올로지 클렌즈 48시간 비움",
+      "format": "액상",
+      "target": "단기 (48시간) 클렌즈",
+      "note": "톡스올로지 비움의 단기 버전",
+      "certifications": "건강기능식품"
+    },
+    {
+      "id": "fd_012",
+      "name": "지중해 올리브오일 캡슐",
+      "format": "캡슐 (800mg × 2캡슐 × 30포)",
+      "pricing": {
+        "30packs_krw": 32800,
+        "original_krw": 46000,
+        "discount": "28%"
+      },
+      "dosage": "하루 1회 1포 (2캡슐), 아침 물과 함께",
+      "series": "지중해 시리즈",
+      "user_reviews": {
+        "benefits_reported": ["피부결 개선", "구내염 개선", "집중력 개선"],
+        "side_effects": ["가스 참"]
+      }
+    },
+    {
+      "id": "fd_013",
+      "name": "지중해 레몬 녹차",
+      "pricing": {
+        "price_range_krw": "25800-41000"
+      },
+      "series": "지중해 시리즈",
+      "note": "지중해 시리즈 제품, 상세 정보 미수집"
+    },
+    {
+      "id": "fd_014",
+      "name": "앰플 젤리 시리즈",
+      "variants": [
+        "글루타치온C 앰플 젤리",
+        "PDRN 앰플 젤리",
+        "NMN 앰플 젤리",
+        "히알루론산 앰플 젤리"
+      ],
+      "format": "젤리형 (이너뷰티)",
+      "series": "앰플 젤리 시리즈",
+      "note": "이너뷰티 (피부 미용) 라인"
+    }
+  ]
+}

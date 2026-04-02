@@ -1,0 +1,82 @@
+{
+  "crawled_at": "2026-04-01",
+  "description": "건강식품 관련 논문·기관 데이터 크롤링 요약",
+  "sources": [
+    {
+      "id": "src_001",
+      "title": "건강기능식품 개요",
+      "organization": "질병관리청 국가건강정보포털",
+      "url": "https://health.kdca.go.kr/healthinfo/biz/health/gnrlzHealthInfo/gnrlzHealthInfo/gnrlzHealthInfoView.do?cntnts_sn=6548",
+      "file": "crawled_kdca_health_functional_food.json",
+      "topic": "건강기능식품 정의·분류·주의사항",
+      "language": "ko"
+    },
+    {
+      "id": "src_002",
+      "title": "건강기능식품 기능별 분류",
+      "organization": "식품안전나라 (식약처)",
+      "url": "https://www.foodsafetykorea.go.kr/portal/healthyfoodlife/functionality.do",
+      "file": "crawled_kdca_health_functional_food.json",
+      "topic": "9개 신체계통별 기능성 원료 분류",
+      "language": "ko"
+    },
+    {
+      "id": "src_003",
+      "title": "Omega-3 Fatty Acids Fact Sheet",
+      "organization": "NIH Office of Dietary Supplements",
+      "url": "https://ods.od.nih.gov/factsheets/Omega3FattyAcids-HealthProfessional/",
+      "file": "crawled_nih_omega3.json",
+      "topic": "오메가-3 성분·효능·섭취량·부작용·약물상호작용",
+      "language": "en"
+    },
+    {
+      "id": "src_004",
+      "title": "Vitamin D Fact Sheet",
+      "organization": "NIH Office of Dietary Supplements",
+      "url": "https://ods.od.nih.gov/factsheets/VitaminD-HealthProfessional/",
+      "file": "crawled_nih_vitamin_d.json",
+      "topic": "비타민D 유형·결핍증·효능·섭취량·독성",
+      "language": "en"
+    },
+    {
+      "id": "src_005",
+      "title": "Next-Generation Probiotics Review",
+      "organization": "PMC / Frontiers in Nutrition",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10972033/",
+      "file": "crawled_pmc_probiotics_research.json",
+      "topic": "프로바이오틱스 균주·임상근거·작용기전·한계",
+      "language": "en"
+    },
+    {
+      "id": "src_006",
+      "title": "홍삼 연구 동향 (2024-2025)",
+      "organization": "경향신문 / KGC인삼공사 학술발표",
+      "url": "https://www.khan.co.kr/article/202510021340001",
+      "file": "crawled_search_summary.json",
+      "topic": "홍삼 면역·항노화 효능 최신 연구",
+      "language": "ko",
+      "key_findings": [
+        "홍삼 추출물이 수지상세포 염증 유발 사이토카인 분비를 최대 37% 억제",
+        "미토콘드리아 활성 증진 및 T세포 면역노화 완화 (KAIST 송민호 교수)",
+        "천식·호흡기 염증 완화 효과 확인"
+      ]
+    },
+    {
+      "id": "src_007",
+      "title": "Omega-3 Cognitive Function Meta-Analysis 2025",
+      "organization": "Scientific Reports / Nature",
+      "url": "https://www.nature.com/articles/s41598-025-16129-8",
+      "topic": "오메가-3 인지기능 메타분석 (58개 RCT)",
+      "key_finding": "2000mg/day 섭취 시 주의력 및 지각 속도에 유의미한 개선",
+      "language": "en"
+    },
+    {
+      "id": "src_008",
+      "title": "Probiotics Clinical Applications Review 2025",
+      "organization": "Frontiers in Nutrition",
+      "url": "https://www.frontiersin.org/journals/nutrition/articles/10.3389/fnut.2025.1650883/full",
+      "topic": "프로바이오틱스 임상 적용 현황 및 발전 방향",
+      "language": "en"
+    }
+  ]
+}

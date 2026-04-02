@@ -1,0 +1,97 @@
+{
+  "source": {
+    "title": "Vitamin D - Health Professional Fact Sheet",
+    "organization": "NIH Office of Dietary Supplements (ODS)",
+    "url": "https://ods.od.nih.gov/factsheets/VitaminD-HealthProfessional/",
+    "crawled_at": "2026-04-01"
+  },
+  "content": {
+    "types": [
+      {
+        "name": "Vitamin D2 (ergocalciferol)",
+        "source": "Manufactured from yeast using UV irradiation"
+      },
+      {
+        "name": "Vitamin D3 (cholecalciferol)",
+        "source": "Lanolin (animal) or lichen (vegan)",
+        "note": "D3 increases and maintains serum 25(OH)D levels more effectively than D2"
+      }
+    ],
+    "deficiency_effects": {
+      "children": "Rickets: soft bones, skeletal deformities, developmental delays, seizures, cardiac complications",
+      "adults": "Osteomalacia: weak bones, bone pain, deformities, dental abnormalities",
+      "high_risk_groups": [
+        "Breastfed infants (breast milk provides < 0.6-2.0 mcg/L)",
+        "Older adults (declining skin synthesis with age)",
+        "Dark-skinned individuals (melanin reduces UV synthesis)",
+        "People with fat malabsorption disorders",
+        "Those with limited sun exposure"
+      ]
+    },
+    "recommended_daily_intake": [
+      {"group": "0-12 months", "mcg": 10, "IU": 400},
+      {"group": "1-70 years", "mcg": 15, "IU": 600},
+      {"group": ">70 years", "mcg": 20, "IU": 800},
+      {"group": "Pregnancy & lactation", "mcg": 15, "IU": 600}
+    ],
+    "upper_limits": [
+      {"group": "Infants 0-6 months", "mcg": 25, "IU": 1000},
+      {"group": "Children 1-13 years", "mcg": "63-100", "IU": "2500-4000"},
+      {"group": "Adults 19+", "mcg": 100, "IU": 4000}
+    ],
+    "serum_status": {
+      "sufficient": ">= 50 nmol/L (>= 20 ng/mL)",
+      "inadequate": "30-50 nmol/L (12-20 ng/mL)",
+      "deficient": "< 30 nmol/L (< 12 ng/mL)",
+      "potentially_adverse": "> 125 nmol/L (> 50 ng/mL)"
+    },
+    "health_research": {
+      "bone_health": {
+        "finding": "Small increases in bone mineral density with vitamin D + calcium supplementation in postmenopausal women and older men",
+        "VITAL_2022": "50 mcg (2,000 IU) daily vitamin D3 did not reduce fracture risk in generally healthy older adults (n=25,871)"
+      },
+      "cancer": {
+        "finding": "Does not affect cancer incidence but reduces total cancer mortality by 12-13% (meta-analysis of clinical trials)",
+        "VITAL_trial": "No significant differences in breast, prostate, or colorectal cancer rates"
+      },
+      "cardiovascular": {
+        "finding": "Clinical trials provide little support for cardiovascular protective effects",
+        "trials": "VITAL trial and New Zealand trial found no protective effects on heart attacks, strokes, or cardiovascular mortality"
+      },
+      "depression": {
+        "finding": "Meta-analysis of 9 trials: no significant symptom reduction with supplementation",
+        "note": "Vitamin D receptors exist in brain areas linked to depression"
+      },
+      "type2_diabetes": {
+        "finding": "Clinical trials provide little support",
+        "trial": "Major trial (n=2,423 prediabetic): vitamin D did not prevent diabetes progression in those with adequate baseline levels"
+      },
+      "multiple_sclerosis": {
+        "observational": "Adequate vitamin D might reduce risk and slow progression",
+        "cochrane_review": "12 clinical trials: supplementation had no effect on relevant clinical outcomes including relapse"
+      },
+      "immune_function": "Modulates inflammatory pathways; specific clinical benefits remain under investigation"
+    },
+    "food_sources": [
+      {"food": "Cod liver oil (1 Tbsp)", "mcg": 34.0, "IU": 1360},
+      {"food": "Rainbow trout, cooked (3 oz)", "mcg": 16.2, "IU": 645},
+      {"food": "Sockeye salmon, cooked (3 oz)", "mcg": 14.2, "IU": 570},
+      {"food": "UV-exposed mushrooms (0.5 cup)", "mcg": 9.2, "IU": 366},
+      {"food": "Fortified 2% milk (1 cup)", "mcg": 2.9, "IU": 120},
+      {"food": "Eggs (1 large)", "mcg": 1.1, "IU": 44},
+      {"food": "Beef liver, braised (3 oz)", "mcg": 1.0, "IU": 42}
+    ],
+    "drug_interactions": [
+      {"drug": "Orlistat", "effect": "Reduces vitamin D absorption"},
+      {"drug": "Statins", "effect": "May reduce endogenous synthesis; vitamin D may reduce statin efficacy"},
+      {"drug": "Corticosteroids", "effect": "Impair vitamin D metabolism; deficiency rates doubled in users"},
+      {"drug": "Thiazide diuretics", "effect": "Combined use increases hypercalcemia risk"}
+    ],
+    "toxicity": {
+      "threshold": "> 375 nmol/L (150 ng/mL) serum level",
+      "symptoms": "Hypercalcemia, hypercalciuria",
+      "severe_cases": "Renal failure, soft tissue calcification, cardiac arrhythmias, death",
+      "note": "Toxicity stems almost exclusively from supplementation, never from sun exposure"
+    }
+  }
+}

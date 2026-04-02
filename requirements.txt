@@ -1,0 +1,7 @@
+pdfplumber>=0.11.4
+supabase>=2.9.0
+python-dotenv>=1.0.1
+tiktoken>=0.8.0
+tqdm>=4.67.0
+sentence-transformers>=3.0.0
+requests>=2.31.0
