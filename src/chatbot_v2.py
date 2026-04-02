@@ -101,11 +101,8 @@ def detect_query_category(query: str) -> str | None:
     return None
 
 
-def hybrid_search(query: str) -> list[dict]:
-    """벡터 + 키워드 하이브리드 검색 (Parent-Child)"""
-    query_embedding = get_query_embedding(query)
-    category_filter = detect_query_category(query)
-
+def _run_hybrid_search(query_embedding: list[float], query: str, category_filter: str | None) -> list[dict]:
+    """실제 Supabase 검색 실행 (카테고리 필터 선택 적용)"""
     try:
         result = supabase.rpc("hybrid_search", {
             "query_embedding": query_embedding,
@@ -134,6 +131,22 @@ def hybrid_search(query: str) -> list[dict]:
                 "match_count": TOP_K,
             }).execute()
             return result.data or []
+
+
+def hybrid_search(query: str) -> list[dict]:
+    """벡터 + 키워드 하이브리드 검색 (Parent-Child)
+    카테고리 필터 적용 후 결과 없으면 전체 검색으로 폴백
+    """
+    query_embedding = get_query_embedding(query)
+    category_filter = detect_query_category(query)
+
+    results = _run_hybrid_search(query_embedding, query, category_filter)
+
+    # 카테고리 필터 적용했는데 결과 없으면 전체 검색으로 폴백
+    if not results and category_filter:
+        results = _run_hybrid_search(query_embedding, query, None)
+
+    return results
 
 
 def multi_query_search(queries: list[str]) -> list[dict]:
