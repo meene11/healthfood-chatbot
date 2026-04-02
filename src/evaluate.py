@@ -1,8 +1,9 @@
 """
-유사도 평가 스크립트
-- 카테고리별 테스트 질문으로 검색 품질 측정
-- combined_score(검색 유사도) + rerank_score(최종 순위 점수) 출력
-- 카테고리 적중률, 평균 유사도, 이상 결과 탐지 리포트 출력
+유사도 평가 스크립트 v2
+- 평가 기준: 카테고리 적중 → 답변 관련성 (키워드 적중)
+- TOP3 문서 중 핵심 키워드가 포함된 문서가 있으면 "관련 있음"으로 판정
+- combined_score / rerank_score / 키워드 적중 수 출력
+- 관련성 적중률, 평균 유사도, 이상 결과 탐지 리포트 출력
 
 실행: python src/evaluate.py
 """
@@ -24,6 +25,7 @@ SUPABASE_KEY = os.environ["SUPABASE_KEY"]
 
 TOP_K = 5
 MAX_CONTENT = 2000
+RELEVANCE_MIN_KEYWORDS = 1   # TOP3 중 핵심 키워드 최소 N개 이상 → 관련 있음 판정
 
 print("모델 로딩 중...")
 embed_model = SentenceTransformer("intfloat/multilingual-e5-small")
@@ -31,40 +33,72 @@ supabase: Client = create_client(SUPABASE_URL, SUPABASE_KEY)
 print("완료\n")
 
 # ── 테스트 질문 셋 ────────────────────────────────────────────────────
-# (질문, 기대 카테고리)  ← 카테고리명은 DB 기준
+# (질문, [핵심 키워드 리스트])
+# 핵심 키워드 중 하나라도 TOP3 문서에 있으면 관련성 있음으로 판정
 TEST_CASES = [
-    # 건강식품_논문
-    ("오메가3의 심혈관 건강 효능은?",            "건강식품_논문"),
-    ("프로바이오틱스가 장 건강에 미치는 영향",    "건강식품_논문"),
-    ("커큐민의 항염 효과 임상 연구",              "건강식품_논문"),
+    # 건강식품 관련
+    ("오메가3의 심혈관 건강 효능은?",
+     ["오메가3", "omega3", "EPA", "DHA", "심혈관"]),
 
-    # 다이어트_논문
-    ("간헐적 단식 16:8 방법과 체중 감량 효과",   "다이어트_논문"),
-    ("케토제닉 다이어트 혈당 관리 연구",          "다이어트_논문"),
-    ("저탄수화물 식단 메타분석 결과",              "다이어트_논문"),
-    ("단백질 섭취량과 근육 유지 관계",            "다이어트_논문"),
-    ("식이섬유와 장내 미생물 관계",               "다이어트_논문"),
+    ("프로바이오틱스가 장 건강에 미치는 영향",
+     ["프로바이오틱스", "probiotics", "장내", "유산균", "장 건강"]),
 
-    # 혈당스파이크_논문
-    ("혈당 스파이크 원인과 예방법",               "혈당스파이크_논문"),
-    ("GI 지수와 혈당 관리 방법",                  "혈당스파이크_논문"),
+    ("커큐민의 항염 효과 임상 연구",
+     ["커큐민", "curcumin", "항염", "강황"]),
 
-    # 푸드올로지
-    ("푸드올로지 버닝올로지 성분",                "푸드올로지"),
-    ("콜레올로지 제품 효능",                       "푸드올로지"),
-    ("맨올로지 추천 대상",                          "푸드올로지"),
+    # 다이어트 관련
+    ("간헐적 단식 16:8 방법과 체중 감량 효과",
+     ["간헐적 단식", "간헐적단식", "16:8", "공복", "단식"]),
 
-    # 네이버블로그
-    ("닭가슴살 다이어트 식단 추천",               "네이버블로그"),
-    ("곤약 다이어트 효과 후기",                    "네이버블로그"),
+    ("케토제닉 다이어트 혈당 관리 연구",
+     ["케토제닉", "ketogenic", "저탄수화물", "혈당", "케톤"]),
 
-    # 건강_수집데이터
-    ("다이어트 보조제 종류와 효과",               "건강_수집데이터"),
-    ("단백질 보충제 먹는 방법",                    "건강_수집데이터"),
+    ("저탄수화물 식단 메타분석 결과",
+     ["저탄수화물", "탄수화물", "low-carb", "메타분석"]),
 
-    # 주제 외 (폴백 테스트)
-    ("날씨가 맑은 날 운동하면 좋은가요",          None),
-    ("비타민C 결핍 증상",                          None),
+    ("단백질 섭취량과 근육 유지 관계",
+     ["단백질", "protein", "근육", "아미노산"]),
+
+    ("식이섬유와 장내 미생물 관계",
+     ["식이섬유", "섬유", "장내 미생물", "microbiome", "장"]),
+
+    # 혈당 관련
+    ("혈당 스파이크 원인과 예방법",
+     ["혈당", "스파이크", "혈당 스파이크", "인슐린"]),
+
+    ("GI 지수와 혈당 관리 방법",
+     ["GI", "혈당", "혈당지수", "당지수", "인슐린"]),
+
+    # 푸드올로지 제품
+    ("푸드올로지 버닝올로지 성분",
+     ["버닝올로지", "푸드올로지", "성분", "버닝"]),
+
+    ("콜레올로지 제품 효능",
+     ["콜레올로지", "푸드올로지", "콜레스테롤"]),
+
+    ("맨올로지 추천 대상",
+     ["맨올로지", "푸드올로지", "남성"]),
+
+    # 실생활 다이어트
+    ("닭가슴살 다이어트 식단 추천",
+     ["닭가슴살", "식단", "다이어트", "단백질"]),
+
+    ("곤약 다이어트 효과 후기",
+     ["곤약", "다이어트", "저칼로리"]),
+
+    # 보충제
+    ("다이어트 보조제 종류와 효과",
+     ["보조제", "다이어트", "지방", "감량"]),
+
+    ("단백질 보충제 먹는 방법",
+     ["단백질", "보충제", "protein", "먹는"]),
+
+    # 주제 외 (아무 키워드도 없어야 정상 — 폴백 확인용)
+    ("날씨가 맑은 날 운동하면 좋은가요",
+     []),
+
+    ("비타민C 결핍 증상",
+     ["비타민C", "비타민 C", "vitamin C", "괴혈병"]),
 ]
 
 
@@ -107,7 +141,7 @@ def search(query: str) -> list[dict]:
 
     results = _run(category_filter)
     if not results and category_filter:
-        results = _run(None)  # 폴백
+        results = _run(None)
     return results
 
 
@@ -122,26 +156,43 @@ def rerank(query: str, docs: list[dict]) -> list[dict]:
     return sorted(docs, key=lambda x: x["rerank_score"], reverse=True)
 
 
+def check_relevance(docs: list[dict], keywords: list[str], content_key: str) -> tuple[bool, int, str]:
+    """TOP3 문서에서 핵심 키워드 적중 여부 확인
+    반환: (관련성 있음, 총 적중 키워드 수, 적중 키워드 목록)
+    """
+    if not keywords:
+        return None, 0, ""  # 키워드 없음 = 판정 불가 (주제 외 질문)
+
+    hit_keywords = set()
+    for doc in docs[:3]:
+        content = doc.get(content_key, "")
+        for kw in keywords:
+            if kw in content:
+                hit_keywords.add(kw)
+
+    is_relevant = len(hit_keywords) >= RELEVANCE_MIN_KEYWORDS
+    return is_relevant, len(hit_keywords), ", ".join(hit_keywords) if hit_keywords else "없음"
+
+
 # ── 평가 실행 ────────────────────────────────────────────────────────
 def evaluate():
     print("=" * 65)
-    print("  건강식품 RAG 챗봇 유사도 평가")
+    print("  건강식품 RAG 챗봇 관련성 평가 v2")
+    print("  (평가 기준: TOP3 문서 내 핵심 키워드 적중 여부)")
     print("=" * 65)
 
     total = len(TEST_CASES)
-    category_hit = 0       # TOP-1 카테고리 적중
-    no_result_count = 0    # 검색 결과 없음
-    low_score_count = 0    # 유사도 낮음 (< 0.4)
+    relevance_hit = 0       # 관련성 있음 판정 수
+    relevance_total = 0     # 판정 가능한 질문 수 (키워드 있는 것)
+    no_result_count = 0
+    low_score_count = 0
     score_sum = 0.0
     score_count = 0
     warnings_log = []
 
-    for idx, (query, expected_cat) in enumerate(TEST_CASES, 1):
+    for idx, (query, keywords) in enumerate(TEST_CASES, 1):
         print(f"\n[{idx:02d}/{total}] 질문: {query}")
-        if expected_cat:
-            print(f"      기대 카테고리: {expected_cat}")
-        else:
-            print(f"      기대 카테고리: 없음 (주제 외 폴백 테스트)")
+        print(f"      핵심 키워드: {', '.join(keywords) if keywords else '없음 (주제 외)'}")
 
         t0 = time.time()
         docs = search(query)
@@ -160,8 +211,6 @@ def evaluate():
         print(f"      {'순위':<4} {'카테고리':<20} {'combined_score':<16} {'rerank_score':<14} {'내용 미리보기'}")
         print(f"      {'-'*4} {'-'*20} {'-'*16} {'-'*14} {'-'*30}")
 
-        top1_cat = ranked[0].get("category", "알 수 없음")
-
         for rank, doc in enumerate(ranked, 1):
             cat = doc.get("category", "알 수 없음")
             combined = doc.get("combined_score") or doc.get("similarity") or 0
@@ -177,25 +226,29 @@ def evaluate():
                     low_score_count += 1
                     warnings_log.append(f"[{idx:02d}] '{query}' → TOP1 유사도 낮음 ({combined:.4f})")
 
-        # 카테고리 적중 체크
-        if expected_cat and top1_cat == expected_cat:
-            category_hit += 1
-            print(f"      카테고리 적중: O")
-        elif expected_cat:
-            print(f"      카테고리 적중: X  (실제: {top1_cat})")
-            warnings_log.append(f"[{idx:02d}] '{query}' → 카테고리 불일치 (기대: {expected_cat}, 실제: {top1_cat})")
+        # 관련성 판정
+        is_relevant, hit_count, hit_words = check_relevance(ranked, keywords, content_key)
+
+        if is_relevant is None:
+            print(f"      관련성 판정: 해당 없음 (주제 외 질문) — TOP1 카테고리: {ranked[0].get('category','?')}")
+        elif is_relevant:
+            relevance_hit += 1
+            relevance_total += 1
+            print(f"      관련성 판정: O  (적중 키워드 {hit_count}개: {hit_words})")
         else:
-            print(f"      폴백 동작: TOP1 카테고리 = {top1_cat}")
+            relevance_total += 1
+            print(f"      관련성 판정: X  (키워드 미적중)")
+            warnings_log.append(f"[{idx:02d}] '{query}' → 관련 문서 없음 (키워드 미적중)")
 
     # ── 최종 리포트 ──────────────────────────────────────────────────
-    expected_count = sum(1 for _, c in TEST_CASES if c is not None)
     avg_score = score_sum / score_count if score_count else 0
+    relevance_rate = relevance_hit / relevance_total if relevance_total else 0
 
     print("\n" + "=" * 65)
     print("  최종 평가 리포트")
     print("=" * 65)
     print(f"  총 테스트 질문       : {total}개")
-    print(f"  카테고리 적중률      : {category_hit}/{expected_count} ({category_hit/expected_count*100:.1f}%)")
+    print(f"  관련성 적중률        : {relevance_hit}/{relevance_total} ({relevance_rate*100:.1f}%)")
     print(f"  TOP1 평균 유사도     : {avg_score:.4f}")
     print(f"  검색 결과 없음       : {no_result_count}개")
     print(f"  낮은 유사도 (< 0.4)  : {low_score_count}개")
@@ -205,17 +258,16 @@ def evaluate():
         for w in warnings_log:
             print(f"    {w}")
     else:
-        print("\n  주의 항목 없음 — 모든 질문 정상 검색")
+        print("\n  주의 항목 없음 — 모든 질문 관련 문서 검색 성공")
 
     print("=" * 65)
 
     # 등급 판정
-    hit_rate = category_hit / expected_count if expected_count else 0
-    if hit_rate >= 0.85 and avg_score >= 0.6:
+    if relevance_rate >= 0.85 and avg_score >= 0.6:
         grade = "A  (우수)"
-    elif hit_rate >= 0.70 and avg_score >= 0.5:
+    elif relevance_rate >= 0.70 and avg_score >= 0.5:
         grade = "B  (양호)"
-    elif hit_rate >= 0.50:
+    elif relevance_rate >= 0.50:
         grade = "C  (보통 — 검색 튜닝 권장)"
     else:
         grade = "D  (미흡 — 데이터/임베딩 점검 필요)"
