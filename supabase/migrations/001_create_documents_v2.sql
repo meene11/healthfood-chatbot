@@ -114,7 +114,7 @@ BEGIN
             d.content,
             d.token_count,
             d.metadata,
-            1 - (d.embedding <=> query_embedding) AS vscore
+            (1 - (d.embedding <=> query_embedding))::double precision AS vscore
         FROM documents_v2 d
         WHERE filter_category IS NULL OR d.category = filter_category
         ORDER BY d.embedding <=> query_embedding
@@ -127,7 +127,7 @@ BEGIN
             ts_rank(
                 to_tsvector('simple', d.content),
                 plainto_tsquery('simple', query_text)
-            ) AS tscore
+            )::double precision AS tscore
         FROM documents_v2 d
         WHERE
             (filter_category IS NULL OR d.category = filter_category)
@@ -141,10 +141,10 @@ BEGIN
         vr.content,
         vr.token_count,
         vr.metadata,
-        vr.vscore                                           AS vector_score,
-        COALESCE(tr.tscore, 0)                             AS text_score,
+        vr.vscore                                                AS vector_score,
+        COALESCE(tr.tscore, 0::double precision)                 AS text_score,
         (vector_weight * vr.vscore
-         + text_weight * COALESCE(tr.tscore, 0))           AS combined_score
+         + text_weight * COALESCE(tr.tscore, 0::double precision)) AS combined_score
     FROM vector_results vr
     LEFT JOIN text_results tr ON vr.id = tr.id
     ORDER BY combined_score DESC
