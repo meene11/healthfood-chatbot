@@ -1,0 +1,338 @@
+[
+  {
+    "id": 1,
+    "question": "포함된 연구의 전반적인 편향 위험(RoB)은 어떻게 평가되었나요?",
+    "answer_chunk_id": 263,
+    "answer_chunk_content": "literature are shown in\nassessed through the global chi-squared test. The mean difference (MD) Table 2.\nwas used as an effect index for continuous variables. A league table was\nconstructed using the random effects model. The MD values and their\nBias risk in the included studies\n95% confidence intervals (CIs) for all pairwise comparisons were\npresented in matrix format. A p-value of less than 0.05 indicated that the\ndifference was statistically significant. When a study had two dietary All of the",
+    "category": "다이어트_논문",
+    "source_file": "data/raw/diet2/dietary_patterns_metabolic_syndrome_network_meta_2025.pdf"
+  },
+  {
+    "id": 2,
+    "question": "이 연구에서 무작위 배정을 수행한 연구자는 누구인가?",
+    "answer_chunk_id": 15,
+    "answer_chunk_content": "2024, and participants\nRandomization and blinding\nAbbreviations: ALT, alanine transaminase; AST, aspartate transaminase; BIA, An independent researcher conducted the randomization\nbioelectrical impedance analysis; BMI, body mass index; CAP, controlled attenuation process utilizing computer-generated random-number software\nparameter; FBS, fasting blood sugar; hs-CRP, high-sensitivity C-reactive protein; (Microsoft Excel, Redmond, WA, USA). Once the randomization\nHbA1c, glycated hemoglobin; HC, hi",
+    "category": "다이어트_논문",
+    "source_file": "data/raw/diet2/5_2_fasting_vs_calorie_restriction_fatty_liver_2024.pdf"
+  },
+  {
+    "id": 3,
+    "question": "두 그룹 간의 체중, BMI, WC, HC, WHR에 대한 통계적으로 유의미한 차이는 있었나요?",
+    "answer_chunk_id": 29,
+    "answer_chunk_content": "Institute for\nEffect on body weight, anthropometric\nExperimental Psychology in Dusseldorf, Germany) to calculate the\nindices and body composition\nsample size.\nNo statistically significant differences were observed between the\nStatistical analysis\ntwo groups in terms of weight, BMI, WC, HC, and WHR. Similarly,\nthere were no significant differences in anthropometric indices or\nThe data were analyzed using SPSS 20.0 (SPSS, Chicago, IL, USA) body composition (p > 0.05) (Table 2).\nand measured as mea",
+    "category": "다이어트_논문",
+    "source_file": "data/raw/diet2/5_2_fasting_vs_calorie_restriction_fatty_liver_2024.pdf"
+  },
+  {
+    "id": 4,
+    "question": "지중해 식단과 구조화된 운동의 조합이 어떤 효과를 가지고 있나요?",
+    "answer_chunk_id": 192,
+    "answer_chunk_content": "differenceswerestatisticallysignificant,they\nThe observed changes appear to derive from the synergistic do not compromise the validity of the intervention’s effects and\nvasoprotective, antioxidant, and anti-inflammatory effects of likelyreflectphysiologicaldisparitiesininsulinsensitivityandfat\nthe Mediterranean diet combined with the cardiorregulatory distributionbetweensexes,withmenbeingmorepronetovisceral\nadaptationsfromstructuredexercise.AsnotedbyTuttolomondo fat accumulation, potentially exp",
+    "category": "다이어트_논문",
+    "source_file": "data/raw/diet2/diet_obesity_nutrition_intervention_2025.pdf"
+  },
+  {
+    "id": 5,
+    "question": "간의 지방증의 심각도는 어떤 기준으로 구분되나요?",
+    "answer_chunk_id": 17,
+    "answer_chunk_content": "Wang et al. 10.3389/fnut.2024.1439473\n(Group calorie restriction) prior to the commencement of (CAP value) and liver elasticity (LSM value) were recorded (13).\nthe procedure. Evaluation of hepatic steatosis severity was delineated as follows:\nPersonnel involved in random allocation, diagnosis, and patient Normal: CAP value <240 dB/m; Mild: 240 dB/m ≤ CAP value\ntreatment were not engaged in data collection or follow-up procedures. <265 dB/m; Moderate: 265 dB/m ≤ CAP value <295 dB/m; Severe:\nThe d",
+    "category": "다이어트_논문",
+    "source_file": "data/raw/diet2/5_2_fasting_vs_calorie_restriction_fatty_liver_2024.pdf"
+  },
+  {
+    "id": 6,
+    "question": "5:2 IF 다이어트 그룹의 HDL-C 수준은 어떻게 되었나요?",
+    "answer_chunk_id": 30,
+    "answer_chunk_content": ", and the count data were compared by the X2 HDL-C levels was significantly higher and LDL-C significantly\ntest or the Fisher exact probability method. Continuous variables with was lower in the 5:2 IF diet group compared to the daily calorie\na nonnormal distribution were analyzed using a nonparametric test restriction eating group (p < 0.05). However, no significant differences\n(Mann–Whitney U test). Paired t-tests were used for comparison were observed in ALT, AST, TC, TG, hs-CRP and glycemic ",
+    "category": "다이어트_논문",
+    "source_file": "data/raw/diet2/5_2_fasting_vs_calorie_restriction_fatty_liver_2024.pdf"
+  },
+  {
+    "id": 7,
+    "question": "S61은 무엇과 관련이 있나요?",
+    "answer_chunk_id": 1231,
+    "answer_chunk_content": "r\nS61\n,)nadamaR 8102\neht\nfo trats\nynapmoC\neneGovoN\neht yb\neht fo dne ;03\nyad(\n2T\nta\n3T ta dna )nadamaR\n8102\neht refta htnom\n1\n;06 yad(\n.)gnitsaf nadamaR\nfo dne\n.cirtem\nnoitcarf\neuqinu\n=\ncarFinU\n,ANR\nlamosobir\n= ANRr\n,sisylana\netanidrooc\nlapicnirp\n= AoCP\n,sisylana\ntnenopmoc\nlapicnirp\n=\nACP\n,tinu\ncimonoxat\nlanoitarepo\n=\nUTO\n,tnacfiingis\nyllacitsitats\nton = SN ,",
+    "category": "다이어트_논문",
+    "source_file": "data/raw/diet2/intermittent_fasting_gut_microbiota_2024.pdf"
+  },
+  {
+    "id": 8,
+    "question": "측정은 어느 쪽 신체에서 항상 이루어졌나요?",
+    "answer_chunk_id": 132,
+    "answer_chunk_content": "-controlled room (20–24 ◦C).\nunder fasting conditions and processed in a certified clinical\nAnthropometric evaluations were performed with participants\nlaboratoryusingstandardizedbiochemicalassays.\nbarefoot, wearing light clothing, and measurements were\ntaken always on the right side of the body, in accordance with\nISAK guidelines (65). Each anthropometric and cardiovascular 2.6 Sample size calculation\nparameter was measured three times, and the median value\nwas recorded for each measurement. Al",
+    "category": "다이어트_논문",
+    "source_file": "data/raw/diet2/diet_obesity_nutrition_intervention_2025.pdf"
+  },
+  {
+    "id": 9,
+    "question": "문헌에서 FibroTouch와 Fibroscan을 사용한 간 경직도 측정의 효과에 대한 연구는 어떤 질병을 가진 환자를 대상으로 했나요?",
+    "answer_chunk_id": 92,
+    "answer_chunk_content": "Mohamad SY, Chuah KH, Chan WK. Attenuation parameter\n34. Cho Y, Hong N, Kim KW, Cho S, Lee M, Lee YH, et al. The effectiveness of and liver stiffness measurement using FibroTouch vs Fibroscan in patients with chronic liver\nintermittent fasting to reduce body mass index and glucose metabolism: a systematic disease. PLoS One. (2021) 16:e0250300. doi: 10.1371/journal.pone.0250300\nreview and Meta-analysis. J Clin Med. (2019) 8:1645. doi: 10.3390/jcm8101645\n40. Ghany MG, Morgan TRAASLD-IDSA Hepatitis",
+    "category": "다이어트_논문",
+    "source_file": "data/raw/diet2/5_2_fasting_vs_calorie_restriction_fatty_liver_2024.pdf"
+  },
+  {
+    "id": 10,
+    "question": "이 텍스트에서 다루고 있는 주제는 무엇인가요?",
+    "answer_chunk_id": 933,
+    "answer_chunk_content": ", B., Jarry, A. C., Martin, R., et al. (2018).\nLuo, P., Lednovich, K., Xu, K., Nnyamah, C., Layden, B. T., and Xu, P. (2022). Central Impaired aryl hydrocarbon receptor ligand production by the gut microbiota is a key\nand peripheral regulations mediated by short-chain fatty acids on energy homeostasis. factor in metabolic syndrome. Cell Metab. 28, 737–749.e734. doi: 10.1016/j.\nTransl. Res. 248, 128–150. doi: 10.1016/j.trsl.2022.06.003 cmet.2018.07.001\nLuu, M., Pautz, S., Kohl, V., Singh, R., Rom",
+    "category": "다이어트_논문",
+    "source_file": "data/raw/diet2/gut_microbiota_fat_deposition_mechanisms_2025.pdf"
+  },
+  {
+    "id": 11,
+    "question": "이 연구는 어떤 종류의 식품 소비가 심혈관 대사 결과에 미치는 영향을 평가하고 있습니까?",
+    "answer_chunk_id": 614,
+    "answer_chunk_content": "Meiners et al. 10.3389/fnut.2025.1647740\nmicrobiome: a randomized controlled trial. Nat Commun. (2025) 16:942. doi: women at cardiometabolic risk: a randomized controlled trial (Brazilian nuts study).\n10.1038/s41467-025-56084-6 Nutr Res. (2023) 109:35–46. doi: 10.1016/j.nutres.2022.11.003\n136. Liedike B, Khatib M, Tabarsi B, Harris M, Wilson SL, Ortega-Santos CP, et al. 145. Kelly Souza Silveira B, Mayumi Usuda Prado Rocha D, Stampini Duarte Martino\nEvaluating the effects of corn flour product c",
+    "category": "다이어트_논문",
+    "source_file": "data/raw/diet2/fiber_polyphenol_diet_gut_microbiome_2025.pdf"
+  },
+  {
+    "id": 12,
+    "question": "프로바이오틱 개입이 어떤 경로에 대한 치료적 잠재력을 가지고 있나요?",
+    "answer_chunk_id": 805,
+    "answer_chunk_content": ". Thus, probiotic interventions or microbial metabolites\naccompanied by increased phosphatase and tensin homolog (PTEN) hold therapeutic potential by simultaneously curbing NF-κB-driven\nand glycogen synthase kinase 3 (GSK3) expression, and decreased inflammation and fine-tuning the TGF-β/SMAD3 pathway, thereby\np-Akt and β-catenin levels. Critically, antagonizing miR-22 completely ameliorating metabolic and inflammatory dysregulation (Luo et\nreverses these effects (Kumar et al., 2024). These stud",
+    "category": "다이어트_논문",
+    "source_file": "data/raw/diet2/gut_microbiota_fat_deposition_mechanisms_2025.pdf"
+  },
+  {
+    "id": 13,
+    "question": "이 텍스트에서 언급된 저자는 누구인가요?",
+    "answer_chunk_id": 3130,
+    "answer_chunk_content": "levelsofatheroscleroticAT-LDL TNF-α,COX-2,STAT,cyclinD1,and Funamotoetal.\npulmonarydisease NF-κB↓ (2016)\nFrontiersinPharmacology 17 frontiersin.org",
+    "category": "건강식품_논문",
+    "source_file": "data/raw/health_food2/health_food2/curcumin_pharmacological_effects_clinical_2025.pdf"
+  },
+  {
+    "id": 14,
+    "question": "커큐민은 어떤 방식으로 혈당 조절에 도움을 줄 수 있나요?",
+    "answer_chunk_id": 2517,
+    "answer_chunk_content": "of curcumin are shown mechanisms: (1) improved glucose homeostasis: curcumin may\ninTable6. increase hepatic glucokinase activity, facilitating better glucose\nregulation; (2) reduced hypertriglyceridemia: by boosting\nlipoprotein lipase activity, curcumin can lower very-low-density\n13.9 Anti-diabetic activity of curcumin lipoproteins(VLDL)andtriglycerides,addressinglipidimbalances\n(481);and(3)enhancedglucoseuptake:itpromotestheexpression\nCurcumin, known for its inflammatory and blood sugar- of glu",
+    "category": "건강식품_논문",
+    "source_file": "data/raw/health_food2/health_food2/curcumin_bioavailability_immune_health_2025.pdf"
+  },
+  {
+    "id": 15,
+    "question": "커큐민은 어떤 병원균에 대해 효과를 보인다고 알려져 있나요?",
+    "answer_chunk_id": 3042,
+    "answer_chunk_content": "). Moreover, curcumin has demonstrated\nAdditionally, experiments have shown that curcumin can effectiveness against Staphylococcus aureus, a common pathogen.\nameliorate glucose and lipid metabolism disorders, increase Studies indicate that the formation of its biofilm is significantly\ninsulin sensitivity, and improve insulin resistance in animal influencedbythepolysaccharideintercellularadhesion(PIA),which\nmodels oftype2diabetes mellitus (T2DM) (Suet al.,2017). isregulatedbytheicaADBCoperon(Khal",
+    "category": "건강식품_논문",
+    "source_file": "data/raw/health_food2/health_food2/curcumin_pharmacological_effects_clinical_2025.pdf"
+  },
+  {
+    "id": 16,
+    "question": "커큐민의 항암 특성은 무엇인가요?",
+    "answer_chunk_id": 3012,
+    "answer_chunk_content": "documents. kinases,enzymes,aswellaspro-apoptoticandanti-apoptoticproteins,\ntargeting cancer cell signaling pathways (such as Rb, p23, MAPK,\nPI3K/Akt, JAK/STAT, Shh and NF-κB), thereby promoting cancer\n2 Pharmacological actions and\ncellapoptosistoachieveanti-tumoreffects(Yuetal.,2011;Liangetal.,\nmechanisms of curcumin\n2014;Liangetal.,2015;Wangetal.,2018;Lietal.,2019;Qiangetal.,\n2019;Zhangetal.,2020;Shettyetal.,2021;Hametal.,2022;Jabbari\n2.1 Anti-cancer properties etal.,2022;Mishraetal.,2023).Addi",
+    "category": "건강식품_논문",
+    "source_file": "data/raw/health_food2/health_food2/curcumin_pharmacological_effects_clinical_2025.pdf"
+  },
+  {
+    "id": 17,
+    "question": "텍스트에서 연구한 식물은 무엇인가요?",
+    "answer_chunk_id": 3254,
+    "answer_chunk_content": "am,S.(2023).Isolationandin microemulsiondrugdeliverysystem.Master’sthesis.Shandong:ShandongUniversity.\nsilico study of curcumin from curcuma longa and its anti-diabetic activity. Appl.\nBiochem.Biotechnol.195(2),947–957.doi:10.1007/s12010-022-04173-3 Zhang,L.,Cao,F.,Ding,B.,Li,Q.,Xi,Y.,andZhai,G.(2011b).Eudragit®S100coated\ncalciumpectinatemicrospheresofcurcuminforcolontargeting.J.Microencapsul.28\nCu\nW\nrc\na\nu\nn\nm\ng,\nin\nJ.\nin\nY\nh\n.,\nib\nW\nit\na\ns\nn\nth\ng\ne\n,X\ngr\n.,\no\nW\nwt\na",
+    "category": "건강식품_논문",
+    "source_file": "data/raw/health_food2/health_food2/curcumin_pharmacological_effects_clinical_2025.pdf"
+  },
+  {
+    "id": 18,
+    "question": "Withania somnifera 기반 보충제의 평가에 대한 연구는 어떤 저널에 게재되었나요?",
+    "answer_chunk_id": 2713,
+    "answer_chunk_content": "S,SharmaG,NarayananV,etal.\nagent. Nanomed Nanotechnol Biol Med. (2015) 11:195–206. doi: 10.1016/\nEvaluation of Withania somnifera-based supplement for immunomodulatory and\nj.nano.2014.09.004\nantiviralpropertiesagainstviralinfection.JAyurvedaIntegrMed.(2024)15:100955.\n290. LibbyP.Inflammationandcardiovasculardiseasemechanisms.AmJClinNutr. doi:10.1016/j.jaim.2024.100955\n(2006)83:456S–60S.doi:10.1093/ajcn/83.2.456S\n316. WangY,ZengY,YangW,WangX,JiangJ.TargetingCD8+Tcellswith\n291. CoussensLM,WerbZ.In",
+    "category": "건강식품_논문",
+    "source_file": "data/raw/health_food2/health_food2/curcumin_bioavailability_immune_health_2025.pdf"
+  },
+  {
+    "id": 19,
+    "question": "커큐민은 만성 신장 질환 환자에서 위약과 비교했을 때 어떤 효과를 보였나요?",
+    "answer_chunk_id": 2926,
+    "answer_chunk_content": "(MD:0.93;95%CI: Beba et al., 2022). In patients with osteoarthritis, compared with\n1.33,−0.53;I2=89%)ascomparedtothecontrolgroup(Kouetal., placebo,Curcumalongaextractandcurcuminreducedvisualanalog\n2023). In chronic kidney disease receiving hemodialysis, when scale(VAS)(WMD:11.55;95%CI:14.3,−9.06;I2=0%)andWestern\ncompared with placebo, curcumin had a non-significant effect on OntarioandMcMasterUniversitiesOsteoarthritisIndex(WOMAC)\nFrontiersinPharmacology 10 frontiersin.org",
+    "category": "건강식품_논문",
+    "source_file": "data/raw/health_food2/health_food2/curcumin_health_outcomes_umbrella_review_2025.pdf"
+  },
+  {
+    "id": 20,
+    "question": "호손을 디곡신과 함께 투여했을 때 상호작용이 있었나요?",
+    "answer_chunk_id": 3296,
+    "answer_chunk_content": "of time\ncoagulation effect increases, the risk of bleeding increases. Licorice (67). The building pressure of time constraints burns the physician\npotentiates the oral and topical corticosteroids when taken out, affecting the metrics and outcomes (68). The primary target is\nconcurrently (52). This can lead to a health crisis. When a single dose disease management while balancing the assessment of drug–herb\nof hawthorn was administered along with digoxin, there was no interaction, regular monitor",
+    "category": "건강식품_논문",
+    "source_file": "data/raw/health_food2/health_food2/drug_herb_interaction_review_2025.pdf"
+  },
+  {
+    "id": 21,
+    "question": "강황은 어떤 질병 관리에 사용되었나요?",
+    "answer_chunk_id": 2336,
+    "answer_chunk_content": "istic traditions, Siddha,Traditional Chinese Medicine,Unani bioavailability and poor water solubility (20, 21). Its rapid\nMedicine,andAyurveda(4).Thesafetyofturmericisevidencedby metabolism, limited absorption, and swift systemic elimination\nits staple dietary use across various cultures for centuries. further reduce its concentration in blood plasma and tissues,\nFurthermore, it has also been used for managing several restrictingitsclinicaleffectiveness(22).Toaddressthesechallenges,\ndisorders, i",
+    "category": "건강식품_논문",
+    "source_file": "data/raw/health_food2/health_food2/curcumin_bioavailability_immune_health_2025.pdf"
+  },
+  {
+    "id": 22,
+    "question": "커큐민의 항산화 효과에 대한 연구는 어떤 저널에 발표되었나요?",
+    "answer_chunk_id": 2611,
+    "answer_chunk_content": "ini M, Alves TF, et al. Determining the effects of lipophilic drugs on membrane structure by solid-state\nNMRspectroscopy: thecase oftheantioxidant curcumin.JAmChemSoc.(2009)\nProperties,extractionmethods,anddeliverysystemsforcurcuminasanaturalsource 131:4490–8.doi:10.1021/ja809217u\nofbeneficialhealtheffects.Medicina.(2020)56:336.doi:10.3390/medicina56070336\n102. FilippovAV,KotenkovSA,MunavirovB,AntzutkinON.Effectofcurcuminon\n76. Angelini G, Pasc A, Gasbarri C. Curcumin in silver nanoparticles aqu",
+    "category": "건강식품_논문",
+    "source_file": "data/raw/health_food2/health_food2/curcumin_bioavailability_immune_health_2025.pdf"
+  },
+  {
+    "id": 23,
+    "question": "저탄수·고단백 식품의 예시에는 어떤 것들이 있나요?",
+    "answer_chunk_id": 18335,
+    "answer_chunk_content": "이는 데 도움을 준다.\n\n7가지 저탄수·고단백 식품:\n1. 달걀 — 1개당 단백질 약 6g, 탄수화물 1g 미만\n2. 닭 가슴살·돼지 안심 — 110g에 단백질 약 26g\n3. 연어, 참치 등 생선류 — 오메가-3 지방산 + 고단백\n4. 새우, 가리비 등 해산물 — 저지방·고단백\n5. 그릭 요거트·코티지치즈 — 프로바이오틱스 함유\n6. 아",
+    "category": "건강기사",
+    "source_file": "data/raw/blog/health_diet_articles_raw.json"
+  },
+  {
+    "id": 24,
+    "question": "다이어트 건강기능식품의 성분 분석은 어떤 내용이 포함되어 있나요?",
+    "answer_chunk_id": 18346,
+    "answer_chunk_content": "title: 다이어트 건강기능식품 품질 비교 (2025년 한국소비자원)\nsource: 한국소비자원\nauthor: 한국소비자원\ndate: 2025-05-21\ncategory: 소비자 정보 / 건강기능식품 비교\ntopic: 다이어트 건강기능식품 성분 분석 / 안전성 비교\ncontent: 12개 다이어트 건강기능식품 제품(가르시니아캄보지아 추출물 6개, 녹차추출물 6개) 품질 및 안전성 평가:\n\n- 기능성분 함",
+    "category": "건강기사",
+    "source_file": "data/raw/blog/health_diet_articles_raw.json"
+  },
+  {
+    "id": 25,
+    "question": "다이어트에 효과적인 천연식품은 무엇인가요?",
+    "answer_chunk_id": 18316,
+    "answer_chunk_content": "title: 다이어트에 효과적인 천연식품 4가지\nsource: 하이닥 (HiDoc)\nauthor: 최재아 하이닥 인턴기자\ndate: 2024-03-01\ncategory: 뷰티·다이어트\ntopic: 건강식품 효능 / 체지방 감소 천연식품\ncontent: 식약처 인증 체지방 감소 천연식품 4가지:\n1. 모로 블러드 오렌지 — C3G(사이아니딘-3-글루코시드) 항산화 성분으로 지방 분해 촉진. 지방세포 �",
+    "category": "건강기사",
+    "source_file": "data/raw/blog/health_diet_articles_raw.json"
+  },
+  {
+    "id": 26,
+    "question": "고구마와 바나나 중 어떤 것이 엽산 보충 측면에서 우세한가?",
+    "answer_chunk_id": 18333,
+    "answer_chunk_content": "당 관리 측면에서는 고구마가 유리하고, 엽산 보충 측면에서는 바나나가 우세. 오트밀, 요거트, 스무디, 샐러드와 함께 섭취하여 식단 다양성 확보 권장.",
+    "category": "건강기사",
+    "source_file": "data/raw/blog/health_diet_articles_raw.json"
+  },
+  {
+    "id": 27,
+    "question": "다이어트 정체기를 극복하기 위한 방법은 무엇인가요?",
+    "answer_chunk_id": 18328,
+    "answer_chunk_content": "title: 다이어트 정체기의 원인과 극복 방법\nsource: 하이닥 (HiDoc)\nauthor: 서애리 하이닥 건강의학기자\ndate: 2023-09-04\ncategory: 뷰티·다이어트\ntopic: 다이어트 정체기 / 체중 관리\ncontent: 체중의 약 16% 감량 후 신체의 '대사 적응'이 발생한다. 섭취 칼로리가 줄어들면 신진대사가 느려지고 낮아진 칼로리 양과 균형을 맞추기 위해 에너지 생산을 줄인다.\n\n정체기 극복 방법",
+    "category": "건강기사",
+    "source_file": "data/raw/blog/health_diet_articles_raw.json"
+  },
+  {
+    "id": 28,
+    "question": "어떤 제품에서 초산에틸 잔류량 기준이 부적합했나요?",
+    "answer_chunk_id": 18347,
+    "answer_chunk_content": "� 6개, 녹차추출물 6개) 품질 및 안전성 평가:\n\n- 기능성분 함량: 가르시니아캄보지아 제품 652~999mg, 녹차추출물 제품 289~467mg — 전 제품이 1일 섭취량 기준 충족\n- 안전성 문제: 1개 제품(메타그린 슬림업 30일)이 초산에틸 잔류량 기준 부적합 — 해당 업체 제품 회수 및 환불 조치\n- 중복섭취 주의: 가르시니아캄보",
+    "category": "건강기사",
+    "source_file": "data/raw/blog/health_diet_articles_raw.json"
+  },
+  {
+    "id": 29,
+    "question": "고단백 식품으로 어떤 음식이 추천되나요?",
+    "answer_chunk_id": 18315,
+    "answer_chunk_content": "� + 복합 탄수화물\n6. 오트밀 — 혈당 안정화 식이섬유\n7. 코티지 치즈 — 고단백, 저지방\n8. 연어 — 오메가-3 지방산, 고단백\n9. 프룬 — 식이섬유, 포만감\n10. 아보카도 — 건강한 불포화 지방\n\n영양사 조언: 다이어트 중 근육 손실 방지를 위해 고단백 식품 섭취 중요. 하루 약 25g 정도의 섬유질 섭취 권장.",
+    "category": "건강기사",
+    "source_file": "data/raw/blog/health_diet_articles_raw.json"
+  },
+  {
+    "id": 30,
+    "question": "녹차추출물의 기능은 무엇인가요?",
+    "answer_chunk_id": 18394,
+    "answer_chunk_content": "ingredients: name: 녹차추출물 (카테킨)\nfunction: 체지방 감소, 항산화, 콜레스테롤 개선 | name: 바나바잎 추출물\nfunction: 식후 혈당 조절 | name: 홍경천추출물 (로사빈)\nfunction: 스트레스 관련 피로 회복 | name: 콜레우스포스콜리 (포스콜린)\nfunction: 체지방 감소 | name: 은행잎추출물 | name: 비타민 B1, B2, B6\nfunction: 에너지 대사 | function: 에",
+    "category": "푸드올로지",
+    "source_file": "data/raw/foodology/products.json"
+  },
+  {
+    "id": 31,
+    "question": "맨올로지 컷 PRO는 몇 일분인가요?",
+    "answer_chunk_id": 18419,
+    "answer_chunk_content": "name: 맨올로지 컷 PRO (Man Ology Cut PRO)\nserving_info: 80정 = 20일분\ndistribution: SSF Shop (삼성물산) | 기타\nnote: 맨올로지 컷 강화 버전\ncertifications: 건강기능식품",
+    "category": "푸드올로지",
+    "source_file": "data/raw/foodology/products.json"
+  },
+  {
+    "id": 32,
+    "question": "제품에 사용된 올리브오일의 품종은 무엇인가?",
+    "answer_chunk_id": 16227,
+    "answer_chunk_content": "하고 섭취 전까지 풍미와 영양을 신선한 상태로 유지한다.\n\n제품에 사용된 올리브오일은 스페인산 피쿠알 품종의 엑스트라버진 올리브오일로, 유기농으로 재배된 올리브를 콜드프레스 방식으로 압착한 제품이다. 피쿠알 품종은 타 품종에 비해 폴리페놀 함량이 높고 풍미가 뛰어난 것으로 알려져 있다.\n\n레몬즙은 유기�",
+    "category": "푸드올로지",
+    "source_file": "data/raw/foodology_thevc_기업투자정보/foodology_이지경제_올리브레몬샷_출시_2026.txt"
+  },
+  {
+    "id": 33,
+    "question": "윤성빈의 활력라인은 어떤 구성으로 되어 있나요?",
+    "answer_chunk_id": 16196,
+    "answer_chunk_content": "윤성빈의 활력라인은 터보 붐, 에너지 붐, 블랙킹타임 등으로 구성됐으며 터보 붐의 경우 장어의 36배에 달하는 고품질의 국내산 아르기닌이 주원료로 아르기닌의 흡수를 도와주는 오르니틴과 카르니틴, 시트룰린도 함께 담았다고 브랜드 측은 강조했다.\n\n또 이번에 푸드올로지 이너뷰티 라인인 핑크라인의 모델로 발탁된 김",
+    "category": "푸드올로지",
+    "source_file": "data/raw/foodology_thevc_기업투자정보/foodology_비즈월드_광고모델_2023.txt"
+  },
+  {
+    "id": 34,
+    "question": "어댑트의 자회사로 인수된 스튜디오 솔파의 매출은 전년대비 얼마나 증가했나요?",
+    "answer_chunk_id": 16180,
+    "answer_chunk_content": "며 22% 성장했다. 뷰티 브랜드 중에서는 토탈 라이프스타일 브랜드 95프로블럼(95PROBLEM)과 남성 그루밍 브랜드 오브제(OBGE)가 좋은 실적을 냈다.\n\n지난해 11월 어댑트의 자회사로 인수된 스튜디오 솔파는 전년대비 35% 증가한 19억원의 매출을 올렸다. 스튜디오 솔파는 인기 유튜브 채널인 솔파(Solfa)와 오디지(ODG)를",
+    "category": "푸드올로지",
+    "source_file": "data/raw/foodology_thevc_기업투자정보/foodology_머니투데이_매출1100억_2022.txt"
+  },
+  {
+    "id": 35,
+    "question": "포스트프란디얼 글리세미아에 영향을 미치는 요인은 무엇인가요?",
+    "answer_chunk_id": 10675,
+    "answer_chunk_content": "Kamruzzamanetal. GastricEmptyingandPostprandialGlycaemia\nGASTROINTESTINAL DETERMINANTS OF have gastroparesis. A hallmark of gastroparesis at the cellular\nPOSTPRANDIAL GLYCEMIA level is loss of ICC (14). Conversely, gastric emptying may be\naccelerated in some people with diabetes, particularly well\nA number offactors impact postprandial glycemia. While these controlled uncomplicated type 2 diabetes (15) and adolescents\ninclude pre-prandial glycemia, insulin secretion and sensitivity withtype1diab",
+    "category": "기타",
+    "source_file": "data/raw/papers/glucose_spike/gut_strategies_postprandial_glycaemia_2021.pdf"
+  },
+  {
+    "id": 36,
+    "question": "사무실에서 좌식 행동을 줄이는 데 효과적인 개입 방법은 무엇인가요?",
+    "answer_chunk_id": 11308,
+    "answer_chunk_content": "of time (84) or by making personalized activity transport and/or provision of sit-stand desks have also shown\nrecommendations(85).Otherstudieshaveincreasedstepcount to be promising interventions that reduce sedentary behavior\nintheworkplacethroughcashincentives(86).However,merely (90). The built environment interacts with health psychology\nwearinganactivitymonitordoesnotleadtoincreasedphysical to create barriers that reduce physical activity and prevent the\nactivityinmultiplestudies(87,88).Conse",
+    "category": "기타",
+    "source_file": "data/raw/papers/glucose_spike/postprandial_hyperglycemia_physical_activity_2018.pdf"
+  },
+  {
+    "id": 37,
+    "question": "몽모렌시 타르트 체리의 항산화 활성이 어떤 질병과 관련이 있나요?",
+    "answer_chunk_id": 11104,
+    "answer_chunk_content": "BR, Seymour EM, Bolling SF. The Antioxidant Activity and In Vitro Inhibitory Potential Against Key\nInhibitory Potential of Montmorency Tart Cherry on Key Enzymes Enzymes Relevant for Hyperglycemia and Hypertension of Commonly\nRelevant to Type 2 Diabetes and Cardiovascular Disease. Food Chem Used Medicinal Plants, Herbs and Spices in Latin America. Bioresour\n(2018)252:142–6.doi:10.1016/j.foodchem.2018.01.084 Technol(2010)101(12):4676–89.doi:10.1016/j.biortech.2010.01.093\n88. PintoMDS,RanillaLG,Ap",
+    "category": "기타",
+    "source_file": "data/raw/papers/glucose_spike/phenolic_bioactives_glycemic_control_2021.pdf"
+  },
+  {
+    "id": 38,
+    "question": "Camu-Camu의 DPPH 기반 항산화 활성이 얼마나 됩니까?",
+    "answer_chunk_id": 10950,
+    "answer_chunk_content": "icatechin inhibition inhibitoryactivity inhibition pylori\n(Bartlett) inhibition\nCamu-Camu 0.2-1.2 Ellagicacid,ellagitannins, 20-60%DPPHbased 20-85%a-amylase&90- 75-80%ACE NA (56,57)\nmg/mL quercetin,&myrecetin inhibition 100%a-glucosidase inhibition\ninhibitoryactivities\nJambolan 5.5mg/g NA 60%DPPHbased 44-85%a-amylase&63-99% NA NA (58)\nDW inhibition a-glucosidaseinhibitory\nactivities\nPersimon 4.6mg/g NA 50%DPPHbased 29-88%a-amylase&75-86% NA NA\nDW inhibition a-glucosidaseinhibitory\nactivities\nPlu",
+    "category": "기타",
+    "source_file": "data/raw/papers/glucose_spike/phenolic_bioactives_glycemic_control_2021.pdf"
+  },
+  {
+    "id": 39,
+    "question": "어떤 과일이 제2형 당뇨병의 위험을 줄이는 것과 긍정적인 상관관계가 있다고 언급되었나요?",
+    "answer_chunk_id": 10964,
+    "answer_chunk_content": "Sarkaretal. Anti-DiabeticBenefitsofPlantPhenolics\nrich source of dietary fiber, folate, and several micronutrients, diseases like T2D. In a prospective longitudinal cohort study,\nwhicharerelevantfordiversehumanhealthprotectivefunctional Murakietal.(80)foundthathigherintakeofspecificwholefruits,\nqualities including oxidative stress protection, glycemic control, likeblueberry(Vacciniumspp.),grapes(Vitisvinifera),andapple\nand supporting human digestive health. A dose response meta- (Malusdomestica)",
+    "category": "기타",
+    "source_file": "data/raw/papers/glucose_spike/phenolic_bioactives_glycemic_control_2021.pdf"
+  },
+  {
+    "id": 40,
+    "question": "운동이 제2형 당뇨병 환자에게 미치는 영향에 대한 연구는 어떤 기관에서 발표되었나요?",
+    "answer_chunk_id": 10505,
+    "answer_chunk_content": "26. Larsen JJ, Dela F, Madsbad S, Galbo H. The effect of intense exercise on\nin the United States. Centers for Disease Control and Prevention (2014). postprandial glucose homeostasis in type II diabetic patients. Diabetologia\n12. Colberg SR, Sigal RJ, Fernhall B, Regensteiner JG, Blissmer BJ, Rubin RR, (1999) 42(11):1282–92. doi:10.1007/s001250051440\net al. Exercise and type 2 diabetes: the American College of Sports Medicine 27. Manders RJ, Van Dijk JW, van Loon LJ. Low-intensity exercise reduc",
+    "category": "기타",
+    "source_file": "data/raw/papers/glucose_spike/exercise_postprandial_glucose_2017.pdf"
+  },
+  {
+    "id": 41,
+    "question": "GLP-1 아고니스트의 사용이 어떤 효과를 가져올 수 있는가?",
+    "answer_chunk_id": 10719,
+    "answer_chunk_content": "; both exenatide QW (116) and liraglutide\n(117) have been shown to slow emptying with sustained use, Acarbose\nalthough the magnitude of their effect may be less than that of Acarbose, and other alpha-glucosidase inhibitors, such as\n‘short acting’ agonists. Given that modest slowing of emptying voglibose, delays the production of monosaccharides from\nmay have a major effect on postprandial glucose this is of complex carbohydrates by inhibiting the alpha-glucosidase on\nrelevancetotheiruseinthemana",
+    "category": "기타",
+    "source_file": "data/raw/papers/glucose_spike/gut_strategies_postprandial_glycaemia_2021.pdf"
+  },
+  {
+    "id": 42,
+    "question": "식사 후 위 용적에 미치는 영향은 무엇인가?",
+    "answer_chunk_id": 10686,
+    "answer_chunk_content": "the effect of meals on gastric volume and developed (37, 38). Specific inhibitors of the DPP-IV enzyme\ngastricaccommodation,butremainresearchtechniques. prolongtheavailabilityofendogenousGLP-1(andGIP)andare\nadministered orally. A number of compounds in this class are\navailable(e.g.sitagliptin,linagliptin,saxagliptin,vildagliptinand\nalogliptin)(19,39,40).\nINCRETIN HORMONES\nIthasbeenknownsincethe1960’sthatbloodglucoselevelsare\nmuch lower following oral, compared with administration of a GUT BASED ",
+    "category": "기타",
+    "source_file": "data/raw/papers/glucose_spike/gut_strategies_postprandial_glycaemia_2021.pdf"
+  }
+]

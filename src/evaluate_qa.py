@@ -4,14 +4,18 @@ QA 쌍 기반 RAG 평가 스크립트
 (질문, 정답_chunk_id) 쌍 데이터셋으로 Hit Rate / MRR 계산.
 키워드 매칭이 아닌 정확한 chunk_id 기반 판정 → 더 신뢰도 높은 평가.
 
-비교 대상:
-  QA-E4: documents 테이블 (e5-small 384차원, 실험 4 설정)
+평가 대상:
   QA-E5: documents_v2 테이블 (bge-m3 1024차원, 실험 5 설정)
+
+※ QA-E4(e5-small) 비교를 하지 않는 이유:
+  QA 쌍은 documents_v2에서 생성하여 정답 chunk_id가 documents_v2 기준임.
+  기존 hybrid_search는 parent-child 구조(parent_id 반환)를 사용하므로
+  documents_v2의 chunk_id와 직접 비교가 불가능.
+  대신 키워드 매칭 기반 실험 1~4와의 비교는 RAG_평가_실험_기록.md에 기술.
 
 입력: data/generated/qa_dataset.json
 출력:
   results/QA쌍_평가결과.md
-  results/QA쌍_질문별상세_QA-E4.md
   results/QA쌍_질문별상세_QA-E5.md
 
 실행:
@@ -29,7 +33,7 @@ from datetime import datetime
 from collections import defaultdict
 
 from dotenv import load_dotenv
-from sentence_transformers import SentenceTransformer, CrossEncoder
+from sentence_transformers import SentenceTransformer
 from supabase import create_client, Client
 
 load_dotenv(Path(__file__).resolve().parent.parent / ".env")
@@ -51,18 +55,8 @@ MAX_CONTENT = 2000
 # ── 실험 설정 ─────────────────────────────────────────────────────────────
 QA_EXPERIMENTS = [
     {
-        "id":           "QA-E4",
-        "label":        "QA-E4: e5-small (기존, documents)",
-        "embed_model":  "intfloat/multilingual-e5-small",
-        "embed_prefix": "query: ",          # e5는 query: 프리픽스 필요
-        "rpc":          "hybrid_search",
-        "vector_weight": 0.7,
-        "text_weight":   0.3,
-        "table":         "documents",
-    },
-    {
         "id":           "QA-E5",
-        "label":        "QA-E5: bge-m3 (신규, documents_v2)",
+        "label":        "QA-E5: bge-m3 (documents_v2)",
         "embed_model":  "BAAI/bge-m3",
         "embed_prefix": "",                 # bge-m3는 프리픽스 불필요
         "rpc":          "hybrid_search_v2",
@@ -74,7 +68,6 @@ QA_EXPERIMENTS = [
 
 # ── 모델 캐시 ─────────────────────────────────────────────────────────────
 _embed_cache: dict[str, SentenceTransformer] = {}
-_reranker:    CrossEncoder | None = None
 
 
 def get_embed_model(model_name: str) -> SentenceTransformer:
@@ -82,14 +75,6 @@ def get_embed_model(model_name: str) -> SentenceTransformer:
         print(f"임베딩 모델 로딩: {model_name}")
         _embed_cache[model_name] = SentenceTransformer(model_name)
     return _embed_cache[model_name]
-
-
-def get_reranker() -> CrossEncoder:
-    global _reranker
-    if _reranker is None:
-        print("리랭커 로딩: BAAI/bge-reranker-v2-m3")
-        _reranker = CrossEncoder("BAAI/bge-reranker-v2-m3")
-    return _reranker
 
 
 def embed_query(query: str, model_name: str, prefix: str) -> list[float]:
@@ -100,14 +85,17 @@ def embed_query(query: str, model_name: str, prefix: str) -> list[float]:
 
 
 def search(query: str, exp: dict) -> list[dict]:
-    """하이브리드 검색 후 BGE 리랭킹 수행, Top-K 반환."""
+    """하이브리드 검색 (hybrid_search_v2), Top-K 반환.
+    ※ 리랭커 미사용: bge-m3 + 리랭커 동시 로딩 시 메모리 부족 가능성.
+       combined_score 순으로 정렬된 결과 그대로 사용.
+    """
     embedding = embed_query(query, exp["embed_model"], exp["embed_prefix"])
 
     try:
         resp = supabase.rpc(exp["rpc"], {
             "query_embedding": embedding,
             "query_text":      query,
-            "match_count":     MAX_SEARCH,
+            "match_count":     TOP_K,
             "vector_weight":   exp["vector_weight"],
             "text_weight":     exp["text_weight"],
         }).execute()
@@ -116,17 +104,7 @@ def search(query: str, exp: dict) -> list[dict]:
         print(f"    [ERROR] 검색 실패: {e}")
         return []
 
-    if not docs:
-        return []
-
-    # BGE 리랭킹
-    reranker = get_reranker()
-    pairs    = [(query, doc.get("content", "")[:1000]) for doc in docs]
-    scores   = reranker.predict(pairs)
-    for doc, score in zip(docs, scores):
-        doc["rerank_score"] = float(score)
-    ranked = sorted(docs, key=lambda x: x["rerank_score"], reverse=True)
-    return ranked[:TOP_K]
+    return docs
 
 
 def evaluate_experiment(qa_pairs: list[dict], exp: dict) -> dict:
@@ -168,7 +146,7 @@ def evaluate_experiment(qa_pairs: list[dict], exp: dict) -> dict:
             rank = None
             rr   = 0.0
 
-        top1_score = docs[0].get("rerank_score", 0.0) if docs else 0.0
+        top1_score = docs[0].get("combined_score", 0.0) if docs else 0.0
         top1_cat   = docs[0].get("category", "") if docs else ""
 
         results.append({
@@ -260,9 +238,10 @@ def save_detail_md(exp_result: dict, filepath: Path):
 
 
 def save_summary_md(exp_results: list[dict], qa_pairs: list[dict], filepath: Path):
-    """전체 실험 비교 요약 마크다운 저장."""
+    """평가 결과 요약 마크다운 저장."""
     now = datetime.now().strftime("%Y-%m-%d %H:%M")
     n   = len(qa_pairs)
+    er  = exp_results[0]  # QA-E5 단일 실험
 
     # 카테고리 목록 수집
     categories = sorted({qa["category"] for qa in qa_pairs})
@@ -277,66 +256,70 @@ def save_summary_md(exp_results: list[dict], qa_pairs: list[dict], filepath: Pat
         "|------|------|",
         "| 데이터셋 | Supabase documents_v2에서 카테고리별 균등 샘플링 |",
         "| 질문 생성 | GPT-4o-mini — 청크가 직접 답할 수 있는 질문 생성 |",
-        "| 정답 기준 | 정답 chunk_id가 Top-K 결과에 포함되면 성공 |",
-        "| 비교 실험 | QA-E4(e5-small + documents) vs QA-E5(bge-m3 + documents_v2) |",
+        "| 정답 기준 | 정답 chunk_id가 Top-K 결과에 포함되면 성공 (chunk_id 일치) |",
+        "| 임베딩 | BAAI/bge-m3 (1024차원) |",
+        "| 검색 | hybrid_search_v2 (벡터 0.7 + BM25 0.3, combined_score 순 정렬) |",
         "",
-        "## 2. 전체 비교 결과",
+        "> **참고**: QA 쌍은 documents_v2 기준으로 생성되어 chunk_id가 documents_v2와 일치함.",
+        "> 기존 e5-small + documents 설정과의 비교는 키워드 매칭 방식(실험 1~4)으로 수행함.",
+        "",
+        "## 2. 평가 결과",
         "",
         "| 실험 | Hit@1 | Hit@3 | Hit@5 | MRR |",
         "|------|------:|------:|------:|----:|",
-    ]
-    for er in exp_results:
-        lines.append(
-            f"| {er['label']} "
-            f"| {er['hit1']:.3f} "
-            f"| {er['hit3']:.3f} "
-            f"| {er['hit5']:.3f} "
-            f"| {er['mrr']:.3f} |"
-        )
-
-    lines += [
+        f"| {er['label']} | {er['hit1']:.3f} | {er['hit3']:.3f} | {er['hit5']:.3f} | {er['mrr']:.3f} |",
         "",
         "## 3. 카테고리별 Hit@5",
         "",
-        "| 카테고리 | " + " | ".join(er["exp_id"] for er in exp_results) + " |",
-        "|---------|" + "|".join("------:" for _ in exp_results) + "|",
+        "| 카테고리 | Hit@5 | 샘플 수 |",
+        "|---------|------:|-------:|",
     ]
     for cat in categories:
-        row = f"| {cat} "
-        for er in exp_results:
-            val = er["cat_hits"].get(cat, None)
-            row += f"| {val:.3f} " if val is not None else "| - "
-        row += "|"
-        lines.append(row)
-
-    # 결론
-    if len(exp_results) == 2:
-        e4, e5 = exp_results[0], exp_results[1]
-        diff_hit5 = e5["hit5"] - e4["hit5"]
-        diff_mrr  = e5["mrr"]  - e4["mrr"]
-        lines += [
-            "",
-            "## 4. 분석 및 결론",
-            "",
-            f"- **Hit@5 변화**: {e4['hit5']:.3f} → {e5['hit5']:.3f} ({diff_hit5:+.3f})",
-            f"- **MRR 변화**: {e4['mrr']:.3f} → {e5['mrr']:.3f} ({diff_mrr:+.3f})",
-            "",
-        ]
-        if diff_hit5 > 0.05:
-            lines.append("bge-m3 임베딩 + 200토큰 청킹이 e5-small 대비 검색 품질을 크게 향상시킴.")
-            lines.append("키워드 매칭 방식의 실험 5 결과(Hit@5=0.941)를 정답 기반으로도 확인.")
-        elif abs(diff_hit5) <= 0.05:
-            lines.append("두 설정의 Hit@5 차이가 크지 않음 (±5% 이내).")
-        else:
-            lines.append("e5-small이 일부 영역에서 더 나은 결과를 보임.")
+        val = er["cat_hits"].get(cat, None)
+        cnt = sum(1 for qa in qa_pairs if qa["category"] == cat)
+        val_str = f"{val:.3f}" if val is not None else "-"
+        lines.append(f"| {cat} | {val_str} | {cnt} |")
 
     lines += [
         "",
+        "## 4. 분석 및 결론",
+        "",
+        f"- **Hit@1**: {er['hit1']:.3f} — 검색 Top1에서 정답 청크 찾을 확률",
+        f"- **Hit@3**: {er['hit3']:.3f} — 검색 Top3 이내 정답 청크 포함 확률",
+        f"- **Hit@5**: {er['hit5']:.3f} — 검색 Top5 이내 정답 청크 포함 확률",
+        f"- **MRR**:   {er['mrr']:.3f} — 정답 청크 평균 역순위",
+        "",
+    ]
+
+    # 등급 판정 (MRR 기준)
+    if er["mrr"] >= 0.8:
+        grade = "**A (우수)** — 정답 기반 평가에서도 높은 검색 품질 확인"
+    elif er["mrr"] >= 0.6:
+        grade = "**B (양호)** — 대부분의 질문에서 정답 청크를 상위에서 찾음"
+    elif er["mrr"] >= 0.4:
+        grade = "**C (보통)** — 절반 이상에서 정답 청크를 찾지만 순위 개선 필요"
+    else:
+        grade = "**D (미흡)** — 정답 청크를 찾지 못하는 경우가 많음"
+    lines.append(f"- **종합 등급**: {grade}")
+
+    # 키워드 기반 결과와 비교
+    lines += [
+        "",
+        "### 키워드 매칭 방식과 비교",
+        "",
+        "| 평가 방식 | Hit@5 | MRR | 특징 |",
+        "|---------|------:|----:|------|",
+        "| 키워드 매칭 (실험 5) | 0.941 | 0.828 | 17개 질문, 사전 정의 키워드 기준 |",
+        f"| QA 쌍 (이번 평가) | {er['hit5']:.3f} | {er['mrr']:.3f} | {n}개 질문, 정확한 chunk_id 기준 |",
+        "",
+        "> QA 쌍 방식이 더 엄격한 평가 기준임 (정확한 chunk_id 일치 필요).",
+        "> 키워드 매칭보다 낮거나 비슷한 수치가 정상적.",
+        "",
         "## 5. 멘토 질문 대비 답변",
         "",
-        "> \"QA 평가를 어떻게 했나요?\"",
+        "> **\"QA 평가를 어떻게 했나요?\"**",
         "",
-        "> DB에 저장된 청크를 카테고리별로 균등 샘플링해서 총 50개를 뽑았습니다.",
+        "> DB에 저장된 청크를 카테고리별로 균등 샘플링해서 총 42개를 뽑았습니다.",
         "> 각 청크에 대해 GPT-4o-mini로 '이 청크가 답할 수 있는 질문'을 생성해서",
         "> (질문, 정답_청크_ID) 쌍의 데이터셋을 만들었습니다.",
         "> 이 데이터셋으로 RAG 검색을 실행하고, 정답 청크가 Top-K 안에 포함됐는지로",
