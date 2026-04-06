@@ -1,3 +1,14 @@
+---
+title: 건강식품 RAG 챗봇
+emoji: 🥗
+colorFrom: green
+colorTo: blue
+sdk: streamlit
+sdk_version: 1.32.0
+app_file: app.py
+pinned: false
+---
+
 # 건강식품·다이어트 RAG 챗봇
 
 건강식품 및 다이어트 관련 질문에 답변하는 RAG(Retrieval-Augmented Generation) 기반 챗봇입니다.

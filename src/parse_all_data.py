@@ -21,10 +21,10 @@ BASE_DIR    = Path(__file__).resolve().parent.parent
 RAW_DIR     = BASE_DIR / "data" / "raw"
 GEN_DIR     = BASE_DIR / "data" / "generated"
 OUTPUT_DIR  = BASE_DIR / "data" / "generated" / "chunks"
-OUTPUT_FILE = OUTPUT_DIR / "all_chunks.json"
+OUTPUT_FILE = OUTPUT_DIR / "all_chunks_v2.json"
 
-CHUNK_TOKENS   = 400
-OVERLAP_TOKENS = 60
+CHUNK_TOKENS   = 200   # 실험5: 400→200 (멘토 권장 범위 150~200)
+OVERLAP_TOKENS = 40    # 실험5: 60→40
 MIN_CHARS      = 50
 
 TOKENIZER = tiktoken.get_encoding("cl100k_base")

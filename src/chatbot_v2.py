@@ -1,13 +1,20 @@
 """
-건강식품 RAG 챗봇 v2 (100% 무료)
-- Parent-Child Retrieval: 자식 검색 → 부모 컨텍스트
-- Hybrid Search: 벡터 + 키워드(BM25) 결합
-- Query Rewriting: 질문 재작성으로 검색 최적화
-- Multi-Query: 3가지 관점으로 검색 확장
-- Cross-Encoder Reranking: 관련 없는 결과 제거
-- Streaming 답변 + 출처 메타데이터 표시
-- LCEL 체인 패턴
-- Memory Bank: 세션 간 사용자 정보 기억
+건강식품 RAG 챗봇 v2 — BGE-M3 고도화 버전
+============================================
+실험 5 결과 적용 (Hit@5: 0.706 → 0.941, MRR: 0.629 → 0.828)
+
+변경 사항:
+- 임베딩: multilingual-e5-small(384d) → BAAI/bge-m3(1024d)
+- 검색 DB: documents(8,760청크) → documents_v2(18,682청크, 200토큰)
+- RPC: hybrid_search → hybrid_search_v2
+- 청킹: 400토큰 → 200토큰 (핵심 내용 밀도 향상)
+
+유지 사항:
+- Query Rewriting + Multi-Query (GPT-4o-mini, 1회 API 호출)
+- Hybrid Search (벡터 0.7 + BM25 0.3)
+- BGE Cross-Encoder Reranking (BAAI/bge-reranker-v2-m3)
+- Streaming 답변 + 출처 메타데이터
+- Memory Bank (세션 간 사용자 정보 기억)
 """
 import warnings
 warnings.filterwarnings("ignore")
@@ -33,10 +40,12 @@ SUPABASE_KEY   = os.environ["SUPABASE_KEY"]
 OPENAI_API_KEY = os.environ["OPENAI_API_KEY"]
 
 # ── 모델 로드 ────────────────────────────────────────────────────────
+# bge-m3: 1024차원, 한/영 혼재 학술 텍스트에서 e5-small 대비 검색 품질 대폭 향상
+# 실험 5 결과: Hit@5 0.706→0.941, MRR 0.629→0.828
 print("모델 로딩 중...")
-embed_model = SentenceTransformer("intfloat/multilingual-e5-small")
+embed_model = SentenceTransformer("BAAI/bge-m3")
 rerank_model = CrossEncoder("BAAI/bge-reranker-v2-m3")
-print("임베딩 + 리랭킹 모델 로드 완료!")
+print("임베딩(bge-m3) + 리랭킹(bge-reranker) 모델 로드 완료!")
 
 supabase: Client = create_client(SUPABASE_URL, SUPABASE_KEY)
 llm_client = OpenAI(api_key=OPENAI_API_KEY)
@@ -166,7 +175,8 @@ def generate_search_queries(user_input: str) -> list[str]:
 # 3단계: Hybrid Search — 벡터 + 키워드 검색 결합
 # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 def get_query_embedding(text: str) -> list[float]:
-    emb = embed_model.encode(f"query: {text[:MAX_CONTENT]}", normalize_embeddings=True)
+    # bge-m3는 프리픽스 불필요 (e5-small은 "query: " 필요했음)
+    emb = embed_model.encode(text[:MAX_CONTENT], normalize_embeddings=True)
     return emb.tolist()
 
 
@@ -179,9 +189,11 @@ def detect_query_category(query: str) -> str | None:
 
 
 def _run_hybrid_search(query_embedding: list[float], query: str, category_filter: str | None) -> list[dict]:
-    """실제 Supabase 검색 실행 (카테고리 필터 선택 적용)"""
+    """실제 Supabase 검색 실행 — documents_v2 테이블 (bge-m3 1024차원)
+    hybrid_search_v2 실패 시 match_documents_v2(벡터 검색 전용)으로 폴백
+    """
     try:
-        result = supabase.rpc("hybrid_search", {
+        result = supabase.rpc("hybrid_search_v2", {
             "query_embedding": query_embedding,
             "query_text": query,
             "match_count": TOP_K,
@@ -191,23 +203,16 @@ def _run_hybrid_search(query_embedding: list[float], query: str, category_filter
         }).execute()
         return result.data or []
     except Exception:
-        try:
-            params = {
-                "query_embedding": query_embedding,
-                "match_threshold": 0.3,
-                "match_count": TOP_K,
-            }
-            if category_filter:
-                params["filter_category"] = category_filter
-            result = supabase.rpc("match_children_return_parents", params).execute()
-            return result.data or []
-        except Exception:
-            result = supabase.rpc("match_documents", {
-                "query_embedding": query_embedding,
-                "match_threshold": 0.3,
-                "match_count": TOP_K,
-            }).execute()
-            return result.data or []
+        # 폴백: 벡터 유사도 검색만 (BM25 없이)
+        params = {
+            "query_embedding": query_embedding,
+            "match_threshold": 0.3,
+            "match_count": TOP_K,
+        }
+        if category_filter:
+            params["filter_category"] = category_filter
+        result = supabase.rpc("match_documents_v2", params).execute()
+        return result.data or []
 
 
 def hybrid_search(query: str) -> list[dict]:
@@ -226,6 +231,38 @@ def hybrid_search(query: str) -> list[dict]:
     return results
 
 
+def keyword_fallback_search(query: str, exclude_ids: set) -> list[dict]:
+    """리랭킹 점수가 낮을 때 핵심 키워드로 DB 직접 검색 (ilike).
+    벡터 검색이 의미적 정의를 찾지 못할 때 보완.
+    예: '퓨린이 뭐야?' → '퓨린' 키워드로 DB에서 직접 찾음
+    """
+    import re
+    # 조사/어미 제거 후 2글자 이상 명사 추출
+    particles = r'(이|가|은|는|을|를|의|에|에서|로|으로|와|과|이야|야|뭐야|란|이란|\?|은\?|가\?)$'
+    nouns = []
+    for word in query.split():
+        cleaned = re.sub(particles, '', word.strip())
+        if len(cleaned) >= 2 and cleaned not in {'뭐야', '무엇', '어떻게', '왜', '언제', '어디'}:
+            nouns.append(cleaned)
+
+    results = []
+    seen = set(exclude_ids)
+    for noun in nouns[:2]:  # 최대 2개 명사만 검색
+        try:
+            resp = supabase.table("documents_v2").select(
+                "id, content, source_file, category, token_count"
+            ).ilike("content", f"%{noun}%").limit(5).execute()
+            for r in (resp.data or []):
+                if r["id"] not in seen:
+                    seen.add(r["id"])
+                    r["combined_score"] = 0.35   # 폴백 임시 점수
+                    r["rerank_score"]   = 0.0
+                    results.append(r)
+        except Exception:
+            pass
+    return results
+
+
 def multi_query_search(queries: list[str]) -> list[dict]:
     """여러 쿼리를 병렬 실행 후 결과 병합 (중복 제거)"""
     seen_ids = set()
@@ -237,7 +274,8 @@ def multi_query_search(queries: list[str]) -> list[dict]:
             try:
                 docs = future.result()
                 for doc in docs:
-                    doc_id = doc.get("parent_id") or doc.get("id")
+                    # documents_v2는 'id' 필드 사용 (parent-child 구조 없음)
+                    doc_id = doc.get("id")
                     if doc_id and doc_id not in seen_ids:
                         seen_ids.add(doc_id)
                         all_docs.append(doc)
@@ -254,11 +292,13 @@ def rerank_documents(query: str, docs: list[dict]) -> list[dict]:
     """BGE 다국어 크로스인코더 리랭킹 (BAAI/bge-reranker-v2-m3)
     한국어/영어 혼재 문서에서 의미 기반 관련성 점수를 직접 계산.
     실험 4 결과: 기존 키워드 보너스 대비 Hit@1 +11.7%, MRR +6.5% 향상.
+    documents_v2는 'content' 키 사용 (parent_content 없음).
     """
     if not docs:
         return []
 
-    content_key = "parent_content" if "parent_content" in docs[0] else "content"
+    # documents_v2: 항상 'content' 키 사용
+    content_key = "content"
 
     # (질문, 문서) 쌍으로 크로스인코더에 입력
     pairs = [(query, doc.get(content_key, "")[:1000]) for doc in docs]
@@ -286,16 +326,17 @@ OFF_TOPIC_KEYWORDS = [
 
 SYSTEM_PROMPT = """당신은 건강식품과 다이어트 전문 상담사입니다.
 
-[절대 규칙 — 할루시네이션 방지]
-1. 반드시 [참고 자료]에 있는 내용만으로 답변하세요.
-2. [참고 자료]에 없는 내용은 절대 지어내지 마세요.
-3. 모르면 "보유한 자료에서 해당 정보를 찾을 수 없습니다"라고 답변하세요.
-4. 추측, 일반 상식, 외부 지식으로 보충하지 마세요.
+[답변 규칙]
+1. [참고 자료]에 직접적인 답이 있으면 그 내용을 중심으로 답변하세요.
+2. 직접적인 답이 없더라도 관련 내용(성분, 효과, 주의사항 등)이 조금이라도 있으면 그것을 기반으로 최선을 다해 답변하세요.
+3. 자료에 전혀 관련 내용이 없을 때만 "보유한 자료에서 찾을 수 없습니다"라고 안내하세요.
+4. 자료에 없는 내용을 지어내거나 추측하지 마세요.
 5. 의학적 진단이나 처방은 하지 말고 "전문 의사 상담을 권장합니다"라고 안내하세요.
 
 답변 원칙:
 - 한국어로 친절하고 명확하게 답변하세요
 - [자료 N] 형태로 출처를 반드시 표시하세요
+- 부분적인 정보라도 "자료에 따르면..." 형태로 성실하게 전달하세요
 - 건강식품, 다이어트, 영양소 이외의 주제는 "전문 영역이 아닙니다"라고 답변하세요"""
 
 
@@ -306,7 +347,8 @@ def format_context_with_sources(docs: list[dict]) -> tuple[str, list[dict]]:
 
     context_parts = []
     sources = []
-    content_key = "parent_content" if "parent_content" in docs[0] else "content"
+    # documents_v2: 항상 'content' 키 사용 (parent-child 구조 없음)
+    content_key = "content"
 
     for i, doc in enumerate(docs, 1):
         source_file = doc.get("source_file", "알 수 없음")
@@ -385,6 +427,16 @@ def rag_chain(user_input: str, history: list[dict]) -> tuple[str, list[dict], li
     print(f"  [3] Reranking {len(raw_docs)}개...", end=" ", flush=True)
     ranked_docs = rerank_documents(user_input, raw_docs)
     print(f"→ {len(ranked_docs)}개 통과 ({time.time()-t2:.1f}s)")
+
+    # 리랭킹 점수가 모두 낮으면 키워드 폴백 검색으로 보완
+    LOW_RERANK_THRESHOLD = -3.0
+    if ranked_docs and max(d.get("rerank_score", -999) for d in ranked_docs) < LOW_RERANK_THRESHOLD:
+        already_found = {d.get("id") for d in raw_docs if d.get("id")}
+        fallback_docs = keyword_fallback_search(user_input, already_found)
+        if fallback_docs:
+            print(f"  [키워드 폴백] {len(fallback_docs)}개 추가")
+            ranked_docs = (fallback_docs + ranked_docs)[:RERANK_TOP_K]
+
     print(f"  총 검색: {time.time()-t0:.1f}s")
 
     if not ranked_docs:
@@ -407,9 +459,10 @@ def rag_chain(user_input: str, history: list[dict]) -> tuple[str, list[dict], li
     user_msg = (
         f"{history_text}사용자: {user_input}\n\n"
         "위 [참고 자료]를 바탕으로 한국어로 친절하게 답변해주세요. "
-        "[자료 N] 형태로 출처를 표시하세요. "
-        "자료에 직접적인 답이 없더라도 관련 내용이 있으면 연결해서 답변하세요. "
-        "정말 관련 내용이 전혀 없을 때만 모른다고 하세요."
+        "[자료 N] 형태로 출처를 반드시 표시하세요. "
+        "자료에 직접적인 정의나 설명이 없더라도, 관련 성분·효과·주의사항 등 부분적인 정보라도 있으면 그것을 기반으로 성실하게 답변하세요. "
+        "예를 들어 '퓨린이 뭐야?'라는 질문에 퓨린의 정의는 없지만 퓨린 함량이나 통풍 관련 내용이 있다면 그 내용을 알려주세요. "
+        "자료에 전혀 관련 내용이 없을 때만 모른다고 하세요."
     )
 
     # 7. Streaming 답변
@@ -445,12 +498,14 @@ def rag_chain(user_input: str, history: list[dict]) -> tuple[str, list[dict], li
 # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 def main():
     print("=" * 60)
-    print("  건강식품·다이어트 RAG 챗봇 v2")
-    print("  ─────────────────────────────")
-    print("  임베딩: multilingual-e5-small (로컬, 무료)")
-    print("  리랭킹: BGE-reranker-v2-m3 Cross-Encoder (로컬, 무료, 한/영 지원)")
-    print("  LLM: GPT-4o-mini (OpenAI — 질문 1회 약 0.1원)")
-    print("  검색: Hybrid (벡터 + 키워드) + Multi-Query")
+    print("  건강식품·다이어트 RAG 챗봇 v2 [BGE-M3 고도화]")
+    print("  ─────────────────────────────────────────────")
+    print("  임베딩: BAAI/bge-m3 1024차원 (로컬, 무료, 한/영 최적화)")
+    print("  DB:     documents_v2 — 18,682청크 / 200토큰")
+    print("  리랭킹: BGE-reranker-v2-m3 Cross-Encoder (로컬, 무료)")
+    print("  LLM:    GPT-4o-mini (OpenAI — 질문 1회 약 0.1원)")
+    print("  검색:   Hybrid (벡터 0.7 + BM25 0.3) + Multi-Query")
+    print("  성능:   Hit@5=0.941, MRR=0.828 (실험 5 기준)")
     print("  명령어: '메모리보기' | '메모리초기화' | 'quit'")
     print("=" * 60)
 
