@@ -13,7 +13,8 @@ RAG 검색 품질 평가 스크립트 v2
   종합 등급              — A(우수)/B(양호)/C(보통)/D(미흡)
 
 실행:
-  python src/evaluate_v2.py
+  python src/evaluate_v2.py              # 전체 실험
+  python src/evaluate_v2.py --exp 5 6 7  # 특정 실험만
 """
 
 import warnings
@@ -23,6 +24,7 @@ import os
 import csv
 import time
 import json
+import argparse
 from pathlib import Path
 from datetime import datetime
 
@@ -482,38 +484,84 @@ def run_experiment(config: dict) -> dict:
 
 
 # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-# 결과 저장 함수
+# 결과 저장 함수 (마크다운 우선)
 # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-def save_per_query_csv(result: dict) -> Path:
-    """질문별 상세 결과 CSV 저장"""
-    name = result["config"]["name"]
-    path = RESULTS_DIR / f"{name}_{RUN_TIMESTAMP}.csv"
-    fields = ["query", "judge", "n_results", "hit@1", "hit@3", "hit@5",
-              "rr", "top1_sim", "top1_category", "search_time",
-              "pre_rerank_rank", "post_rerank_rank", "hit_keywords"]
-    with open(path, "w", newline="", encoding="utf-8-sig") as f:
-        writer = csv.DictWriter(f, fieldnames=fields)
-        writer.writeheader()
-        writer.writerows(result["per_query"])
+def save_per_query_md(result: dict) -> Path:
+    """질문별 상세 결과 마크다운 저장"""
+    cfg = result["config"]
+    name = cfg["name"]
+    path = RESULTS_DIR / f"{name}_{RUN_TIMESTAMP}.md"
+
+    lines = [
+        f"# {cfg['label']} — 질문별 상세 결과",
+        f"> {cfg['desc']}",
+        f"> 실행 시각: {RUN_TIMESTAMP}",
+        "",
+        "| # | 질문 | judge | Hit@1 | Hit@3 | Hit@5 | RR | TOP1유사도 | TOP1카테고리 | 적중키워드 |",
+        "|---|------|:-----:|:-----:|:-----:|:-----:|:--:|:---------:|:-----------:|-----------|",
+    ]
+    for i, r in enumerate(result["per_query"], 1):
+        judge_mark = "O" if r["judge"] else "-"
+        lines.append(
+            f"| {i} | {r['query']} | {judge_mark} "
+            f"| {r['hit@1']} | {r['hit@3']} | {r['hit@5']} "
+            f"| {r['rr']:.2f} | {r['top1_sim']:.4f} "
+            f"| {r['top1_category']} | {r['hit_keywords']} |"
+        )
+
+    # 진단 섹션
+    d = result["diagnosis"]
+    lines += [
+        "",
+        "## 진단",
+        f"- 검색 실패: {len(d['search_fail'])}건",
+        f"- 순위 실패 (Top-K 밖): {len(d['rank_fail'])}건",
+        f"- 리랭킹 순위 악화: {len(d['rerank_hurt'])}건",
+    ]
+    if d["rank_fail"]:
+        lines.append("\n### 순위 실패 질문")
+        for q in d["rank_fail"]:
+            lines.append(f"- {q}")
+    if d["rerank_hurt"]:
+        lines.append("\n### 리랭킹 순위 악화 질문")
+        for item in d["rerank_hurt"]:
+            lines.append(f"- {item['query']} (검색전 {item['pre_rank']}등 → 리랭킹후 {item['post_rank']}등)")
+
+    path.write_text("\n".join(lines), encoding="utf-8")
     return path
 
 
-def save_summary_csv(all_results: list[dict]) -> Path:
-    """실험 비교 요약 CSV 저장"""
-    path = RESULTS_DIR / f"eval_summary_{RUN_TIMESTAMP}.csv"
-    fields = ["experiment", "config", "judged_total",
-              "hit@1", "hit@3", "hit@5", "mrr", "avg_top1_sim", "grade"]
-    with open(path, "w", newline="", encoding="utf-8-sig") as f:
-        writer = csv.DictWriter(f, fieldnames=fields)
-        writer.writeheader()
-        for r in all_results:
-            writer.writerow(r["summary"])
+def save_summary_md(all_results: list[dict]) -> Path:
+    """실험 비교 요약 마크다운 저장"""
+    path = RESULTS_DIR / f"eval_summary_{RUN_TIMESTAMP}.md"
+
+    lines = [
+        "# RAG 평가 실험 비교 요약",
+        f"> 실행 시각: {RUN_TIMESTAMP}  |  판정 질문: {all_results[0]['summary']['judged_total']}개",
+        "",
+        "| 실험 | Hit@1 | Hit@3 | Hit@5 | MRR | 평균유사도 | 등급 |",
+        "|------|------:|------:|------:|----:|----------:|------|",
+    ]
+    for r in all_results:
+        s = r["summary"]
+        lines.append(
+            f"| {s['experiment']} "
+            f"| {s['hit@1']:.3f} | {s['hit@3']:.3f} | {s['hit@5']:.3f} "
+            f"| {s['mrr']:.3f} | {s['avg_top1_sim']:.3f} | {s['grade']} |"
+        )
+
+    lines += ["", "## 설정 상세", ""]
+    for r in all_results:
+        s = r["summary"]
+        lines.append(f"- **{s['experiment']}**: {s['config']}")
+
+    path.write_text("\n".join(lines), encoding="utf-8")
     return path
 
 
 def save_summary_json(all_results: list[dict]) -> Path:
-    """결과 전체를 JSON으로 저장 (MD 생성용)"""
+    """결과 전체를 JSON으로 저장 (원본 데이터 보존)"""
     path = RESULTS_DIR / f"eval_full_{RUN_TIMESTAMP}.json"
     with open(path, "w", encoding="utf-8") as f:
         json.dump(all_results, f, ensure_ascii=False, indent=2, default=str)
@@ -524,17 +572,20 @@ def save_summary_json(all_results: list[dict]) -> Path:
 # 메인 실행
 # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-def main():
+def main(exp_ids: list[int] | None = None):
+    target_exps = [e for e in EXPERIMENTS if exp_ids is None or e["id"] in exp_ids]
+
     print("=" * 65)
     print("  건강식품 RAG 챗봇 검색 품질 평가 v2")
     print(f"  실행 시각: {RUN_TIMESTAMP}")
+    print(f"  실행 실험: {[e['id'] for e in target_exps]}")
     print(f"  테스트 케이스: {len(TEST_CASES)}개")
     print(f"  결과 저장 위치: {RESULTS_DIR}")
     print("=" * 65)
 
     all_results = []
 
-    for exp in EXPERIMENTS:
+    for exp in target_exps:
         print(f"\n{'='*65}")
         print(f"  {exp['label']}")
         print(f"  {exp['desc']}")
@@ -550,13 +601,13 @@ def main():
         print(f"    MRR={s['mrr']:.4f}  평균유사도={s['avg_top1_sim']:.4f}  등급={s['grade']}")
         print(f"  진단: 검색실패={len(d['search_fail'])}건  순위실패={len(d['rank_fail'])}건  리랭크악화={len(d['rerank_hurt'])}건")
 
-        csv_path = save_per_query_csv(result)
-        print(f"  저장: {csv_path.name}")
+        md_path = save_per_query_md(result)
+        print(f"  저장: {md_path.name}")
 
-    # 요약 CSV + JSON
-    summary_csv = save_summary_csv(all_results)
+    # 요약 마크다운 + JSON
+    summary_md   = save_summary_md(all_results)
     summary_json = save_summary_json(all_results)
-    print(f"\n비교 요약 저장: {summary_csv.name}")
+    print(f"\n비교 요약 저장: {summary_md.name}")
     print(f"전체 결과 저장: {summary_json.name}")
 
     # 최종 비교 테이블 출력
@@ -578,4 +629,8 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--exp", nargs="+", type=int,
+                        help="실행할 실험 ID (예: --exp 5 6 7). 미지정 시 전체 실행")
+    args = parser.parse_args()
+    main(exp_ids=args.exp)

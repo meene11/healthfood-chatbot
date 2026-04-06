@@ -81,7 +81,7 @@ def chunk_to_row(chunk: dict, embedding: list[float]) -> dict:
 
 def main():
     print("=" * 60)
-    print("Supabase 벡터 DB 업로드 (실험 5 — bge-m3)")
+    print("Supabase 벡터 DB 업로드 (실험 5 - bge-m3)")
     print(f"모델: {EMBED_MODEL_NAME} ({EMBED_DIMENSION}차원)")
     print(f"테이블: {TABLE_NAME}")
     print("=" * 60)
