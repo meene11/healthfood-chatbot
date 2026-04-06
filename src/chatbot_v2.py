@@ -231,6 +231,38 @@ def hybrid_search(query: str) -> list[dict]:
     return results
 
 
+def keyword_fallback_search(query: str, exclude_ids: set) -> list[dict]:
+    """리랭킹 점수가 낮을 때 핵심 키워드로 DB 직접 검색 (ilike).
+    벡터 검색이 의미적 정의를 찾지 못할 때 보완.
+    예: '퓨린이 뭐야?' → '퓨린' 키워드로 DB에서 직접 찾음
+    """
+    import re
+    # 조사/어미 제거 후 2글자 이상 명사 추출
+    particles = r'(이|가|은|는|을|를|의|에|에서|로|으로|와|과|이야|야|뭐야|란|이란|\?|은\?|가\?)$'
+    nouns = []
+    for word in query.split():
+        cleaned = re.sub(particles, '', word.strip())
+        if len(cleaned) >= 2 and cleaned not in {'뭐야', '무엇', '어떻게', '왜', '언제', '어디'}:
+            nouns.append(cleaned)
+
+    results = []
+    seen = set(exclude_ids)
+    for noun in nouns[:2]:  # 최대 2개 명사만 검색
+        try:
+            resp = supabase.table("documents_v2").select(
+                "id, content, source_file, category, token_count"
+            ).ilike("content", f"%{noun}%").limit(5).execute()
+            for r in (resp.data or []):
+                if r["id"] not in seen:
+                    seen.add(r["id"])
+                    r["combined_score"] = 0.35   # 폴백 임시 점수
+                    r["rerank_score"]   = 0.0
+                    results.append(r)
+        except Exception:
+            pass
+    return results
+
+
 def multi_query_search(queries: list[str]) -> list[dict]:
     """여러 쿼리를 병렬 실행 후 결과 병합 (중복 제거)"""
     seen_ids = set()
@@ -294,16 +326,17 @@ OFF_TOPIC_KEYWORDS = [
 
 SYSTEM_PROMPT = """당신은 건강식품과 다이어트 전문 상담사입니다.
 
-[절대 규칙 — 할루시네이션 방지]
-1. 반드시 [참고 자료]에 있는 내용만으로 답변하세요.
-2. [참고 자료]에 없는 내용은 절대 지어내지 마세요.
-3. 모르면 "보유한 자료에서 해당 정보를 찾을 수 없습니다"라고 답변하세요.
-4. 추측, 일반 상식, 외부 지식으로 보충하지 마세요.
+[답변 규칙]
+1. [참고 자료]에 직접적인 답이 있으면 그 내용을 중심으로 답변하세요.
+2. 직접적인 답이 없더라도 관련 내용(성분, 효과, 주의사항 등)이 조금이라도 있으면 그것을 기반으로 최선을 다해 답변하세요.
+3. 자료에 전혀 관련 내용이 없을 때만 "보유한 자료에서 찾을 수 없습니다"라고 안내하세요.
+4. 자료에 없는 내용을 지어내거나 추측하지 마세요.
 5. 의학적 진단이나 처방은 하지 말고 "전문 의사 상담을 권장합니다"라고 안내하세요.
 
 답변 원칙:
 - 한국어로 친절하고 명확하게 답변하세요
 - [자료 N] 형태로 출처를 반드시 표시하세요
+- 부분적인 정보라도 "자료에 따르면..." 형태로 성실하게 전달하세요
 - 건강식품, 다이어트, 영양소 이외의 주제는 "전문 영역이 아닙니다"라고 답변하세요"""
 
 
@@ -394,6 +427,16 @@ def rag_chain(user_input: str, history: list[dict]) -> tuple[str, list[dict], li
     print(f"  [3] Reranking {len(raw_docs)}개...", end=" ", flush=True)
     ranked_docs = rerank_documents(user_input, raw_docs)
     print(f"→ {len(ranked_docs)}개 통과 ({time.time()-t2:.1f}s)")
+
+    # 리랭킹 점수가 모두 낮으면 키워드 폴백 검색으로 보완
+    LOW_RERANK_THRESHOLD = -3.0
+    if ranked_docs and max(d.get("rerank_score", -999) for d in ranked_docs) < LOW_RERANK_THRESHOLD:
+        already_found = {d.get("id") for d in raw_docs if d.get("id")}
+        fallback_docs = keyword_fallback_search(user_input, already_found)
+        if fallback_docs:
+            print(f"  [키워드 폴백] {len(fallback_docs)}개 추가")
+            ranked_docs = (fallback_docs + ranked_docs)[:RERANK_TOP_K]
+
     print(f"  총 검색: {time.time()-t0:.1f}s")
 
     if not ranked_docs:
@@ -416,9 +459,10 @@ def rag_chain(user_input: str, history: list[dict]) -> tuple[str, list[dict], li
     user_msg = (
         f"{history_text}사용자: {user_input}\n\n"
         "위 [참고 자료]를 바탕으로 한국어로 친절하게 답변해주세요. "
-        "[자료 N] 형태로 출처를 표시하세요. "
-        "자료에 직접적인 답이 없더라도 관련 내용이 있으면 연결해서 답변하세요. "
-        "정말 관련 내용이 전혀 없을 때만 모른다고 하세요."
+        "[자료 N] 형태로 출처를 반드시 표시하세요. "
+        "자료에 직접적인 정의나 설명이 없더라도, 관련 성분·효과·주의사항 등 부분적인 정보라도 있으면 그것을 기반으로 성실하게 답변하세요. "
+        "예를 들어 '퓨린이 뭐야?'라는 질문에 퓨린의 정의는 없지만 퓨린 함량이나 통풍 관련 내용이 있다면 그 내용을 알려주세요. "
+        "자료에 전혀 관련 내용이 없을 때만 모른다고 하세요."
     )
 
     # 7. Streaming 답변
