@@ -89,6 +89,19 @@ EXPERIMENTS = [
         "text_weight": 0.3,
         "top_k": 5,
         "reranker": "bge-reranker-v2-m3",
+        "rpc": "hybrid_search",
+    },
+    {
+        "id": 5,
+        "name": "Exp5_BGE_M3_Embedding",
+        "label": "실험 5: BGE-M3 임베딩 + 청킹 200토큰",
+        "desc": "임베딩 bge-m3(1024차원) + 청크 200토큰 + BGE 리랭커 → documents_v2",
+        "vector_weight": 0.7,
+        "text_weight": 0.3,
+        "top_k": 5,
+        "reranker": "bge-reranker-v2-m3",
+        "rpc": "hybrid_search_v2",
+        "embed_model": "BAAI/bge-m3",
     },
 ]
 
@@ -146,11 +159,24 @@ TEST_CASES = [
 # 검색 함수
 # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-def get_embedding(text: str) -> list[float]:
-    return embed_model.encode(
-        f"query: {text[:MAX_CONTENT]}",
-        normalize_embeddings=True
-    ).tolist()
+# 실험별로 임베딩 모델을 교체할 수 있도록 캐시
+_embed_cache: dict[str, SentenceTransformer] = {}
+
+def get_embed_model(model_name: str) -> SentenceTransformer:
+    if model_name not in _embed_cache:
+        print(f"  임베딩 모델 로딩: {model_name}")
+        _embed_cache[model_name] = SentenceTransformer(model_name)
+    return _embed_cache[model_name]
+
+
+def get_embedding(text: str, model_name: str = "intfloat/multilingual-e5-small") -> list[float]:
+    """실험에 따라 모델 선택. e5는 query 프리픽스 필요, bge-m3는 불필요."""
+    model = get_embed_model(model_name)
+    if "e5" in model_name:
+        input_text = f"query: {text[:MAX_CONTENT]}"
+    else:
+        input_text = text[:MAX_CONTENT]
+    return model.encode(input_text, normalize_embeddings=True).tolist()
 
 
 def detect_category(query: str) -> str | None:
@@ -160,14 +186,15 @@ def detect_category(query: str) -> str | None:
     return None
 
 
-def search(query: str, vector_weight: float, text_weight: float, top_k: int) -> list[dict]:
-    """Supabase hybrid_search 호출 (실험 파라미터 적용)"""
-    embedding = get_embedding(query)
+def search(query: str, vector_weight: float, text_weight: float, top_k: int,
+           rpc: str = "hybrid_search", model_name: str = "intfloat/multilingual-e5-small") -> list[dict]:
+    """Supabase hybrid_search 호출 (실험 파라미터 + RPC 이름 + 임베딩 모델 선택)"""
+    embedding = get_embedding(query, model_name)
     category_filter = detect_category(query)
 
     def _run(cat_filter):
         try:
-            res = supabase.rpc("hybrid_search", {
+            res = supabase.rpc(rpc, {
                 "query_embedding": embedding,
                 "query_text": query,
                 "match_count": top_k,
@@ -291,6 +318,8 @@ def run_experiment(config: dict) -> dict:
     text_weight   = config["text_weight"]
     top_k         = config["top_k"]
     reranker_type = config["reranker"]
+    rpc_name      = config.get("rpc", "hybrid_search")
+    model_name    = config.get("embed_model", "intfloat/multilingual-e5-small")
 
     per_query = []
     judged_hits1, judged_hits3, judged_hits5 = [], [], []
@@ -312,7 +341,7 @@ def run_experiment(config: dict) -> dict:
         print(f"  [{idx:02d}/{total}] {query[:40]}", end=" ... ", flush=True)
 
         t0 = time.time()
-        raw_docs = search(query, vector_weight, text_weight, top_k)
+        raw_docs = search(query, vector_weight, text_weight, top_k, rpc_name, model_name)
         search_time = time.time() - t0
 
         if not raw_docs:
