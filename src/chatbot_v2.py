@@ -1,13 +1,20 @@
 """
-건강식품 RAG 챗봇 v2 (100% 무료)
-- Parent-Child Retrieval: 자식 검색 → 부모 컨텍스트
-- Hybrid Search: 벡터 + 키워드(BM25) 결합
-- Query Rewriting: 질문 재작성으로 검색 최적화
-- Multi-Query: 3가지 관점으로 검색 확장
-- Cross-Encoder Reranking: 관련 없는 결과 제거
-- Streaming 답변 + 출처 메타데이터 표시
-- LCEL 체인 패턴
-- Memory Bank: 세션 간 사용자 정보 기억
+건강식품 RAG 챗봇 v2 — BGE-M3 고도화 버전
+============================================
+실험 5 결과 적용 (Hit@5: 0.706 → 0.941, MRR: 0.629 → 0.828)
+
+변경 사항:
+- 임베딩: multilingual-e5-small(384d) → BAAI/bge-m3(1024d)
+- 검색 DB: documents(8,760청크) → documents_v2(18,682청크, 200토큰)
+- RPC: hybrid_search → hybrid_search_v2
+- 청킹: 400토큰 → 200토큰 (핵심 내용 밀도 향상)
+
+유지 사항:
+- Query Rewriting + Multi-Query (GPT-4o-mini, 1회 API 호출)
+- Hybrid Search (벡터 0.7 + BM25 0.3)
+- BGE Cross-Encoder Reranking (BAAI/bge-reranker-v2-m3)
+- Streaming 답변 + 출처 메타데이터
+- Memory Bank (세션 간 사용자 정보 기억)
 """
 import warnings
 warnings.filterwarnings("ignore")
@@ -33,10 +40,12 @@ SUPABASE_KEY   = os.environ["SUPABASE_KEY"]
 OPENAI_API_KEY = os.environ["OPENAI_API_KEY"]
 
 # ── 모델 로드 ────────────────────────────────────────────────────────
+# bge-m3: 1024차원, 한/영 혼재 학술 텍스트에서 e5-small 대비 검색 품질 대폭 향상
+# 실험 5 결과: Hit@5 0.706→0.941, MRR 0.629→0.828
 print("모델 로딩 중...")
-embed_model = SentenceTransformer("intfloat/multilingual-e5-small")
+embed_model = SentenceTransformer("BAAI/bge-m3")
 rerank_model = CrossEncoder("BAAI/bge-reranker-v2-m3")
-print("임베딩 + 리랭킹 모델 로드 완료!")
+print("임베딩(bge-m3) + 리랭킹(bge-reranker) 모델 로드 완료!")
 
 supabase: Client = create_client(SUPABASE_URL, SUPABASE_KEY)
 llm_client = OpenAI(api_key=OPENAI_API_KEY)
@@ -166,7 +175,8 @@ def generate_search_queries(user_input: str) -> list[str]:
 # 3단계: Hybrid Search — 벡터 + 키워드 검색 결합
 # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 def get_query_embedding(text: str) -> list[float]:
-    emb = embed_model.encode(f"query: {text[:MAX_CONTENT]}", normalize_embeddings=True)
+    # bge-m3는 프리픽스 불필요 (e5-small은 "query: " 필요했음)
+    emb = embed_model.encode(text[:MAX_CONTENT], normalize_embeddings=True)
     return emb.tolist()
 
 
@@ -179,9 +189,11 @@ def detect_query_category(query: str) -> str | None:
 
 
 def _run_hybrid_search(query_embedding: list[float], query: str, category_filter: str | None) -> list[dict]:
-    """실제 Supabase 검색 실행 (카테고리 필터 선택 적용)"""
+    """실제 Supabase 검색 실행 — documents_v2 테이블 (bge-m3 1024차원)
+    hybrid_search_v2 실패 시 match_documents_v2(벡터 검색 전용)으로 폴백
+    """
     try:
-        result = supabase.rpc("hybrid_search", {
+        result = supabase.rpc("hybrid_search_v2", {
             "query_embedding": query_embedding,
             "query_text": query,
             "match_count": TOP_K,
@@ -191,23 +203,16 @@ def _run_hybrid_search(query_embedding: list[float], query: str, category_filter
         }).execute()
         return result.data or []
     except Exception:
-        try:
-            params = {
-                "query_embedding": query_embedding,
-                "match_threshold": 0.3,
-                "match_count": TOP_K,
-            }
-            if category_filter:
-                params["filter_category"] = category_filter
-            result = supabase.rpc("match_children_return_parents", params).execute()
-            return result.data or []
-        except Exception:
-            result = supabase.rpc("match_documents", {
-                "query_embedding": query_embedding,
-                "match_threshold": 0.3,
-                "match_count": TOP_K,
-            }).execute()
-            return result.data or []
+        # 폴백: 벡터 유사도 검색만 (BM25 없이)
+        params = {
+            "query_embedding": query_embedding,
+            "match_threshold": 0.3,
+            "match_count": TOP_K,
+        }
+        if category_filter:
+            params["filter_category"] = category_filter
+        result = supabase.rpc("match_documents_v2", params).execute()
+        return result.data or []
 
 
 def hybrid_search(query: str) -> list[dict]:
@@ -237,7 +242,8 @@ def multi_query_search(queries: list[str]) -> list[dict]:
             try:
                 docs = future.result()
                 for doc in docs:
-                    doc_id = doc.get("parent_id") or doc.get("id")
+                    # documents_v2는 'id' 필드 사용 (parent-child 구조 없음)
+                    doc_id = doc.get("id")
                     if doc_id and doc_id not in seen_ids:
                         seen_ids.add(doc_id)
                         all_docs.append(doc)
@@ -254,11 +260,13 @@ def rerank_documents(query: str, docs: list[dict]) -> list[dict]:
     """BGE 다국어 크로스인코더 리랭킹 (BAAI/bge-reranker-v2-m3)
     한국어/영어 혼재 문서에서 의미 기반 관련성 점수를 직접 계산.
     실험 4 결과: 기존 키워드 보너스 대비 Hit@1 +11.7%, MRR +6.5% 향상.
+    documents_v2는 'content' 키 사용 (parent_content 없음).
     """
     if not docs:
         return []
 
-    content_key = "parent_content" if "parent_content" in docs[0] else "content"
+    # documents_v2: 항상 'content' 키 사용
+    content_key = "content"
 
     # (질문, 문서) 쌍으로 크로스인코더에 입력
     pairs = [(query, doc.get(content_key, "")[:1000]) for doc in docs]
@@ -306,7 +314,8 @@ def format_context_with_sources(docs: list[dict]) -> tuple[str, list[dict]]:
 
     context_parts = []
     sources = []
-    content_key = "parent_content" if "parent_content" in docs[0] else "content"
+    # documents_v2: 항상 'content' 키 사용 (parent-child 구조 없음)
+    content_key = "content"
 
     for i, doc in enumerate(docs, 1):
         source_file = doc.get("source_file", "알 수 없음")
@@ -445,12 +454,14 @@ def rag_chain(user_input: str, history: list[dict]) -> tuple[str, list[dict], li
 # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 def main():
     print("=" * 60)
-    print("  건강식품·다이어트 RAG 챗봇 v2")
-    print("  ─────────────────────────────")
-    print("  임베딩: multilingual-e5-small (로컬, 무료)")
-    print("  리랭킹: BGE-reranker-v2-m3 Cross-Encoder (로컬, 무료, 한/영 지원)")
-    print("  LLM: GPT-4o-mini (OpenAI — 질문 1회 약 0.1원)")
-    print("  검색: Hybrid (벡터 + 키워드) + Multi-Query")
+    print("  건강식품·다이어트 RAG 챗봇 v2 [BGE-M3 고도화]")
+    print("  ─────────────────────────────────────────────")
+    print("  임베딩: BAAI/bge-m3 1024차원 (로컬, 무료, 한/영 최적화)")
+    print("  DB:     documents_v2 — 18,682청크 / 200토큰")
+    print("  리랭킹: BGE-reranker-v2-m3 Cross-Encoder (로컬, 무료)")
+    print("  LLM:    GPT-4o-mini (OpenAI — 질문 1회 약 0.1원)")
+    print("  검색:   Hybrid (벡터 0.7 + BM25 0.3) + Multi-Query")
+    print("  성능:   Hit@5=0.941, MRR=0.828 (실험 5 기준)")
     print("  명령어: '메모리보기' | '메모리초기화' | 'quit'")
     print("=" * 60)
 
