@@ -35,7 +35,7 @@ OPENAI_API_KEY = os.environ["OPENAI_API_KEY"]
 # ── 모델 로드 ────────────────────────────────────────────────────────
 print("모델 로딩 중...")
 embed_model = SentenceTransformer("intfloat/multilingual-e5-small")
-rerank_model = CrossEncoder("cross-encoder/ms-marco-MiniLM-L-6-v2")
+rerank_model = CrossEncoder("BAAI/bge-reranker-v2-m3")
 print("임베딩 + 리랭킹 모델 로드 완료!")
 
 supabase: Client = create_client(SUPABASE_URL, SUPABASE_KEY)
@@ -251,24 +251,21 @@ def multi_query_search(queries: list[str]) -> list[dict]:
 # 4단계: Cross-Encoder Reranking — 관련 없는 결과 제거
 # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 def rerank_documents(query: str, docs: list[dict]) -> list[dict]:
-    """하이브리드 리랭킹: 검색 점수(90%) + 한국어 키워드 매칭 보너스"""
+    """BGE 다국어 크로스인코더 리랭킹 (BAAI/bge-reranker-v2-m3)
+    한국어/영어 혼재 문서에서 의미 기반 관련성 점수를 직접 계산.
+    실험 4 결과: 기존 키워드 보너스 대비 Hit@1 +11.7%, MRR +6.5% 향상.
+    """
     if not docs:
         return []
 
     content_key = "parent_content" if "parent_content" in docs[0] else "content"
 
-    # 질문에서 핵심 키워드 추출
-    query_keywords = [w for w in query.split() if len(w) >= 2]
+    # (질문, 문서) 쌍으로 크로스인코더에 입력
+    pairs = [(query, doc.get(content_key, "")[:1000]) for doc in docs]
+    scores = rerank_model.predict(pairs)
 
-    for doc in docs:
-        search_score = doc.get("combined_score") or doc.get("similarity") or 0
-        content = doc.get(content_key, "")
-
-        # 한국어 키워드 매칭 보너스 (0~0.2)
-        keyword_hits = sum(1 for kw in query_keywords if kw in content)
-        keyword_bonus = min(keyword_hits * 0.05, 0.2)
-
-        doc["rerank_score"] = float(search_score) + keyword_bonus
+    for doc, score in zip(docs, scores):
+        doc["rerank_score"] = float(score)
 
     ranked = sorted(docs, key=lambda x: x["rerank_score"], reverse=True)
     return ranked[:RERANK_TOP_K]
@@ -451,7 +448,7 @@ def main():
     print("  건강식품·다이어트 RAG 챗봇 v2")
     print("  ─────────────────────────────")
     print("  임베딩: multilingual-e5-small (로컬, 무료)")
-    print("  리랭킹: ms-marco-MiniLM Cross-Encoder (로컬, 무료)")
+    print("  리랭킹: BGE-reranker-v2-m3 Cross-Encoder (로컬, 무료, 한/영 지원)")
     print("  LLM: GPT-4o-mini (OpenAI — 질문 1회 약 0.1원)")
     print("  검색: Hybrid (벡터 + 키워드) + Multi-Query")
     print("  명령어: '메모리보기' | '메모리초기화' | 'quit'")
