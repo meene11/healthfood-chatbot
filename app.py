@@ -33,9 +33,18 @@ try:
 except Exception:
     pass
 
-SUPABASE_URL   = os.environ.get("SUPABASE_URL", st.secrets.get("SUPABASE_URL", ""))
-SUPABASE_KEY   = os.environ.get("SUPABASE_KEY", st.secrets.get("SUPABASE_KEY", ""))
-OPENAI_API_KEY = os.environ.get("OPENAI_API_KEY", st.secrets.get("OPENAI_API_KEY", ""))
+def _get_secret(key: str) -> str:
+    val = os.environ.get(key, "")
+    if not val:
+        try:
+            val = st.secrets.get(key, "")
+        except Exception:
+            pass
+    return val
+
+SUPABASE_URL   = _get_secret("SUPABASE_URL")
+SUPABASE_KEY   = _get_secret("SUPABASE_KEY")
+OPENAI_API_KEY = _get_secret("OPENAI_API_KEY")
 
 # ── 설정값 ────────────────────────────────────────────────────────────
 TOP_K          = 10
