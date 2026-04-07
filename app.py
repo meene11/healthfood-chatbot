@@ -492,7 +492,7 @@ if user_input := st.chat_input("건강 관련 질문을 입력하세요..."):
 
             # 4. 컨텍스트 구성
             context, sources = build_context(ranked_docs)
-            status.update(label="답변 생성 중...", state="running")
+            status.update(label="자료 준비 완료", state="complete")
 
         # 5. 메모리 + 히스토리 구성
         memory      = load_memory()
