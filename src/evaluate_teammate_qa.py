@@ -1,22 +1,18 @@
 """
 조원 QA 데이터 기반 챗봇 평가 스크립트 (다중 모델 비교 지원)
 =============================================================
+[실험 8] 모델 비교: GPT-4o-mini vs Llama 3.3 70B vs Gemini 1.5 Flash
+
 평가 지표:
-  1. 검색 커버리지 (Retrieval Coverage, 0~1):
-     - 검색된 문서에 source_content 핵심 키워드가 포함되는지 측정
-  2. 답변 품질 (Answer Quality, 0~3) — LLM-as-Judge:
-     - 0: 관련 없는 답변 / 모름
-     - 1: 부분 정답 (핵심 누락)
-     - 2: 대부분 맞음 (약간 불완전)
-     - 3: 완전 정답 (정확하고 충분한 답변)
+  1. 검색 커버리지 (Retrieval Coverage, 0~1)
+  2. 답변 품질 (Answer Quality, 0~3) — LLM-as-Judge
   3. 응답 시간 (Response Time, 초)
 
 실행:
   python src/evaluate_teammate_qa.py                          # gpt-4o-mini (기본)
-  python src/evaluate_teammate_qa.py --model gpt-4o           # GPT-4o
-  python src/evaluate_teammate_qa.py --model claude-haiku     # Claude Haiku 4.5
+  python src/evaluate_teammate_qa.py --model groq-llama       # Llama 3.3 70B (Groq)
+  python src/evaluate_teammate_qa.py --model gemini-flash     # Gemini 1.5 Flash
   python src/evaluate_teammate_qa.py --n 30                   # 처음 30개만
-  python src/evaluate_teammate_qa.py --model gpt-4o --n 30
 
 모델 비교 결과는 results/model_comparison/ 디렉토리에 저장됨.
 """
@@ -76,7 +72,14 @@ MODEL_CONFIGS = {
     "groq-llama": {
         "provider":   "groq",
         "model_id":   "llama-3.3-70b-versatile",
-        "label":      "Llama 3.3 70B (Groq 무료 API)",
+        "label":      "Llama 3.3 70B (Groq 무료)",
+        "max_tokens": 1024,
+        "temperature": 0.3,
+    },
+    "gemini-flash": {
+        "provider":   "gemini",
+        "model_id":   "models/gemini-flash-lite-latest",
+        "label":      "Gemini Flash Lite (Google 무료)",
         "max_tokens": 1024,
         "temperature": 0.3,
     },
@@ -116,6 +119,17 @@ def build_llm_client(model_name: str):
             raise ValueError("GROQ_API_KEY가 .env에 없습니다.")
         return OpenAI(api_key=groq_key, base_url="https://api.groq.com/openai/v1")
 
+    elif cfg["provider"] == "gemini":
+        from openai import OpenAI
+        google_key = os.environ.get("GOOGLE_API_KEY", "")
+        if not google_key:
+            raise ValueError("GOOGLE_API_KEY가 .env에 없습니다.")
+        # Google의 OpenAI 호환 엔드포인트 사용 (deprecated google-generativeai 불필요)
+        return OpenAI(
+            api_key=google_key,
+            base_url="https://generativelanguage.googleapis.com/v1beta/openai/",
+        )
+
     raise ValueError(f"알 수 없는 provider: {cfg['provider']}")
 
 
@@ -143,6 +157,19 @@ def generate_answer(llm_client, model_name: str, system_msg: str, user_msg: str)
             messages=[{"role": "user", "content": user_msg}],
         )
         return resp.content[0].text.strip()
+
+    elif cfg["provider"] == "gemini":
+        # OpenAI 호환 엔드포인트 — openai 클라이언트 그대로 사용
+        resp = llm_client.chat.completions.create(
+            model=cfg["model_id"],
+            messages=[
+                {"role": "system", "content": system_msg},
+                {"role": "user",   "content": user_msg},
+            ],
+            max_tokens=cfg["max_tokens"],
+            temperature=cfg["temperature"],
+        )
+        return resp.choices[0].message.content.strip()
 
     return ""
 
@@ -268,6 +295,18 @@ def judge_answer(
                 messages=[{"role": "user", "content": prompt}],
             )
             raw = resp.content[0].text.strip()
+
+        elif cfg["provider"] == "gemini":
+            resp = llm_client.chat.completions.create(
+                model=cfg["model_id"],
+                messages=[{"role": "user", "content": prompt}],
+                max_tokens=150,
+                temperature=0.0,
+            )
+            raw = resp.choices[0].message.content.strip()
+            import re as _re
+            m = _re.search(r'\{.*?\}', raw, _re.DOTALL)
+            raw = m.group(0) if m else raw
 
         result = json.loads(raw)
         score  = int(result.get("score", 0))
