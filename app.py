@@ -460,11 +460,17 @@ if user_input := st.chat_input("건강 관련 질문을 입력하세요..."):
         # 진행 상태 표시
         with st.status("검색 중...", expanded=False) as status:
             # 1. 쿼리 생성
-            status.update(label="검색 쿼리 생성 중...")
-            queries = generate_queries(user_input)
+            # HyDE ON: 쿼리 확장 없이 HyDE 단독 적용 (효과 극대화)
+            # HyDE OFF: 쿼리 확장으로 4개 병렬 검색
+            if use_hyde:
+                status.update(label="HyDE 가상 문서 생성 중...")
+                queries = [user_input]
+            else:
+                status.update(label="검색 쿼리 생성 중...")
+                queries = generate_queries(user_input)
 
             # 2. 검색
-            status.update(label=f"관련 자료 검색 중... ({len(queries)}개 쿼리{'  HyDE' if use_hyde else ''})")
+            status.update(label=f"관련 자료 검색 중... ({'HyDE 임베딩' if use_hyde else f'{len(queries)}개 쿼리 확장'})")
             raw_docs = multi_query_search(queries, use_hyde=use_hyde)
 
             if not raw_docs:
