@@ -1,20 +1,15 @@
 """
-모델 비교 평가 결과 시각화 스크립트
-현재 평가 완료: GPT-4o-mini
-향후 추가 모델 결과가 생기면 자동으로 비교 차트에 반영됨
+실험 8: 3개 모델 비교 시각화 스크립트
+GPT-4o-mini vs Llama 3.3 70B vs Gemini Flash Lite
 """
-
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
-import matplotlib.patches as mpatches
-import numpy as np
-import json
-import os
-from pathlib import Path
 import matplotlib.font_manager as fm
+import numpy as np
+import json, os
+from pathlib import Path
 
-# 한글 폰트
 def set_korean_font():
     for font in ["Malgun Gothic", "맑은 고딕", "NanumGothic", "AppleGothic"]:
         if font in [f.name for f in fm.fontManager.ttflist]:
@@ -23,277 +18,237 @@ def set_korean_font():
     plt.rcParams["axes.unicode_minus"] = False
 
 set_korean_font()
-
 OUTPUT_DIR = Path(__file__).parent
 
-# ── 데이터 로드 ───────────────────────────────────────────────────────
-def load_all_results() -> list[dict]:
+def load_results():
     results = []
     for f in sorted(OUTPUT_DIR.glob("eval_*.json")):
         try:
             d = json.loads(f.read_text(encoding="utf-8"))
             results.append(d)
-        except Exception as e:
-            print(f"  [SKIP] {f.name}: {e}")
+        except:
+            pass
+    order = {"gpt-4o-mini": 0, "groq-llama": 1, "gemini-flash": 2}
+    results.sort(key=lambda x: order.get(x["model"], 9))
     return results
 
-all_results = load_all_results()
-print(f"로드된 모델 결과: {len(all_results)}개")
-for r in all_results:
-    print(f"  - {r['label']}: quality={r['avg_quality']}, coverage={r['avg_coverage']}")
+data = load_results()
+print(f"로드된 모델: {[d['label'] for d in data]}")
 
-# ── 현재 GPT-4o-mini 상세 데이터 ────────────────────────────────────
-current = all_results[0]  # gpt-4o-mini
-LABEL   = current["label"]
-N       = current["n_valid"]
+labels_short = ["GPT-4o-mini", "Llama 3.3 70B\n(Groq 무료)", "Gemini Flash\nLite (무료)"]
+qualities  = [d["avg_quality"] for d in data]
+coverages  = [d["avg_coverage"] for d in data]
+times      = [d["avg_time"] for d in data]
+n          = data[0]["n_valid"]
 
-# 질문별 raw 데이터
-items = current["results"]
-coverages = [r["coverage"] for r in items if r["quality_score"] >= 0]
-qualities = [r["quality_score"] for r in items if r["quality_score"] >= 0]
-times     = [r["total_sec"]    for r in items if r["quality_score"] >= 0]
-cats      = [r["category"]     for r in items if r["quality_score"] >= 0]
+dist    = [{int(k): v for k, v in d["quality_dist"].items()} for d in data]
+perfect = [dd.get(3, 0) for dd in dist]
+mostly  = [dd.get(2, 0) for dd in dist]
+partial = [dd.get(1, 0) for dd in dist]
+wrong   = [dd.get(0, 0) for dd in dist]
 
-q_dist = current["quality_dist"]
-cat_avg = current["cat_avg"]
+MODEL_COLORS = ["#4C72B0", "#DD8452", "#55A868"]
+x = np.arange(len(data))
 
-# ── 차트 1: 답변 품질 분포 (파이 차트) ───────────────────────────────
-fig, axes = plt.subplots(1, 2, figsize=(12, 5))
-
-labels_pie = ["3점\n완전정답", "2점\n대부분정확", "1점\n부분정답", "0점\n오답/모름"]
-sizes      = [int(q_dist.get("3", 0)), int(q_dist.get("2", 0)),
-              int(q_dist.get("1", 0)), int(q_dist.get("0", 0))]
-colors_pie = ["#4CAF50", "#8BC34A", "#FFC107", "#F44336"]
-explode    = (0.05, 0, 0, 0)
-
-wedges, texts, autotexts = axes[0].pie(
-    sizes, labels=labels_pie, colors=colors_pie, explode=explode,
-    autopct="%1.1f%%", startangle=90, textprops={"fontsize": 10}
-)
-axes[0].set_title(f"답변 품질 분포 (LLM-as-Judge)\n{LABEL} | n={N}", fontsize=12, fontweight="bold")
-
-# 바 차트 (오른쪽)
-x = np.arange(4)
-bar_labels = ["3점\n(완전정답)", "2점\n(대부분)", "1점\n(부분)", "0점\n(오답)"]
-bars = axes[1].bar(x, sizes, color=colors_pie, alpha=0.85, width=0.5)
-axes[1].set_xticks(x)
-axes[1].set_xticklabels(bar_labels, fontsize=10)
-axes[1].set_ylabel("문항 수", fontsize=11)
-axes[1].set_title("품질 점수별 문항 수", fontsize=12, fontweight="bold")
-axes[1].yaxis.grid(True, alpha=0.3)
-axes[1].set_axisbelow(True)
-for bar, v in zip(bars, sizes):
-    axes[1].text(bar.get_x() + bar.get_width()/2, v + 0.3, str(v),
-                 ha="center", va="bottom", fontsize=11, fontweight="bold")
-
-plt.tight_layout()
-out = OUTPUT_DIR / "chart_qa1_quality_dist.png"
-plt.savefig(out, dpi=150, bbox_inches="tight")
-plt.close()
-print(f"저장: {out.name}")
-
-# ── 차트 2: 카테고리별 품질 & 커버리지 ───────────────────────────────
-fig, ax = plt.subplots(figsize=(9, 5))
-cat_order = sorted(cat_avg.keys())
-cat_quality  = [cat_avg[c] for c in cat_order]
-
-from collections import defaultdict
-cat_cov_map = defaultdict(list)
-for r in items:
-    if r["quality_score"] >= 0:
-        cat_cov_map[r["category"]].append(r["coverage"])
-cat_cov = [sum(cat_cov_map[c])/len(cat_cov_map[c]) if cat_cov_map[c] else 0 for c in cat_order]
-cat_n   = [len(cat_cov_map[c]) for c in cat_order]
-
-xc = np.arange(len(cat_order))
-w  = 0.3
-b1 = ax.bar(xc - w/2, cat_quality, w, label="평균 품질 (0~3)", color="#4C72B0", alpha=0.85)
-b2 = ax.bar(xc + w/2, cat_cov,     w, label="평균 커버리지 (0~1)", color="#55A868", alpha=0.85)
-
-ax.set_xticks(xc)
-cat_labels_with_n = [f"{c}\n(n={cat_n[i]})" for i, c in enumerate(cat_order)]
-ax.set_xticklabels(cat_labels_with_n, fontsize=10)
-ax.set_ylim(0, 3.2)
-ax.set_ylabel("점수", fontsize=11)
-ax.set_title(f"카테고리별 평균 품질 vs 검색 커버리지\n{LABEL}", fontsize=12, fontweight="bold")
-ax.legend(fontsize=10)
-ax.yaxis.grid(True, alpha=0.3)
-ax.set_axisbelow(True)
-
-for bar, v in zip(b1, cat_quality):
-    ax.text(bar.get_x() + bar.get_width()/2, v + 0.05, f"{v:.2f}",
-            ha="center", va="bottom", fontsize=9)
-for bar, v in zip(b2, cat_cov):
-    ax.text(bar.get_x() + bar.get_width()/2, v + 0.05, f"{v:.2f}",
-            ha="center", va="bottom", fontsize=9)
-
-plt.tight_layout()
-out = OUTPUT_DIR / "chart_qa2_category.png"
-plt.savefig(out, dpi=150, bbox_inches="tight")
-plt.close()
-print(f"저장: {out.name}")
-
-# ── 차트 3: 품질 vs 커버리지 산점도 ─────────────────────────────────
-fig, ax = plt.subplots(figsize=(8, 6))
-jitter_y = np.array(qualities) + np.random.uniform(-0.08, 0.08, len(qualities))
-
-cat_color_map = {"general": "#4C72B0", "diet": "#55A868", "research": "#C44E52", "review": "#8172B2"}
-cat_list = list(cat_color_map.keys())
-for cat in cat_list:
-    idx = [i for i, c in enumerate(cats) if c == cat]
-    if idx:
-        xp = [coverages[i] for i in idx]
-        yp = [jitter_y[i] for i in idx]
-        ax.scatter(xp, yp, label=cat, color=cat_color_map[cat], alpha=0.7, s=70)
-
-ax.set_xlabel("검색 커버리지 (source_content 키워드 포함률)", fontsize=11)
-ax.set_ylabel("답변 품질 점수 (0~3)", fontsize=11)
-ax.set_ylim(-0.3, 3.3)
-ax.set_xlim(-0.02, 1.0)
-ax.set_yticks([0, 1, 2, 3])
-ax.set_yticklabels(["0 (오답)", "1 (부분)", "2 (대부분)", "3 (완전정답)"])
-ax.set_title(f"검색 커버리지 vs 답변 품질 산점도\n{LABEL}", fontsize=12, fontweight="bold")
-ax.legend(title="카테고리", fontsize=9)
-ax.xaxis.grid(True, alpha=0.3)
-ax.yaxis.grid(True, alpha=0.3)
-ax.set_axisbelow(True)
-
-# 평균선
-ax.axvline(x=np.mean(coverages), color="navy", linestyle="--", alpha=0.5,
-           label=f"평균 커버리지 {np.mean(coverages):.2f}")
-ax.axhline(y=np.mean(qualities), color="darkred", linestyle="--", alpha=0.5,
-           label=f"평균 품질 {np.mean(qualities):.2f}")
-
-plt.tight_layout()
-out = OUTPUT_DIR / "chart_qa3_scatter.png"
-plt.savefig(out, dpi=150, bbox_inches="tight")
-plt.close()
-print(f"저장: {out.name}")
-
-# ── 차트 4: 응답 시간 분포 ──────────────────────────────────────────
-fig, ax = plt.subplots(figsize=(8, 4))
-ax.hist(times, bins=15, color="#4C72B0", alpha=0.8, edgecolor="white")
-ax.axvline(x=np.mean(times), color="red", linestyle="--", linewidth=1.5,
-           label=f"평균 {np.mean(times):.1f}초")
-ax.set_xlabel("응답 시간 (초)", fontsize=11)
-ax.set_ylabel("문항 수", fontsize=11)
-ax.set_title(f"응답 시간 분포\n{LABEL}", fontsize=12, fontweight="bold")
-ax.legend(fontsize=10)
-ax.yaxis.grid(True, alpha=0.3)
-ax.set_axisbelow(True)
-plt.tight_layout()
-out = OUTPUT_DIR / "chart_qa4_response_time.png"
-plt.savefig(out, dpi=150, bbox_inches="tight")
-plt.close()
-print(f"저장: {out.name}")
-
-# ── 차트 5: 종합 대시보드 (현재 + 모델 비교 계획) ────────────────────
+# ── 차트 1: 평균 품질 + 완전정답률 ───────────────────────────────────
 fig, axes = plt.subplots(1, 2, figsize=(13, 5))
 
-# 왼쪽: 현재 지표 요약 바
-metric_names = ["검색\n커버리지", "평균\n품질\n(÷3)", "완전정답\n비율"]
-pct_perfect  = int(q_dist.get("3", 0)) / N
-metric_vals  = [current["avg_coverage"], current["avg_quality"] / 3.0, pct_perfect]
-metric_colors= ["#55A868", "#4C72B0", "#C44E52"]
+bars = axes[0].bar(x, qualities, color=MODEL_COLORS, alpha=0.85, width=0.5)
+axes[0].set_xticks(x); axes[0].set_xticklabels(labels_short, fontsize=9)
+axes[0].set_ylim(0, 3.0); axes[0].set_ylabel("평균 품질 점수 (0~3)", fontsize=11)
+axes[0].set_title("모델별 평균 답변 품질\n(LLM-as-Judge, 62문항)", fontsize=12, fontweight="bold")
+axes[0].yaxis.grid(True, alpha=0.3); axes[0].set_axisbelow(True)
+for bar, v in zip(bars, qualities):
+    axes[0].text(bar.get_x()+bar.get_width()/2, v+0.03, f"{v:.3f}",
+                 ha="center", va="bottom", fontsize=11, fontweight="bold")
+bars[qualities.index(max(qualities))].set_edgecolor("gold"); bars[qualities.index(max(qualities))].set_linewidth(2.5)
 
-bars = axes[0].bar(np.arange(3), metric_vals, color=metric_colors, alpha=0.85, width=0.45)
-axes[0].set_xticks(np.arange(3))
-axes[0].set_xticklabels(metric_names, fontsize=10)
-axes[0].set_ylim(0, 1.0)
-axes[0].set_ylabel("정규화 점수 (0~1)", fontsize=11)
-axes[0].set_title(f"현재 모델 핵심 지표\n{LABEL}", fontsize=11, fontweight="bold")
-axes[0].yaxis.grid(True, alpha=0.3)
-axes[0].set_axisbelow(True)
-for bar, v in zip(bars, metric_vals):
-    axes[0].text(bar.get_x() + bar.get_width()/2, v + 0.015, f"{v:.3f}",
-                 ha="center", va="bottom", fontsize=10)
+pcts = [p/n*100 for p in perfect]
+bars2 = axes[1].bar(x, pcts, color=MODEL_COLORS, alpha=0.85, width=0.5)
+axes[1].set_xticks(x); axes[1].set_xticklabels(labels_short, fontsize=9)
+axes[1].set_ylim(0, 55); axes[1].set_ylabel("완전 정답 비율 (%)", fontsize=11)
+axes[1].set_title("모델별 완전 정답률 (3점 비율)\n(높을수록 좋음)", fontsize=12, fontweight="bold")
+axes[1].yaxis.grid(True, alpha=0.3); axes[1].set_axisbelow(True)
+for bar, v, cnt in zip(bars2, pcts, perfect):
+    axes[1].text(bar.get_x()+bar.get_width()/2, v+0.8, f"{v:.1f}%\n({cnt}개)",
+                 ha="center", va="bottom", fontsize=10, fontweight="bold")
+bars2[pcts.index(max(pcts))].set_edgecolor("gold"); bars2[pcts.index(max(pcts))].set_linewidth(2.5)
 
-# 오른쪽: 비교 예정 모델 계획 표
-axes[1].axis("off")
-plan_data = [
-    ["모델", "제공사", "비용\n($/1M 입력)", "특징", "상태"],
-    ["GPT-4o-mini", "OpenAI", "$0.15", "현재 사용\n빠름·저렴", "완료"],
-    ["GPT-4o", "OpenAI", "$2.50", "최고 성능\n추론력 강함", "예정"],
-    ["Claude\nHaiku 4.5", "Anthropic", "$0.08", "가장 빠름\n저렴·한국어 강함", "예정"],
-    ["Llama 3.3\n70B (Groq)", "Meta/Groq", "무료", "오픈소스\n무료 API", "예정"],
+plt.tight_layout()
+plt.savefig(OUTPUT_DIR/"chart_cmp1_quality.png", dpi=150, bbox_inches="tight")
+plt.close(); print("저장: chart_cmp1_quality.png")
+
+# ── 차트 2: 품질 분포 누적 바 ─────────────────────────────────────────
+fig, ax = plt.subplots(figsize=(10, 5))
+w_pct = [v/n*100 for v in wrong]
+p_pct = [v/n*100 for v in partial]
+m_pct = [v/n*100 for v in mostly]
+f_pct = [v/n*100 for v in perfect]
+
+ax.bar(x, w_pct, color="#F44336", alpha=0.85, width=0.5, label="0점 (오답/모름)")
+ax.bar(x, p_pct, color="#FFC107", alpha=0.85, width=0.5, label="1점 (부분정답)", bottom=w_pct)
+ax.bar(x, m_pct, color="#8BC34A", alpha=0.85, width=0.5, label="2점 (대부분정확)",
+       bottom=[a+b for a,b in zip(w_pct, p_pct)])
+ax.bar(x, f_pct, color="#4CAF50", alpha=0.85, width=0.5, label="3점 (완전정답)",
+       bottom=[a+b+c for a,b,c in zip(w_pct, p_pct, m_pct)])
+
+ax.set_xticks(x); ax.set_xticklabels(labels_short, fontsize=10)
+ax.set_ylim(0, 105); ax.set_ylabel("비율 (%)", fontsize=11)
+ax.set_title("모델별 답변 품질 분포 (누적 100%)\n(초록 많을수록 좋음)", fontsize=12, fontweight="bold")
+ax.legend(loc="upper right", fontsize=9)
+ax.yaxis.grid(True, alpha=0.3); ax.set_axisbelow(True)
+
+for i in range(len(data)):
+    y3 = w_pct[i] + p_pct[i] + m_pct[i] + f_pct[i]/2
+    y2 = w_pct[i] + p_pct[i] + m_pct[i]/2
+    y1 = w_pct[i] + p_pct[i]/2
+    y0 = w_pct[i]/2
+    for y, v, cnt in [(y0,w_pct[i],wrong[i]),(y1,p_pct[i],partial[i]),(y2,m_pct[i],mostly[i]),(y3,f_pct[i],perfect[i])]:
+        if v > 5:
+            ax.text(i, y, f"{v:.0f}%\n({cnt})", ha="center", va="center", fontsize=8.5, fontweight="bold")
+
+plt.tight_layout()
+plt.savefig(OUTPUT_DIR/"chart_cmp2_distribution.png", dpi=150, bbox_inches="tight")
+plt.close(); print("저장: chart_cmp2_distribution.png")
+
+# ── 차트 3: 레이더 차트 ───────────────────────────────────────────────
+categories_radar = ["평균 품질\n(÷3)", "완전정답률", "오답 회피율\n(1-오답률)", "응답 속도\n(역수)", "검색커버리지"]
+N_r = len(categories_radar)
+angles = [n2 / float(N_r) * 2 * np.pi for n2 in range(N_r)] + [0]
+max_time = max(times)
+
+fig, ax = plt.subplots(figsize=(8, 8), subplot_kw=dict(polar=True))
+for d_item, t, label, color in zip(data, times, labels_short, MODEL_COLORS):
+    dj = {int(k): v for k, v in d_item["quality_dist"].items()}
+    vals = [
+        d_item["avg_quality"] / 3.0,
+        dj.get(3,0) / n,
+        1 - dj.get(0,0) / n,
+        1 - (t / max_time),
+        d_item["avg_coverage"],
+    ]
+    vals_plot = vals + [vals[0]]
+    ax.plot(angles, vals_plot, color=color, linewidth=2, label=label.replace("\n"," "))
+    ax.fill(angles, vals_plot, color=color, alpha=0.15)
+
+ax.set_xticks(angles[:-1]); ax.set_xticklabels(categories_radar, fontsize=10)
+ax.set_ylim(0, 1); ax.set_yticks([0.2,0.4,0.6,0.8,1.0])
+ax.set_yticklabels(["0.2","0.4","0.6","0.8","1.0"], fontsize=8)
+ax.set_title("모델 종합 비교 레이더 차트\n(모든 축: 높을수록 좋음)", fontsize=13, fontweight="bold", pad=20)
+ax.legend(loc="upper right", bbox_to_anchor=(1.35, 1.1), fontsize=10)
+
+plt.tight_layout()
+plt.savefig(OUTPUT_DIR/"chart_cmp3_radar.png", dpi=150, bbox_inches="tight")
+plt.close(); print("저장: chart_cmp3_radar.png")
+
+# ── 차트 4: 카테고리별 히트맵 ────────────────────────────────────────
+cats = ["diet","general","research","review"]
+cat_labels = ["다이어트\n(n=16)","일반건강\n(n=40)","연구방법\n(n=4)","리뷰\n(n=2)"]
+hm = np.array([[d["cat_avg"].get(c,0) for c in cats] for d in data])
+
+fig, ax = plt.subplots(figsize=(9, 4))
+im = ax.imshow(hm, cmap="RdYlGn", aspect="auto", vmin=0, vmax=3)
+ax.set_xticks(range(len(cats))); ax.set_xticklabels(cat_labels, fontsize=10)
+ax.set_yticks(range(len(data))); ax.set_yticklabels(labels_short, fontsize=9)
+ax.set_title("카테고리 x 모델 품질 히트맵\n(녹색=높음, 빨강=낮음)", fontsize=12, fontweight="bold")
+for i in range(len(data)):
+    for j in range(len(cats)):
+        v = hm[i,j]
+        color = "white" if v < 0.8 or v > 2.3 else "black"
+        ax.text(j, i, f"{v:.2f}", ha="center", va="center", fontsize=12, color=color, fontweight="bold")
+plt.colorbar(im, ax=ax, shrink=0.8, label="평균 품질 (0~3)")
+plt.tight_layout()
+plt.savefig(OUTPUT_DIR/"chart_cmp4_heatmap.png", dpi=150, bbox_inches="tight")
+plt.close(); print("저장: chart_cmp4_heatmap.png")
+
+# ── 차트 5: 응답 시간 + 비용 대비 성능 ──────────────────────────────
+fig, axes = plt.subplots(1, 2, figsize=(12, 5))
+
+bars = axes[0].bar(x, times, color=MODEL_COLORS, alpha=0.85, width=0.5)
+axes[0].set_xticks(x); axes[0].set_xticklabels(labels_short, fontsize=9)
+axes[0].set_ylabel("평균 응답 시간 (초)", fontsize=11)
+axes[0].set_title("모델별 평균 응답 시간\n(낮을수록 좋음)", fontsize=12, fontweight="bold")
+axes[0].yaxis.grid(True, alpha=0.3); axes[0].set_axisbelow(True)
+for bar, v in zip(bars, times):
+    axes[0].text(bar.get_x()+bar.get_width()/2, v+0.1, f"{v:.1f}초",
+                 ha="center", va="bottom", fontsize=11, fontweight="bold")
+bars[times.index(min(times))].set_edgecolor("gold"); bars[times.index(min(times))].set_linewidth(2.5)
+
+costs = [0.15, 0.0, 0.0]
+axes[1].scatter(costs, qualities, c=MODEL_COLORS, s=300, zorder=5, alpha=0.9)
+annots = [("GPT-4o-mini\n$0.15/1M\n품질: 1.581", 0.02, 0.03),
+          ("Llama 3.3 70B\n무료(Groq)\n품질: 1.629", -0.01, -0.07),
+          ("Gemini Flash\n무료(Google)\n품질: 1.468", -0.01, 0.05)]
+for (lbl, dx, dy), (cx, cy) in zip(annots, zip(costs, qualities)):
+    axes[1].annotate(lbl, xy=(cx,cy), xytext=(cx+dx, cy+dy), fontsize=8.5,
+                     ha="center", arrowprops=dict(arrowstyle="-", color="gray", lw=0.8))
+axes[1].set_xlabel("API 비용 ($/1M 입력 토큰)", fontsize=11)
+axes[1].set_ylabel("평균 답변 품질 (0~3)", fontsize=11)
+axes[1].set_xlim(-0.05, 0.25); axes[1].set_ylim(1.3, 1.8)
+axes[1].set_title("비용 대비 성능\n(왼쪽 상단 = 이상적)", fontsize=12, fontweight="bold")
+axes[1].xaxis.grid(True, alpha=0.3); axes[1].yaxis.grid(True, alpha=0.3); axes[1].set_axisbelow(True)
+axes[1].axvline(x=0.02, color="gray", linestyle="--", alpha=0.5)
+plt.tight_layout()
+plt.savefig(OUTPUT_DIR/"chart_cmp5_cost_perf.png", dpi=150, bbox_inches="tight")
+plt.close(); print("저장: chart_cmp5_cost_perf.png")
+
+# ── 차트 6: 종합 대시보드 ────────────────────────────────────────────
+fig, axes = plt.subplots(2, 3, figsize=(15, 9))
+fig.suptitle("실험 8: 모델 비교 평가 종합 대시보드\n(GPT-4o-mini vs Llama 3.3 70B vs Gemini Flash Lite | 62문항)",
+             fontsize=14, fontweight="bold")
+
+short3 = ["GPT\n4o-mini","Llama\n3.3 70B","Gemini\nFlash"]
+
+axes[0,0].bar(x, qualities, color=MODEL_COLORS, alpha=0.85, width=0.5)
+axes[0,0].set_xticks(x); axes[0,0].set_xticklabels(short3, fontsize=9)
+axes[0,0].set_ylim(0,2.5); axes[0,0].set_title("평균 품질 (0~3)", fontweight="bold")
+for i,v in enumerate(qualities): axes[0,0].text(i, v+0.03, f"{v:.3f}", ha="center", fontsize=10, fontweight="bold")
+axes[0,0].yaxis.grid(True, alpha=0.3); axes[0,0].set_axisbelow(True)
+
+axes[0,1].bar(x, [p/n*100 for p in perfect], color=MODEL_COLORS, alpha=0.85, width=0.5)
+axes[0,1].set_xticks(x); axes[0,1].set_xticklabels(short3, fontsize=9)
+axes[0,1].set_ylim(0,50); axes[0,1].set_title("완전정답률 % (3점)", fontweight="bold")
+for i,v in enumerate([p/n*100 for p in perfect]): axes[0,1].text(i, v+0.5, f"{v:.1f}%", ha="center", fontsize=10, fontweight="bold")
+axes[0,1].yaxis.grid(True, alpha=0.3); axes[0,1].set_axisbelow(True)
+
+axes[0,2].bar(x, times, color=MODEL_COLORS, alpha=0.85, width=0.5)
+axes[0,2].set_xticks(x); axes[0,2].set_xticklabels(short3, fontsize=9)
+axes[0,2].set_title("평균 응답 시간 (초)", fontweight="bold")
+for i,v in enumerate(times): axes[0,2].text(i, v+0.1, f"{v:.1f}s", ha="center", fontsize=10, fontweight="bold")
+axes[0,2].yaxis.grid(True, alpha=0.3); axes[0,2].set_axisbelow(True)
+
+axes[1,0].bar(x, [v/n*100 for v in wrong], color=["#E57373","#EF9A9A","#FFCDD2"], alpha=0.85, width=0.5)
+axes[1,0].set_xticks(x); axes[1,0].set_xticklabels(short3, fontsize=9)
+axes[1,0].set_ylim(0,50); axes[1,0].set_title("오답/모름 비율 % (낮을수록 좋음)", fontweight="bold")
+for i,v in enumerate([v/n*100 for v in wrong]): axes[1,0].text(i, v+0.5, f"{v:.1f}%", ha="center", fontsize=10, fontweight="bold")
+axes[1,0].yaxis.grid(True, alpha=0.3); axes[1,0].set_axisbelow(True)
+
+axes[1,1].bar(x, w_pct, color="#F44336", alpha=0.85, width=0.5, label="0점")
+axes[1,1].bar(x, p_pct, color="#FFC107", alpha=0.85, width=0.5, label="1점", bottom=w_pct)
+axes[1,1].bar(x, m_pct, color="#8BC34A", alpha=0.85, width=0.5, label="2점", bottom=[a+b for a,b in zip(w_pct,p_pct)])
+axes[1,1].bar(x, f_pct, color="#4CAF50", alpha=0.85, width=0.5, label="3점", bottom=[a+b+c for a,b,c in zip(w_pct,p_pct,m_pct)])
+axes[1,1].set_xticks(x); axes[1,1].set_xticklabels(short3, fontsize=9)
+axes[1,1].set_title("품질 분포 (누적)", fontweight="bold")
+axes[1,1].legend(fontsize=8, loc="upper right")
+axes[1,1].yaxis.grid(True, alpha=0.3); axes[1,1].set_axisbelow(True)
+
+axes[1,2].axis("off")
+tbl_data = [
+    ["지표", "GPT-4o\nmini", "Llama\n3.3 70B", "Gemini\nFlash"],
+    ["평균 품질", "1.581", "★1.629", "1.468"],
+    ["완전정답", "★35.5%", "27.4%", "33.9%"],
+    ["오답률",   "33.9%", "★25.8%", "35.5%"],
+    ["응답시간", "8.1초", "★5.6초", "14.0초"],
+    ["비용",     "$0.15/1M", "★무료", "★무료"],
 ]
-col_widths = [0.2, 0.15, 0.15, 0.28, 0.12]
-table = axes[1].table(
-    cellText=plan_data[1:],
-    colLabels=plan_data[0],
-    loc="center",
-    cellLoc="center",
-)
-table.auto_set_font_size(False)
-table.set_fontsize(8)
-table.scale(1.3, 1.8)
-
-# 완료된 행 강조
-for j in range(len(plan_data[0])):
-    table[(1, j)].set_facecolor("#C8E6C9")   # 연초록 (완료)
-    for i in range(2, len(plan_data)):
-        table[(i, j)].set_facecolor("#FFF9C4")   # 연노랑 (예정)
-
-axes[1].set_title("모델 비교 계획", fontsize=12, fontweight="bold", pad=20)
+tbl = axes[1,2].table(cellText=tbl_data[1:], colLabels=tbl_data[0], loc="center", cellLoc="center")
+tbl.auto_set_font_size(False); tbl.set_fontsize(8.5); tbl.scale(1.2, 1.7)
+for j in range(4):
+    tbl[(0,j)].set_facecolor("#37474F"); tbl[(0,j)].set_text_props(color="white", fontweight="bold")
+axes[1,2].set_title("종합 비교표 (★ = 1위)", fontweight="bold")
 
 plt.tight_layout()
-out = OUTPUT_DIR / "chart_qa5_dashboard.png"
-plt.savefig(out, dpi=150, bbox_inches="tight")
-plt.close()
-print(f"저장: {out.name}")
-
-# ── 차트 6: 질문별 품질 히트맵 (카테고리별 정렬) ─────────────────────
-fig, ax = plt.subplots(figsize=(14, 6))
-
-# 카테고리별로 정렬
-sorted_items = sorted(
-    [r for r in items if r["quality_score"] >= 0],
-    key=lambda x: (x["category"], x["id"])
-)
-q_scores   = [r["quality_score"] for r in sorted_items]
-q_labels   = [f"Q{r['id']}" for r in sorted_items]
-q_cats     = [r["category"] for r in sorted_items]
-
-# 카테고리별 색상 배경 구분
-cat_colors_bg = {"general": "#E3F2FD", "diet": "#E8F5E9", "research": "#FFF3E0", "review": "#FCE4EC"}
-prev_cat = None
-for i, (score, cat) in enumerate(zip(q_scores, q_cats)):
-    color = ["#F44336", "#FFC107", "#8BC34A", "#4CAF50"][score]
-    ax.bar(i, score, color=color, alpha=0.85, width=0.8)
-
-ax.set_xticks(range(len(q_labels)))
-ax.set_xticklabels(q_labels, rotation=90, fontsize=6)
-ax.set_ylim(0, 3.5)
-ax.set_yticks([0, 1, 2, 3])
-ax.set_yticklabels(["0\n오답", "1\n부분", "2\n대부분", "3\n완전"])
-ax.set_ylabel("품질 점수", fontsize=11)
-ax.set_title(f"질문별 답변 품질 (카테고리별 정렬)\n{LABEL}", fontsize=12, fontweight="bold")
-
-# 카테고리 경계선 + 레이블
-prev = None
-start_i = 0
-for i, cat in enumerate(q_cats):
-    if cat != prev:
-        if prev is not None:
-            ax.axvline(x=i - 0.5, color="gray", linestyle="--", linewidth=0.8, alpha=0.5)
-            ax.text((start_i + i - 1) / 2, 3.3, prev, ha="center", fontsize=8,
-                    color=cat_color_map.get(prev, "black"), fontweight="bold")
-        start_i = i
-        prev = cat
-ax.text((start_i + len(q_cats) - 1) / 2, 3.3, prev, ha="center", fontsize=8,
-        color=cat_color_map.get(prev, "black"), fontweight="bold")
-
-# 평균선
-ax.axhline(y=np.mean(q_scores), color="navy", linestyle="--", linewidth=1.2, alpha=0.7,
-           label=f"평균 {np.mean(q_scores):.2f}")
-ax.legend(fontsize=9)
-ax.yaxis.grid(True, alpha=0.3)
-ax.set_axisbelow(True)
-
-plt.tight_layout()
-out = OUTPUT_DIR / "chart_qa6_per_question.png"
-plt.savefig(out, dpi=150, bbox_inches="tight")
-plt.close()
-print(f"저장: {out.name}")
+plt.savefig(OUTPUT_DIR/"chart_cmp6_dashboard.png", dpi=150, bbox_inches="tight")
+plt.close(); print("저장: chart_cmp6_dashboard.png")
 
 print("\n모든 차트 생성 완료 (6개)")
