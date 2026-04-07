@@ -60,6 +60,13 @@ OFF_TOPIC_KEYWORDS = [
     "축구", "야구", "연예인", "여행", "부동산", "주가", "비트코인",
 ]
 
+HYDE_PROMPT = """다음 질문에 대해 건강식품/다이어트 분야 논문·전문 자료에서 발췌한 것처럼 2~3문장으로 답변을 작성하세요.
+정확하지 않아도 됩니다. 검색 품질 향상을 위한 가상 문서입니다. 한국어와 영어를 혼용해도 됩니다.
+
+질문: {query}
+
+가상 답변:"""
+
 SYSTEM_PROMPT = """당신은 건강식품과 다이어트 전문 상담사입니다.
 
 [답변 규칙]
@@ -146,8 +153,24 @@ def extract_memory(user_input: str, assistant_answer: str, existing_facts: list)
 # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 # 검색 파이프라인
 # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-def get_query_embedding(text: str) -> list:
+def generate_hypothetical_doc(query: str) -> str:
+    """HyDE: 질문에 대한 가상 답변 생성 (검색 품질 향상용)"""
+    _, llm = get_clients()
+    try:
+        resp = llm.chat.completions.create(
+            model=LLM_MODEL,
+            messages=[{"role": "user", "content": HYDE_PROMPT.format(query=query)}],
+            max_tokens=150, temperature=0.5,
+        )
+        return resp.choices[0].message.content.strip()
+    except Exception:
+        return query
+
+
+def get_query_embedding(text: str, use_hyde: bool = False, original_query: str = "") -> list:
     embed, _ = load_models()
+    if use_hyde and original_query:
+        text = generate_hypothetical_doc(original_query)
     return embed.encode(text[:MAX_CONTENT], normalize_embeddings=True).tolist()
 
 
@@ -158,9 +181,9 @@ def detect_category(query: str) -> str | None:
     return None
 
 
-def hybrid_search(query: str) -> list:
+def hybrid_search(query: str, use_hyde: bool = False) -> list:
     sb, _ = get_clients()
-    emb    = get_query_embedding(query)
+    emb    = get_query_embedding(query, use_hyde=use_hyde, original_query=query)
     cat    = detect_category(query)
 
     def _search(category_filter):
@@ -188,10 +211,10 @@ def hybrid_search(query: str) -> list:
     return results
 
 
-def multi_query_search(queries: list) -> list:
+def multi_query_search(queries: list, use_hyde: bool = False) -> list:
     seen, all_docs = set(), []
     with ThreadPoolExecutor(max_workers=4) as ex:
-        futures = {ex.submit(hybrid_search, q): q for q in queries}
+        futures = {ex.submit(hybrid_search, q, use_hyde and i == 0): q for i, q in enumerate(queries)}
         for f in as_completed(futures):
             try:
                 for doc in f.result():
@@ -347,6 +370,17 @@ with st.sidebar:
 
     st.divider()
 
+    # 검색 설정
+    st.divider()
+    st.subheader("🔍 검색 설정")
+    use_hyde = st.toggle(
+        "HyDE 검색 (실험적)",
+        value=False,
+        help="가상 문서 임베딩으로 영어 논문 매칭률 향상. 응답이 약 2~3초 느려집니다.",
+    )
+    if use_hyde:
+        st.caption("HyDE: 질문 → 가상 답변 생성 → 임베딩으로 검색")
+
     # 모델 정보
     with st.expander("⚙️ 모델 정보"):
         st.markdown("""
@@ -358,7 +392,7 @@ with st.sidebar:
         | DB | Supabase documents_v2 |
         | 청크 수 | 18,682개 |
         """)
-        st.caption("Hit@5=0.941 · MRR=0.828")
+        st.caption("실험 10 기준 HyDE 적용 시 품질 +0.214 향상")
 
     # 대화 초기화
     st.divider()
@@ -430,8 +464,8 @@ if user_input := st.chat_input("건강 관련 질문을 입력하세요..."):
             queries = generate_queries(user_input)
 
             # 2. 검색
-            status.update(label=f"관련 자료 검색 중... ({len(queries)}개 쿼리)")
-            raw_docs = multi_query_search(queries)
+            status.update(label=f"관련 자료 검색 중... ({len(queries)}개 쿼리{'  HyDE' if use_hyde else ''})")
+            raw_docs = multi_query_search(queries, use_hyde=use_hyde)
 
             if not raw_docs:
                 status.update(label="검색 완료", state="complete")
