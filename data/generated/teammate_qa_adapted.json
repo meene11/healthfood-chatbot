@@ -1,0 +1,622 @@
+[
+  {
+    "id": 0,
+    "question": "LEAA와 WP의 MPS에 대한 효과는 어떻게 다른가요?",
+    "reference_answer": "LEAA(특히 6g 용량)는 WP와 유사한 피크 반응을 유도했지만, WP는 p-p70S6K1과 같은 단백질 합성 신호 마커를 유의미하게 증가시켰습니다.",
+    "source_content": "concentrations were elevated and persisted for a longer duration with \nWP, LEAA (particularly at the 6 g dosage) elicited comparable peak \nresponses. All interventions resulted in an increase in MPS, with \nLEAA_6 and WP demonstrating prolonged effects over a span of 4 h. \nNevertheless, when combined with resistance training, all cohorts \nexhibited analogous enhancements in MPS. Importantly, only WP \nsignificantly elevated the anabolic signaling marker p-p70S6K1. \nCollectively, even a modest dosage of LEAA (1.5 g) effectively \nstimulated MPS, indicating that the leucine content, rather than the \ntotal protein quantity, is crucial for optimizing the anabolic response \nTABLE 1  (Continued)\nParticipants\nIntervention\nPhysical function \nmeasures\nKey physical \noutcomes\nOther outcomes\nRef\n178 pre-frail adults (112 C, \n44 Nu, 22 Nu + Ex)\n3-month leucine-enriched \nprotein ± exercise\nSPPB, gait speed, grip \nstrength, 5 × sit-to-stand\nNu + Ex ↑ gait speed, \n5 × STS, SPPB, FFM, ASM;",
+    "source_file": "pdf-data/BCAA_muscle_brain_energy_aging_2025.pdf",
+    "category": "general",
+    "language": "en",
+    "paper_title": "Effects of branched-chain amino acids on the muscle–brain metabolic axis: enhancing energy metabolism and neurological functions, and endurance exercise in aging-related conditions"
+  },
+  {
+    "id": 2,
+    "question": "어떤 연구에서 Atkins, Ornish, Weight Watchers, Zone 다이어트를 비교했나요?",
+    "reference_answer": "Dansinger ML 외의 연구에서 이들 다이어트를 비교했습니다.",
+    "source_content": "composition and blood lipids in obese adults. J Nutr. (2009) 139:514–21. doi: 10.3945/\njn.108.099440\n103. Magkos F. Protein-rich diets for weight loss maintenance. Curr Obes Rep.\n(2020) 9:213–8. doi: 10.1007/s13679-020-00391-0\n104. Dansinger ML, Gleason JA, Grifﬁth JL, Selker HP, Schaefer EJ. Comparison of\nthe Atkins, Ornish, Weight Watchers, and Zone diets for weight loss and heart disease\nrisk reduction: a randomized trial. JAMA. (2005) 293:43–53. doi: 10.1001/jama.293.1.43\n105. Sacks FM, Bray GA, Carey VJ, Smith SR, Ryan DH, Anton SD, et al.\nComparison of weight-loss diets with different compositions of fat, protein, and\ncarbohydrates. N Engl J Med. (2009) 360:859–73. doi: 10.1056/NEJMoa0804748\n106. Ran A, Ellen W, Ad AMM, Hauke S, Erwin GZ, Daisy J. Age-dependent\nchanges in GI physiology and microbiota: time to reconsider? Gut. (2018) 67:2213–22.\ndoi: 10.1136/gutjnl-2017-315542\n107. Walther B, Lett AM, Bordoni A, Tomás-Cobos L, Nieto JA, Dupont D, et al.",
+    "source_file": "pdf-data/animal_plant_protein_weight_glycemic_control_2024.pdf",
+    "category": "diet",
+    "language": "en",
+    "paper_title": ""
+  },
+  {
+    "id": 3,
+    "question": "CR과 CRMs의 유익한 효과의 기저에 있는 가능한 분자 메커니즘은 무엇인가요?",
+    "reference_answer": "문서는 CR과 CRMs의 유익한 효과의 기저에 있는 가능한 분자 메커니즘을 제안하고 있습니다.",
+    "source_content": "health and delaying biological aging. Recent studies have indicated that CR can\nalso improve anxiety-, depression- and addiction-like symptoms and behavior.\nSimilar beneﬁts have also been observed in studies investigating a range of CR\nmimetics (CRMs) - molecules that mimic one or more of the physiological effects\nof CR without dietary restriction - indicating that both CR and CRMs could be\nused to assist in treating these symptoms. Here, we summarize the current\nevidence for the potential use of CR and select CRMs in the treatment of anxiety,\ndepression, and addiction, as well as the possible molecular mechanisms\nunderlying these beneﬁcial effects. Finally, we propose novel molecular\nsignatures that could be exploited to screen for novel CRM candidates.\nKEYWORDS\nanxiety, depression, substance use disorders, addiction, calorie restriction, calorie\nrestriction mimetic\n1 Introduction\nGlobally, an estimated one in eight people live with a mental disorder (1). In Australia,",
+    "source_file": "pdf-data/caloric_restriction_mental_health_2025.pdf",
+    "category": "general",
+    "language": "en",
+    "paper_title": ""
+  },
+  {
+    "id": 4,
+    "question": "ALT와 AST는 어떤 역할을 하는 지표인가요?",
+    "reference_answer": "ALT는 alanine aminotransferase, AST는 aspartate aminotransferase로, 이들은 간 기능을 평가하는 데 사용되는 효소 지표입니다.",
+    "source_content": "circumference; WHR, waist to hip ratio; ALT, alanine aminotransferase; AST, aspartate aminotransferase; TC, total cholesterol; TG, riglycerides; HDL-C, high-density cholesterol; LDL-C, \nlow-density cholesterol; FBS, fasting blood sugar; HbA1c, glycated hemoglobin; HOMA-IR, insulin resistance index; hs-CRP, high-sensitivity C-reactive protein; 25(OH)D, \n25-hydroxyvitamin D.",
+    "source_file": "pdf-data/5_2_fasting_vs_calorie_restriction_fatty_liver_2024.pdf",
+    "category": "general",
+    "language": "en",
+    "paper_title": "Effect of 5:2 intermittent fasting diet versus daily calorie restriction eating on metabolic-associated fatty liver disease—a randomized controlled trial"
+  },
+  {
+    "id": 5,
+    "question": "mTOR/p70 S6 kinase 경로는 어떤 역할을 하나요?",
+    "reference_answer": "mTOR/p70 S6 kinase 경로는 아미노산과 인슐린 신호전달에 관여하며, 근육 세포에서 인슐린 저항성을 유발하는 부정적 피드백 메커니즘을 형성합니다.",
+    "source_content": "the role of adipose tissue. Nat Rev Endocrinol. (2019) 15:274–87. doi: 10.1038/s41574-\n018-0148-4\n163. Tremblay F, Marette A. Amino acid and insulin signaling via the mTOR/p70 S6\nkinase pathway. A negative feedback mechanism leading to insulin resistance in skeletal\nmuscle cells. J Biol Chem. (2001) 276:38052–60. doi: 10.1074/jbc.M106703200\n164. Khamzina L, Veilleux A, Bergeron S, Marette A. Increased activation of the\nmammalian target of rapamycin pathway in liver and skeletal muscle of obese rats:\npossible involvement in obesity-linked insulin resistance. Endocrinology. (2005)\n146:1473–81. doi: 10.1210/en.2004-0921\n165. Krebs M, Krssak M, Bernroider E, Anderwald C, Brehm A, Meyerspeer M, et al.\nMechanism of amino acid-induced skeletal muscle insulin resistance in humans.\nDiabetes. (2002) 51:599–605. doi: 10.2337/diabetes.51.3.599\n166. Linn T, Santosa B, Grönemeyer D, Aygen S, Scholz N, Busch M, et al. Effect of",
+    "source_file": "pdf-data/animal_plant_protein_weight_glycemic_control_2024.pdf",
+    "category": "diet",
+    "language": "en",
+    "paper_title": ""
+  },
+  {
+    "id": 10,
+    "question": "노화가 근육과 뇌의 대사 통신에 미치는 영향은 무엇인가요?",
+    "reference_answer": "노화는 근육과 뇌 간의 대사 통신을 방해하여 근감소증과 인지 저하를 초래합니다.",
+    "source_content": "mitochondrial function (10, 11).\nNevertheless, appropriate supplementation has shown promising \nresults in both human and animal models, suggesting enhancements \nin mitochondrial biogenesis, reductions in inflammation, and \npotential support for endurance and cognitive performance (12, 13). \nBecause both skeletal muscle and the brain rely heavily on \nmitochondrial energy production, restoring BCAA metabolism may \nbenefit both systems simultaneously.\nExercise, another proven non-pharmacological approach, \ninteracts synergistically with BCAAs. During endurance or resistance \nexercise, muscles oxidize BCAAs for energy, while training upregulates \nenzymes of BCAA catabolism (14, 15). Thus, combining exercise with \nBCAA intake may amplify metabolic and functional gains, especially \nin older adults with diminished exercise tolerance and anabolic \nsensitivity. In summary, aging disrupts the metabolic communication \nbetween muscle and brain, contributing to sarcopenia and cognitive",
+    "source_file": "pdf-data/BCAA_muscle_brain_energy_aging_2025.pdf",
+    "category": "general",
+    "language": "en",
+    "paper_title": "Effects of branched-chain amino acids on the muscle–brain metabolic axis: enhancing energy metabolism and neurological functions, and endurance exercise in aging-related conditions"
+  },
+  {
+    "id": 12,
+    "question": "사전 식사 음료에 단백질과 아미노산이 포함될 때, 이후 식사에 대한 혈당 및 대사 반응은 어떻게 되나요?",
+    "reference_answer": "단백질과 아미노산이 포함된 사전 식사 음료는 이후 복합 식사에 대한 혈당 및 대사 반응에 영향을 준다.",
+    "source_content": "jc.2006-0609\n46. Diepvens K, Häberer D, Westerterp-Plantenga M. Different proteins and\nbiopeptides differently affect satiety and anorexigenic/orexigenic hormones in\nhealthy humans. Int J Obes (Lond). (2008) 32:510–8. doi: 10.1038/sj.ijo.0803758\n47. Dougkas A, Östman E. Comparable effects of breakfast meals varying in protein\nsource on appetite and subsequent energy intake in healthy males. Eur J Nutr. (2018)\n57:1097–108. doi: 10.1007/s00394-017-1392-4\n48. Gunnerud UJ, Heinzle C, Holst JJ, Östman EM, Björck IM. Effects of pre-meal\ndrinks with protein and amino acids on glycemic and metabolic responses at a\nsubsequent composite meal. PloS One. (2012) 7:44731. doi: 10.1371/\njournal.pone.0044731\n49. Hall W, Millward D, Long S, Morgan L. Casein and whey exert different effects\non plasma amino acid proﬁles, gastrointestinal hormone secretion and appetite. Br J\nNutr. (2003) 89:239–48. doi: 10.1079/BJN2002760\n50. Hoeﬂe AS, Bangert AM, Stamfort A, Gedrich K, Rist MJ, Lee Y-M, et al.",
+    "source_file": "pdf-data/animal_plant_protein_weight_glycemic_control_2024.pdf",
+    "category": "diet",
+    "language": "en",
+    "paper_title": ""
+  },
+  {
+    "id": 13,
+    "question": "저항 훈련과 결합했을 때 MPS의 증가에 대한 결과는 어땠나요?",
+    "reference_answer": "모든 집단이 저항 훈련과 결합했을 때 유사한 MPS 증가를 보였습니다.",
+    "source_content": "concentrations were elevated and persisted for a longer duration with \nWP, LEAA (particularly at the 6 g dosage) elicited comparable peak \nresponses. All interventions resulted in an increase in MPS, with \nLEAA_6 and WP demonstrating prolonged effects over a span of 4 h. \nNevertheless, when combined with resistance training, all cohorts \nexhibited analogous enhancements in MPS. Importantly, only WP \nsignificantly elevated the anabolic signaling marker p-p70S6K1. \nCollectively, even a modest dosage of LEAA (1.5 g) effectively \nstimulated MPS, indicating that the leucine content, rather than the \ntotal protein quantity, is crucial for optimizing the anabolic response \nTABLE 1  (Continued)\nParticipants\nIntervention\nPhysical function \nmeasures\nKey physical \noutcomes\nOther outcomes\nRef\n178 pre-frail adults (112 C, \n44 Nu, 22 Nu + Ex)\n3-month leucine-enriched \nprotein ± exercise\nSPPB, gait speed, grip \nstrength, 5 × sit-to-stand\nNu + Ex ↑ gait speed, \n5 × STS, SPPB, FFM, ASM;",
+    "source_file": "pdf-data/BCAA_muscle_brain_energy_aging_2025.pdf",
+    "category": "general",
+    "language": "en",
+    "paper_title": "Effects of branched-chain amino acids on the muscle–brain metabolic axis: enhancing energy metabolism and neurological functions, and endurance exercise in aging-related conditions"
+  },
+  {
+    "id": 14,
+    "question": "간 손상은 어떤 과정으로 진행되나요?",
+    "reference_answer": "병리학적 요인이 지속되면 간은 반복적인 손상 및 회복 과정을 겪고, 간별세포가 활성화되어 섬유증 및 심지어 간경변으로 진행됩니다.",
+    "source_content": "secondary liver damage and further inducing cell death or\nsenescence\n(Mahlapuu\net\nal.,\n2022;\nXu\net\nal.,\n2020).\nIf\npathological factors persist, the liver will undergo repeated injury\nand repair processes and activate hepatic stellate cells, leading to\nﬁbroplasia and even cirrhosis (Taru et al., 2024). Inﬂammatory\ncytokines, adipokines, dietary, genetic and environmental factors\nhave important effects on IR and gut microbiota homeostasis, and\nconversely, IR and gut microbiota disorders exacerbate imbalance of\nlipid metabolism (Chen and Vitetta, 2020; Fujii et al., 2020; Khan\nFrontiers in Pharmacology\nfrontiersin.org\n02\nXiao et al.\n10.3389/fphar.2025.1540255",
+    "source_file": "pdf-data/ginseng_fatty_liver_pharmacology_2025.pdf",
+    "category": "research",
+    "language": "en",
+    "paper_title": ""
+  },
+  {
+    "id": 18,
+    "question": "BCAA 보충제가 노인에게 미치는 긍정적인 효과는 무엇인가요?",
+    "reference_answer": "BCAA 보충제는 미토콘드리아 생합성과 항염증 반응을 촉진하여 노인의 대사 건강과 신체 성능을 향상시키는 데 도움을 줍니다.",
+    "source_content": "Wu\b\n10.3389/fnut.2025.1709867\nFrontiers in Nutrition\n04\nfrontiersin.org\nbetween exercise-induced myokines (such as IL-6 and irisin) and \nBCAA supplementation has been demonstrated to potentiate \nmitochondrial biogenesis and anti-inflammatory responses, thus \nenhancing both metabolic health and physical performance among \nolder adults (43, 44). Nutritional methodologies that integrate BCAAs \nwith diets abundant in protein or essential amino acid formulations \nyield superior advantages compared to the exclusive use of isolated \nBCAAs, thereby endorsing a more comprehensive paradigm for the \npreservation of energy metabolism and functional capabilities in aging \ndemographics. In conclusion, BCAAs manifest intricate influences on \nenergy metabolism throughout the aging process, predominantly by \npromoting mitochondrial integrity, enhancing protein synthesis, and \nfacilitating insulin efficacy. When incorporated into systematic",
+    "source_file": "pdf-data/BCAA_muscle_brain_energy_aging_2025.pdf",
+    "category": "general",
+    "language": "en",
+    "paper_title": "Effects of branched-chain amino acids on the muscle–brain metabolic axis: enhancing energy metabolism and neurological functions, and endurance exercise in aging-related conditions"
+  },
+  {
+    "id": 19,
+    "question": "칼로리 제한(CR)이 정신 건강에 미치는 영향은 무엇인가요?",
+    "reference_answer": "최근 연구에 따르면 칼로리 제한(CR)은 불안, 우울증 및 중독과 같은 증상과 행동을 개선할 수 있습니다.",
+    "source_content": "health and delaying biological aging. Recent studies have indicated that CR can\nalso improve anxiety-, depression- and addiction-like symptoms and behavior.\nSimilar beneﬁts have also been observed in studies investigating a range of CR\nmimetics (CRMs) - molecules that mimic one or more of the physiological effects\nof CR without dietary restriction - indicating that both CR and CRMs could be\nused to assist in treating these symptoms. Here, we summarize the current\nevidence for the potential use of CR and select CRMs in the treatment of anxiety,\ndepression, and addiction, as well as the possible molecular mechanisms\nunderlying these beneﬁcial effects. Finally, we propose novel molecular\nsignatures that could be exploited to screen for novel CRM candidates.\nKEYWORDS\nanxiety, depression, substance use disorders, addiction, calorie restriction, calorie\nrestriction mimetic\n1 Introduction\nGlobally, an estimated one in eight people live with a mental disorder (1). In Australia,",
+    "source_file": "pdf-data/caloric_restriction_mental_health_2025.pdf",
+    "category": "general",
+    "language": "en",
+    "paper_title": ""
+  },
+  {
+    "id": 21,
+    "question": "BCAAs의 수준이 특정 기준을 초과하면 어떤 변화가 일어났나요?",
+    "reference_answer": "BCAAs 수준이 특정 기준을 초과했을 때, 그들의 분해 생성물이 감소했습니다.",
+    "source_content": "keto acids, and acylcarnitines were signiﬁcantly higher in the HP\ngroup than in the LP group, with the exception of the branched-\nchain a-keto acid a-ketoisovalerate, which exhibited higher\npostprandial concentrations following LP intake; however, when\nBCAAs levels exceeded a certain threshold, their catabolic products\ndecreased (48). On the other hand, the effects of long-term diet may\nMei et al.\n10.3389/fendo.2025.1643231\nFrontiers in Endocrinology\nfrontiersin.org\n03",
+    "source_file": "pdf-data/BCAA_insulin_resistance_type2_diabetes_2025.pdf",
+    "category": "general",
+    "language": "en",
+    "paper_title": "Branched-chain amino acids and insulin resistance in type 2 diabetes: from metabolic dysregulation to therapeutic targets"
+  },
+  {
+    "id": 23,
+    "question": "브랜치드 체인 아미노산의 단기 식이 감소가 어떤 효과를 미치는가?",
+    "reference_answer": "브랜치드 체인 아미노산의 단기 식이 감소는 식사 유도 인슐린 분비를 줄이고 제2형 당뇨병에서의 마이크로바이옴 구성에 변화를 일으킨다.",
+    "source_content": "study of relevance for obesity and diabetes. Nutrients. (2020) 13. doi: 10.3390/\nnu13010095\n134. Karusheva Y, Koessler T, Strassburger K, Markgraf D, Mastrototaro L, Jelenik\nT, et al. Short-term dietary reduction of branched-chain amino acids reduces meal-\ninduced insulin secretion and modiﬁes microbiome composition in type 2 diabetes: a\nrandomized controlled crossover trial. Am J Clin Nutr. (2019) 110:1098–107.\ndoi: 10.1093/ajcn/nqz191\n135. Moreno-Vedia J, Llop D, Rodrı́guez-Calvo R, Plana N, Amigó N, Rosales R,\net al. Serum branch-chained amino acids are increased in type 2 diabetes and associated\nwith atherosclerotic cardiovascular disease. Cardiovasc Diabetol. (2023) 22:249.\ndoi: 10.1186/s12933-023-01958-6\n136. Sawicki KT, Ning H, Allen NB, Carnethon MR, Wallia A, Otvos JD, et al.\nLongitudinal trajectories of branched chain amino acids through young adulthood and\ndiabetes in later life. JCI Insight. (2024) 9. doi: 10.1172/jci.insight.181901",
+    "source_file": "pdf-data/BCAA_insulin_resistance_type2_diabetes_2025.pdf",
+    "category": "general",
+    "language": "en",
+    "paper_title": "Branched-chain amino acids and insulin resistance in type 2 diabetes: from metabolic dysregulation to therapeutic targets"
+  },
+  {
+    "id": 24,
+    "question": "CR(칼로리 제한) 환경에서 인간 대상자들이 겪는 문제는 무엇인가요?",
+    "reference_answer": "인간 대상자들이 비통제 환경에서 CR을 준수하는 데 실질적인 제한이 있어 문제입니다.",
+    "source_content": "named GLP-1 drugs the breakthrough of 2023 (79). Coupled with the\npractical limitation of human subjects adhering to CR in non-\ncontrolled environments, we have seen increased research into\nCRMs - which can mimic one or more physiological, metabolic,\nand hormonal signaling cascades of CR without dietary restrictions.\nIn the following section, we focus on the role that some of these\ncompounds may have in the treatment of mental health disorders.\nNguyen et al.\n10.3389/fpsyt.2025.1584890\nFrontiers in Psychiatry\nfrontiersin.org\n04",
+    "source_file": "pdf-data/caloric_restriction_mental_health_2025.pdf",
+    "category": "general",
+    "language": "en",
+    "paper_title": ""
+  },
+  {
+    "id": 25,
+    "question": "비침습적으로 간 지방증을 진단하기 위한 방법은 무엇인가요?",
+    "reference_answer": "FibroTouch로 측정한 지방 감쇠 파라미터와 새로운 알고리즘을 사용합니다.",
+    "source_content": "hepatitis C virus infection. Hepatology. (2020) 71:686–721. doi: 10.1002/hep.31060\n\t41.\tDeng H, Wang CL, Lai J, Yu SL, Xie DY, Gao ZL. Noninvasive diagnosis of hepatic \nsteatosis using fat attenuation parameter measured by FibroTouch and a new algorithm \nin CHB patients. Hepat Mon. (2016) 16:e40263. doi: 10.5812/hepatmon.40263\n\t42.\tVasim I, Majeed CN, DeBoer MD. Intermittent fasting and metabolic health. \nNutrients. (2022) 14:631:10.3390/nu14030631:3.",
+    "source_file": "pdf-data/5_2_fasting_vs_calorie_restriction_fatty_liver_2024.pdf",
+    "category": "general",
+    "language": "en",
+    "paper_title": "Effect of 5:2 intermittent fasting diet versus daily calorie restriction eating on metabolic-associated fatty liver disease—a randomized controlled trial"
+  },
+  {
+    "id": 27,
+    "question": "카테킨의 체지방 감소 기전은 무엇인가요?",
+    "reference_answer": "카테킨은 에너지 소비를 증가시키고 지방산화를 촉진하는 방식으로 체지방 감소에 도움을 줍니다.",
+    "source_content": "id: qa_011\nquestion: 녹차추출물 카테킨의 체지방 감소 기전은 무엇인가요?\nanswer: 녹차추출물의 주요 활성 성분인 카테킨은 에너지 소비를 증가시키고 지방산화를 촉진하는 방식으로 체지방 감소에 도움을 줍니다. 식약처 고시형 원료로 인정되었으며 하루 섭취량은 카테킨 기준 300~1,000mg입니다.\nsource_doc: 식약처_체지방감소_고시형원료_기능성정보.json\ncategory: 성분/효능\ndifficulty: medium",
+    "source_file": "json-data/qa_dataset_다이어트식품.json",
+    "category": "diet",
+    "language": "ko",
+    "paper_title": ""
+  },
+  {
+    "id": 29,
+    "question": "5:2 간헐적 단식 다이어트를 따르는 사람들은 어떤 증상을 경험했나요?",
+    "reference_answer": "5:2 간헐적 단식 다이어트를 따르는 사람들은 단식 기간 동안 배고픔과 피로감을 경험했지만 예상치 못한 부작용은 거의 없었습니다.",
+    "source_content": "elastography device, is utilized for assessing liver stiffness and \ndiagnosing liver fibrosis and hepatic steatosis (39). FS has been \nextensively studied, widely accepted, and integrated into major clinical \nguidelines (40). In 2013, FT employs vibration-controlled transient \nelastography to LSM and attenuation parameter, offering diagnostic \ncapabilities for liver fibrosis and hepatic steatosis comparable to those \nof FS (41).\nThree subjects documented experiencing sensations of hunger \nand fatigue on fasting days, whereas five participants expressed \nvarious discomforts such as feeling cold, headaches, diminished \nenergy levels, and sporadic dizziness within the group adhering to \ndaily calorie restriction. As anticipated, individuals adhering to the 5:2 \nIF diet experienced sensations of hunger and fatigue during fasting \nperiods, but few other unforeseen side effects. While intermittent \nfasting has not been associated with major adverse events, common",
+    "source_file": "pdf-data/5_2_fasting_vs_calorie_restriction_fatty_liver_2024.pdf",
+    "category": "general",
+    "language": "en",
+    "paper_title": "Effect of 5:2 intermittent fasting diet versus daily calorie restriction eating on metabolic-associated fatty liver disease—a randomized controlled trial"
+  },
+  {
+    "id": 30,
+    "question": "하이퍼암모니아 상태에서 브랜치드 체인 아미노산의 역할은 무엇인가요?",
+    "reference_answer": "Holeček M의 연구에서는 하이퍼암모니아 상태에서 브랜치드 체인 아미노산 및 브랜치드 체인 케토산의 대사와 보충제로서의 역할을 다룹니다.",
+    "source_content": "44. Holeček M. Branched-chain amino acids and branched-chain keto acids in\nhyperammonemic states: metabolism and as supplements. Metabolites. (2020) 10.\ndoi: 10.3390/metabo10080324\n45. Adeva-Andany MM, López-Maside L, Donapetry-Garcı́a C, Fernández-Fernández\nC, Sixto-Leal C. Enzymes involved in branched-chain amino acid metabolism in humans.\nAmino Acids. (2017) 49:1005–28. doi: 10.1007/s00726-017-2412-7\n46. Wynn RM, Kato M, Machius M, Chuang JL, Li J, Tomchick DR, et al. Molecular\nmechanism for regulation of the human mitochondrial branched-chain alpha-ketoacid\ndehydrogenase complex by phosphorylation. Structure. (2004) 12:2185–96.\ndoi: 10.1016/j.str.2004.09.013\n47. Neinast MD, Jang C, Hui S, Murashige DS, Chu Q, Morscher RJ, et al.\nQuantitative analysis of the whole-body metabolic fate of branched-chain amino\nacids. Cell Metab. (2019) 29:417–429.e4. doi: 10.1016/j.cmet.2018.10.013\n48. Newton-Tanzer E, Can SN, Demmelmair H, Horak J, Holdt L, Koletzko B, et al.",
+    "source_file": "pdf-data/BCAA_insulin_resistance_type2_diabetes_2025.pdf",
+    "category": "general",
+    "language": "en",
+    "paper_title": "Branched-chain amino acids and insulin resistance in type 2 diabetes: from metabolic dysregulation to therapeutic targets"
+  },
+  {
+    "id": 31,
+    "question": "elastography 장치의 주요 용도는 무엇인가요?",
+    "reference_answer": "elastography 장치는 간 경직성을 평가하고 간 섬유증 및 간 지방증을 진단하는 데 사용됩니다.",
+    "source_content": "elastography device, is utilized for assessing liver stiffness and \ndiagnosing liver fibrosis and hepatic steatosis (39). FS has been \nextensively studied, widely accepted, and integrated into major clinical \nguidelines (40). In 2013, FT employs vibration-controlled transient \nelastography to LSM and attenuation parameter, offering diagnostic \ncapabilities for liver fibrosis and hepatic steatosis comparable to those \nof FS (41).\nThree subjects documented experiencing sensations of hunger \nand fatigue on fasting days, whereas five participants expressed \nvarious discomforts such as feeling cold, headaches, diminished \nenergy levels, and sporadic dizziness within the group adhering to \ndaily calorie restriction. As anticipated, individuals adhering to the 5:2 \nIF diet experienced sensations of hunger and fatigue during fasting \nperiods, but few other unforeseen side effects. While intermittent \nfasting has not been associated with major adverse events, common",
+    "source_file": "pdf-data/5_2_fasting_vs_calorie_restriction_fatty_liver_2024.pdf",
+    "category": "general",
+    "language": "en",
+    "paper_title": "Effect of 5:2 intermittent fasting diet versus daily calorie restriction eating on metabolic-associated fatty liver disease—a randomized controlled trial"
+  },
+  {
+    "id": 33,
+    "question": "비타민D를 어떻게 복용하는 것이 좋다고 했나요?",
+    "reference_answer": "지방이 있는 식사와 함께 먹으면 흡수가 잘 된다고 했습니다.",
+    "source_content": "review_id: rev_006\nproduct_category: 비타민D\nproduct_name: 비타민D3 2000IU\nrating: 5\nage_group: 30대\ngender: 여성\npurchase_reason: 혈액검사 결핍 판정\nusage_period_months: 4\nreview_title: 혈액검사 결과가 달라졌어요\nreview_body: 건강검진에서 비타민D가 12 ng/mL로 심각한 결핍이었어요. 의사가 보충제를 권해서 4개월 복용했더니 38 ng/mL까지 올라왔습니다. 실내 근무라 햇빛을 전혀 못 보는 저 같은 분들은 꼭 챙겨야 할 것 같아요. 지방이 있는 식사와 함께 먹으면 흡수가 잘 된다고 해서 그렇게 실천하고 있습니다.\nverified_purchase: True\nhelpful_count: 78\ntags:\n  - 결핍\n  - 혈액검사\n  - 수치개선\n  - 실내근무",
+    "source_file": "json-data/customer_reviews_synthetic.json",
+    "category": "review",
+    "language": "ko",
+    "paper_title": ""
+  },
+  {
+    "id": 34,
+    "question": "HOMA-IR은 어떤 지표를 의미하나요?",
+    "reference_answer": "HOMA-IR은 insulin resistance index, 즉 인슐린 저항성 지수를 의미합니다.",
+    "source_content": "circumference; WHR, waist to hip ratio; ALT, alanine aminotransferase; AST, aspartate aminotransferase; TC, total cholesterol; TG, riglycerides; HDL-C, high-density cholesterol; LDL-C, \nlow-density cholesterol; FBS, fasting blood sugar; HbA1c, glycated hemoglobin; HOMA-IR, insulin resistance index; hs-CRP, high-sensitivity C-reactive protein; 25(OH)D, \n25-hydroxyvitamin D.",
+    "source_file": "pdf-data/5_2_fasting_vs_calorie_restriction_fatty_liver_2024.pdf",
+    "category": "general",
+    "language": "en",
+    "paper_title": "Effect of 5:2 intermittent fasting diet versus daily calorie restriction eating on metabolic-associated fatty liver disease—a randomized controlled trial"
+  },
+  {
+    "id": 35,
+    "question": "브랜치드 체인 알파-케토산 탈수소효소 복합체의 조절 메커니즘은 무엇인가요?",
+    "reference_answer": "Wynn RM 외의 연구에서는 이 복합체의 조절이 인산화에 의해 이루어진다고 설명합니다.",
+    "source_content": "44. Holeček M. Branched-chain amino acids and branched-chain keto acids in\nhyperammonemic states: metabolism and as supplements. Metabolites. (2020) 10.\ndoi: 10.3390/metabo10080324\n45. Adeva-Andany MM, López-Maside L, Donapetry-Garcı́a C, Fernández-Fernández\nC, Sixto-Leal C. Enzymes involved in branched-chain amino acid metabolism in humans.\nAmino Acids. (2017) 49:1005–28. doi: 10.1007/s00726-017-2412-7\n46. Wynn RM, Kato M, Machius M, Chuang JL, Li J, Tomchick DR, et al. Molecular\nmechanism for regulation of the human mitochondrial branched-chain alpha-ketoacid\ndehydrogenase complex by phosphorylation. Structure. (2004) 12:2185–96.\ndoi: 10.1016/j.str.2004.09.013\n47. Neinast MD, Jang C, Hui S, Murashige DS, Chu Q, Morscher RJ, et al.\nQuantitative analysis of the whole-body metabolic fate of branched-chain amino\nacids. Cell Metab. (2019) 29:417–429.e4. doi: 10.1016/j.cmet.2018.10.013\n48. Newton-Tanzer E, Can SN, Demmelmair H, Horak J, Holdt L, Koletzko B, et al.",
+    "source_file": "pdf-data/BCAA_insulin_resistance_type2_diabetes_2025.pdf",
+    "category": "general",
+    "language": "en",
+    "paper_title": "Branched-chain amino acids and insulin resistance in type 2 diabetes: from metabolic dysregulation to therapeutic targets"
+  },
+  {
+    "id": 36,
+    "question": "레우신 농도가 1.85g인 경우와 3.5g인 경우의 차이는 무엇인가요?",
+    "reference_answer": "레우신 농도가 3.5g인 경우는 레우신이 강화된 포뮬레이션으로, p70 S6 kinase 1의 인산화가 증가하였고, 4E binding protein 1의 인산화는 레우신이 강화된 집단에서만 상승하였습니다.",
+    "source_content": "standard leucine concentration (1.85 g) or a leucine-enhanced \nformulation (3.5 g) 1 h subsequent to RE. Muscle biopsy analyses \nindicated that both cohorts exhibited an increase in p70 S6 kinase 1 \nphosphorylation at the 2-h mark; however, phosphorylation of 4E \nbinding protein 1 was observed to rise solely in the leucine-enriched \ncohort. MyoPS experienced an approximate elevation of 90% at 5 h \nfor both groups, yet it remained significantly elevated at the 24-h mark \nexclusively in the leucine-enriched group. In a similar vein, the mRNA \nexpression levels of amino acid transporters demonstrated early \nincreases in both groups (54).\nAn investigation assessed the impact of a 6-week endurance \ntraining regimen supplemented with BCAAs on the structural \ncharacteristics of skeletal muscle in older men (mean age 63). The \nparticipants were stratified into two distinct cohorts: one cohort \nreceived a daily dosage of BCAA supplements (2 g isoleucine, 16 g",
+    "source_file": "pdf-data/BCAA_muscle_brain_energy_aging_2025.pdf",
+    "category": "general",
+    "language": "en",
+    "paper_title": "Effects of branched-chain amino acids on the muscle–brain metabolic axis: enhancing energy metabolism and neurological functions, and endurance exercise in aging-related conditions"
+  },
+  {
+    "id": 37,
+    "question": "아미노산이 인간의 골격근에서 인슐린 저항성을 유발하는 메커니즘은 무엇인가요?",
+    "reference_answer": "아미노산이 인간의 골격근에서 인슐린 저항성을 유발하는 메커니즘은 연구를 통해 밝혀졌으며, 이는 특정 생리학적 과정에 의해 설명됩니다.",
+    "source_content": "the role of adipose tissue. Nat Rev Endocrinol. (2019) 15:274–87. doi: 10.1038/s41574-\n018-0148-4\n163. Tremblay F, Marette A. Amino acid and insulin signaling via the mTOR/p70 S6\nkinase pathway. A negative feedback mechanism leading to insulin resistance in skeletal\nmuscle cells. J Biol Chem. (2001) 276:38052–60. doi: 10.1074/jbc.M106703200\n164. Khamzina L, Veilleux A, Bergeron S, Marette A. Increased activation of the\nmammalian target of rapamycin pathway in liver and skeletal muscle of obese rats:\npossible involvement in obesity-linked insulin resistance. Endocrinology. (2005)\n146:1473–81. doi: 10.1210/en.2004-0921\n165. Krebs M, Krssak M, Bernroider E, Anderwald C, Brehm A, Meyerspeer M, et al.\nMechanism of amino acid-induced skeletal muscle insulin resistance in humans.\nDiabetes. (2002) 51:599–605. doi: 10.2337/diabetes.51.3.599\n166. Linn T, Santosa B, Grönemeyer D, Aygen S, Scholz N, Busch M, et al. Effect of",
+    "source_file": "pdf-data/animal_plant_protein_weight_glycemic_control_2024.pdf",
+    "category": "diet",
+    "language": "en",
+    "paper_title": ""
+  },
+  {
+    "id": 40,
+    "question": "사용 후 비타민D 수치는 어떻게 변화했나요?",
+    "reference_answer": "비타민D 수치가 12 ng/mL에서 38 ng/mL로 증가했습니다.",
+    "source_content": "review_id: rev_006\nproduct_category: 비타민D\nproduct_name: 비타민D3 2000IU\nrating: 5\nage_group: 30대\ngender: 여성\npurchase_reason: 혈액검사 결핍 판정\nusage_period_months: 4\nreview_title: 혈액검사 결과가 달라졌어요\nreview_body: 건강검진에서 비타민D가 12 ng/mL로 심각한 결핍이었어요. 의사가 보충제를 권해서 4개월 복용했더니 38 ng/mL까지 올라왔습니다. 실내 근무라 햇빛을 전혀 못 보는 저 같은 분들은 꼭 챙겨야 할 것 같아요. 지방이 있는 식사와 함께 먹으면 흡수가 잘 된다고 해서 그렇게 실천하고 있습니다.\nverified_purchase: True\nhelpful_count: 78\ntags:\n  - 결핍\n  - 혈액검사\n  - 수치개선\n  - 실내근무",
+    "source_file": "json-data/customer_reviews_synthetic.json",
+    "category": "review",
+    "language": "ko",
+    "paper_title": ""
+  },
+  {
+    "id": 41,
+    "question": "미토콘드리아 BCAAs 아미노전이효소(BCATm)는 어떤 영향을 미칩니까?",
+    "reference_answer": "BCATm은 혈장 BCAAs 수치를 현저히 상승시킵니다.",
+    "source_content": "(11, 102, 103). Mitochondrial BCAAs aminotransferase (BCATm)\nmarkedly elevates plasma BCAAs levels, but is not affected by high-\nfat diet–induced obesity and IR (104, 105), suggesting that BCAAs-\nmediated effects such as mTOR activation alone are insufﬁcient to\ninduce IR.\nFurthermore, activation of mTORC1 stabilizes Grb10, reducing\nits degradation. Grb10 inhibits the interaction between insulinDiagram illustrating insulin signaling in a hepatocyte. Insulin bin\nFIGURE 3\nBCAA metabolism and insulin resistance. Elevated BCAA levels promote mTORC1 activation, which negatively regulates insulin signaling through\nphosphorylation of the downstream targets S6K and Grb10. First, PI3K activates AKT upon activation of the insulin receptor substrate (IRS). Activated\nAKT phosphorylates and inhibits TSC2, while phosphorylation of PRAS40 further enhances mTORC1 activity. Subsequently, mTORC1 activates S6K",
+    "source_file": "pdf-data/BCAA_insulin_resistance_type2_diabetes_2025.pdf",
+    "category": "general",
+    "language": "en",
+    "paper_title": "Branched-chain amino acids and insulin resistance in type 2 diabetes: from metabolic dysregulation to therapeutic targets"
+  },
+  {
+    "id": 42,
+    "question": "BCAAs가 인슐린 저항성에 어떻게 영향을 미치나요?",
+    "reference_answer": "BCAAs는 mTOR를 활성화하여 인슐린 수용체 기질 1 신호 전달에 부정적인 피드백 루프를 시작하게 되어 인슐린 저항성을 유도할 수 있습니다.",
+    "source_content": "glycemic load and potential deleterious effects of the high\ninsulinotropic properties of animal protein, which, in turn,\npromotes fat storage and impedes fat oxidation (161, 162).\nPreclinical models also indicate that increased levels of speciﬁc\namino acids, particularly BCAAs, which are abundant in animal-\nbased proteins, could lead to insulin resistance by activating mTOR,\nto initiate a detrimental feedback loop toward insulin receptor\nsubstrate 1 signaling (163, 164). Indeed, insulin-mediated glucose\nuptake decreases when body tissues are chronically overexposed to\nhigh levels of insulin. Thus, prolonged hyperinsulinemia may lead\nto insulin resistance and, ultimately, T2D. Elevated postprandial\nlevels of BCAAs have also been shown to inhibit muscle glucose\ntransport and/or glucose phosphorylation directly, to reduce\nglycogen synthesis, further contributing to insulin resistance\n(165). Limited human studies also indicate that an increase in",
+    "source_file": "pdf-data/animal_plant_protein_weight_glycemic_control_2024.pdf",
+    "category": "diet",
+    "language": "en",
+    "paper_title": ""
+  },
+  {
+    "id": 43,
+    "question": "운동 유도성 마이오카인과 BCAA 보충제의 관계는 무엇인가요?",
+    "reference_answer": "운동 유도성 마이오카인(예: IL-6 및 이리신)과 BCAA 보충제는 함께 작용하여 미토콘드리아 생합성과 항염증 반응을 강화합니다.",
+    "source_content": "Wu\b\n10.3389/fnut.2025.1709867\nFrontiers in Nutrition\n04\nfrontiersin.org\nbetween exercise-induced myokines (such as IL-6 and irisin) and \nBCAA supplementation has been demonstrated to potentiate \nmitochondrial biogenesis and anti-inflammatory responses, thus \nenhancing both metabolic health and physical performance among \nolder adults (43, 44). Nutritional methodologies that integrate BCAAs \nwith diets abundant in protein or essential amino acid formulations \nyield superior advantages compared to the exclusive use of isolated \nBCAAs, thereby endorsing a more comprehensive paradigm for the \npreservation of energy metabolism and functional capabilities in aging \ndemographics. In conclusion, BCAAs manifest intricate influences on \nenergy metabolism throughout the aging process, predominantly by \npromoting mitochondrial integrity, enhancing protein synthesis, and \nfacilitating insulin efficacy. When incorporated into systematic",
+    "source_file": "pdf-data/BCAA_muscle_brain_energy_aging_2025.pdf",
+    "category": "general",
+    "language": "en",
+    "paper_title": "Effects of branched-chain amino acids on the muscle–brain metabolic axis: enhancing energy metabolism and neurological functions, and endurance exercise in aging-related conditions"
+  },
+  {
+    "id": 47,
+    "question": "BCAAs와 단백질 또는 필수 아미노산이 풍부한 식단의 통합이 왜 중요한가요?",
+    "reference_answer": "BCAAs와 단백질 또는 필수 아미노산이 풍부한 식단을 통합하는 것은 단독으로 BCAAs를 사용하는 것보다 에너지 대사 및 기능적 능력 보존에 더 우수한 이점을 제공합니다.",
+    "source_content": "Wu\b\n10.3389/fnut.2025.1709867\nFrontiers in Nutrition\n04\nfrontiersin.org\nbetween exercise-induced myokines (such as IL-6 and irisin) and \nBCAA supplementation has been demonstrated to potentiate \nmitochondrial biogenesis and anti-inflammatory responses, thus \nenhancing both metabolic health and physical performance among \nolder adults (43, 44). Nutritional methodologies that integrate BCAAs \nwith diets abundant in protein or essential amino acid formulations \nyield superior advantages compared to the exclusive use of isolated \nBCAAs, thereby endorsing a more comprehensive paradigm for the \npreservation of energy metabolism and functional capabilities in aging \ndemographics. In conclusion, BCAAs manifest intricate influences on \nenergy metabolism throughout the aging process, predominantly by \npromoting mitochondrial integrity, enhancing protein synthesis, and \nfacilitating insulin efficacy. When incorporated into systematic",
+    "source_file": "pdf-data/BCAA_muscle_brain_energy_aging_2025.pdf",
+    "category": "general",
+    "language": "en",
+    "paper_title": "Effects of branched-chain amino acids on the muscle–brain metabolic axis: enhancing energy metabolism and neurological functions, and endurance exercise in aging-related conditions"
+  },
+  {
+    "id": 48,
+    "question": "녹차추출물 카테킨의 하루 섭취량은 얼마인가요?",
+    "reference_answer": "하루 섭취량은 카테킨 기준 300~1,000mg입니다.",
+    "source_content": "id: qa_011\nquestion: 녹차추출물 카테킨의 체지방 감소 기전은 무엇인가요?\nanswer: 녹차추출물의 주요 활성 성분인 카테킨은 에너지 소비를 증가시키고 지방산화를 촉진하는 방식으로 체지방 감소에 도움을 줍니다. 식약처 고시형 원료로 인정되었으며 하루 섭취량은 카테킨 기준 300~1,000mg입니다.\nsource_doc: 식약처_체지방감소_고시형원료_기능성정보.json\ncategory: 성분/효능\ndifficulty: medium",
+    "source_file": "json-data/qa_dataset_다이어트식품.json",
+    "category": "diet",
+    "language": "ko",
+    "paper_title": ""
+  },
+  {
+    "id": 49,
+    "question": "카테킨이 체지방 감소에 어떻게 도움을 주나요?",
+    "reference_answer": "카테킨은 에너지 소비를 증가시키고 지방산화를 촉진하는 방식으로 체지방 감소에 도움을 줍니다.",
+    "source_content": "id: qa_011\nquestion: 녹차추출물 카테킨의 체지방 감소 기전은 무엇인가요?\nanswer: 녹차추출물의 주요 활성 성분인 카테킨은 에너지 소비를 증가시키고 지방산화를 촉진하는 방식으로 체지방 감소에 도움을 줍니다. 식약처 고시형 원료로 인정되었으며 하루 섭취량은 카테킨 기준 300~1,000mg입니다.\nsource_doc: 식약처_체지방감소_고시형원료_기능성정보.json\ncategory: 성분/효능\ndifficulty: medium",
+    "source_file": "json-data/qa_dataset_다이어트식품.json",
+    "category": "diet",
+    "language": "ko",
+    "paper_title": ""
+  },
+  {
+    "id": 50,
+    "question": "L-카르니틴의 함량이 높은 음식은 무엇인가요?",
+    "reference_answer": "L-카르니틴은 주로 육류(소고기, 양고기 등 붉은 고기일수록 함량이 높음)와 생선에 많이 들어있습니다.",
+    "source_content": "id: qa_008\nquestion: L-카르니틴은 어떤 음식에 많이 들어있나요?\nanswer: L-카르니틴은 주로 육류(소고기, 양고기 등 붉은 고기일수록 함량이 높음), 생선, 가금류, 우유 같은 동물 단백질 식품에 많이 들어있습니다. 또한 콩 등에 풍부한 필수 아미노산 라이신을 섭취하면 간에서 분해되는 과정에서 L-카르니틴이 합성되기도 합니다.\nsource_doc: doctornow_L카르니틴_효능부작용.txt\ncategory: 성분/식품\ndifficulty: easy",
+    "source_file": "json-data/qa_dataset_다이어트식품.json",
+    "category": "diet",
+    "language": "ko",
+    "paper_title": ""
+  },
+  {
+    "id": 52,
+    "question": "브랜치드 체인 아미노산과 당뇨병의 관계를 연구한 논문은 무엇인가?",
+    "reference_answer": "Sawicki KT 등은 젊은 성인기 동안 브랜치드 체인 아미노산의 장기적 경로와 후에 당뇨병과의 관계를 연구한 논문을 발표하였다.",
+    "source_content": "study of relevance for obesity and diabetes. Nutrients. (2020) 13. doi: 10.3390/\nnu13010095\n134. Karusheva Y, Koessler T, Strassburger K, Markgraf D, Mastrototaro L, Jelenik\nT, et al. Short-term dietary reduction of branched-chain amino acids reduces meal-\ninduced insulin secretion and modiﬁes microbiome composition in type 2 diabetes: a\nrandomized controlled crossover trial. Am J Clin Nutr. (2019) 110:1098–107.\ndoi: 10.1093/ajcn/nqz191\n135. Moreno-Vedia J, Llop D, Rodrı́guez-Calvo R, Plana N, Amigó N, Rosales R,\net al. Serum branch-chained amino acids are increased in type 2 diabetes and associated\nwith atherosclerotic cardiovascular disease. Cardiovasc Diabetol. (2023) 22:249.\ndoi: 10.1186/s12933-023-01958-6\n136. Sawicki KT, Ning H, Allen NB, Carnethon MR, Wallia A, Otvos JD, et al.\nLongitudinal trajectories of branched chain amino acids through young adulthood and\ndiabetes in later life. JCI Insight. (2024) 9. doi: 10.1172/jci.insight.181901",
+    "source_file": "pdf-data/BCAA_insulin_resistance_type2_diabetes_2025.pdf",
+    "category": "general",
+    "language": "en",
+    "paper_title": "Branched-chain amino acids and insulin resistance in type 2 diabetes: from metabolic dysregulation to therapeutic targets"
+  },
+  {
+    "id": 56,
+    "question": "브랜치드 체인 아미노산이 심혈관 질환과 어떻게 연관되어 있는가?",
+    "reference_answer": "브랜치드 체인 아미노산의 증가가 제2형 당뇨병 환자에서 죽상경화성 심혈관 질환과 연관이 있는 것으로 나타났다.",
+    "source_content": "study of relevance for obesity and diabetes. Nutrients. (2020) 13. doi: 10.3390/\nnu13010095\n134. Karusheva Y, Koessler T, Strassburger K, Markgraf D, Mastrototaro L, Jelenik\nT, et al. Short-term dietary reduction of branched-chain amino acids reduces meal-\ninduced insulin secretion and modiﬁes microbiome composition in type 2 diabetes: a\nrandomized controlled crossover trial. Am J Clin Nutr. (2019) 110:1098–107.\ndoi: 10.1093/ajcn/nqz191\n135. Moreno-Vedia J, Llop D, Rodrı́guez-Calvo R, Plana N, Amigó N, Rosales R,\net al. Serum branch-chained amino acids are increased in type 2 diabetes and associated\nwith atherosclerotic cardiovascular disease. Cardiovasc Diabetol. (2023) 22:249.\ndoi: 10.1186/s12933-023-01958-6\n136. Sawicki KT, Ning H, Allen NB, Carnethon MR, Wallia A, Otvos JD, et al.\nLongitudinal trajectories of branched chain amino acids through young adulthood and\ndiabetes in later life. JCI Insight. (2024) 9. doi: 10.1172/jci.insight.181901",
+    "source_file": "pdf-data/BCAA_insulin_resistance_type2_diabetes_2025.pdf",
+    "category": "general",
+    "language": "en",
+    "paper_title": "Branched-chain amino acids and insulin resistance in type 2 diabetes: from metabolic dysregulation to therapeutic targets"
+  },
+  {
+    "id": 57,
+    "question": "비침습적 간 지방증 진단에 대한 연구는 어떤 환자군을 대상으로 했나요?",
+    "reference_answer": "CHB 환자들을 대상으로 했습니다.",
+    "source_content": "hepatitis C virus infection. Hepatology. (2020) 71:686–721. doi: 10.1002/hep.31060\n\t41.\tDeng H, Wang CL, Lai J, Yu SL, Xie DY, Gao ZL. Noninvasive diagnosis of hepatic \nsteatosis using fat attenuation parameter measured by FibroTouch and a new algorithm \nin CHB patients. Hepat Mon. (2016) 16:e40263. doi: 10.5812/hepatmon.40263\n\t42.\tVasim I, Majeed CN, DeBoer MD. Intermittent fasting and metabolic health. \nNutrients. (2022) 14:631:10.3390/nu14030631:3.",
+    "source_file": "pdf-data/5_2_fasting_vs_calorie_restriction_fatty_liver_2024.pdf",
+    "category": "general",
+    "language": "en",
+    "paper_title": "Effect of 5:2 intermittent fasting diet versus daily calorie restriction eating on metabolic-associated fatty liver disease—a randomized controlled trial"
+  },
+  {
+    "id": 58,
+    "question": "mTORC1이 Grb10에 미치는 영향은 무엇인가요?",
+    "reference_answer": "mTORC1은 Grb10을 안정화시켜 그 분해를 감소시킵니다.",
+    "source_content": "(11, 102, 103). Mitochondrial BCAAs aminotransferase (BCATm)\nmarkedly elevates plasma BCAAs levels, but is not affected by high-\nfat diet–induced obesity and IR (104, 105), suggesting that BCAAs-\nmediated effects such as mTOR activation alone are insufﬁcient to\ninduce IR.\nFurthermore, activation of mTORC1 stabilizes Grb10, reducing\nits degradation. Grb10 inhibits the interaction between insulinDiagram illustrating insulin signaling in a hepatocyte. Insulin bin\nFIGURE 3\nBCAA metabolism and insulin resistance. Elevated BCAA levels promote mTORC1 activation, which negatively regulates insulin signaling through\nphosphorylation of the downstream targets S6K and Grb10. First, PI3K activates AKT upon activation of the insulin receptor substrate (IRS). Activated\nAKT phosphorylates and inhibits TSC2, while phosphorylation of PRAS40 further enhances mTORC1 activity. Subsequently, mTORC1 activates S6K",
+    "source_file": "pdf-data/BCAA_insulin_resistance_type2_diabetes_2025.pdf",
+    "category": "general",
+    "language": "en",
+    "paper_title": "Branched-chain amino acids and insulin resistance in type 2 diabetes: from metabolic dysregulation to therapeutic targets"
+  },
+  {
+    "id": 60,
+    "question": "GLP-1 약물이 2023년의 돌파구가 된 이유는 무엇인가요?",
+    "reference_answer": "GLP-1 약물은 2023년에 중요한 발전을 이루었기 때문입니다.",
+    "source_content": "named GLP-1 drugs the breakthrough of 2023 (79). Coupled with the\npractical limitation of human subjects adhering to CR in non-\ncontrolled environments, we have seen increased research into\nCRMs - which can mimic one or more physiological, metabolic,\nand hormonal signaling cascades of CR without dietary restrictions.\nIn the following section, we focus on the role that some of these\ncompounds may have in the treatment of mental health disorders.\nNguyen et al.\n10.3389/fpsyt.2025.1584890\nFrontiers in Psychiatry\nfrontiersin.org\n04",
+    "source_file": "pdf-data/caloric_restriction_mental_health_2025.pdf",
+    "category": "general",
+    "language": "en",
+    "paper_title": ""
+  },
+  {
+    "id": 61,
+    "question": "비만 쥐의 간과 골격근에서 mTOR 경로의 활성화가 증가하는 이유는 무엇인가요?",
+    "reference_answer": "비만 쥐의 간과 골격근에서 mTOR 경로의 활성화가 증가하는 것은 비만과 관련된 인슐린 저항성에 관여할 가능성이 있기 때문입니다.",
+    "source_content": "the role of adipose tissue. Nat Rev Endocrinol. (2019) 15:274–87. doi: 10.1038/s41574-\n018-0148-4\n163. Tremblay F, Marette A. Amino acid and insulin signaling via the mTOR/p70 S6\nkinase pathway. A negative feedback mechanism leading to insulin resistance in skeletal\nmuscle cells. J Biol Chem. (2001) 276:38052–60. doi: 10.1074/jbc.M106703200\n164. Khamzina L, Veilleux A, Bergeron S, Marette A. Increased activation of the\nmammalian target of rapamycin pathway in liver and skeletal muscle of obese rats:\npossible involvement in obesity-linked insulin resistance. Endocrinology. (2005)\n146:1473–81. doi: 10.1210/en.2004-0921\n165. Krebs M, Krssak M, Bernroider E, Anderwald C, Brehm A, Meyerspeer M, et al.\nMechanism of amino acid-induced skeletal muscle insulin resistance in humans.\nDiabetes. (2002) 51:599–605. doi: 10.2337/diabetes.51.3.599\n166. Linn T, Santosa B, Grönemeyer D, Aygen S, Scholz N, Busch M, et al. Effect of",
+    "source_file": "pdf-data/animal_plant_protein_weight_glycemic_control_2024.pdf",
+    "category": "diet",
+    "language": "en",
+    "paper_title": ""
+  },
+  {
+    "id": 62,
+    "question": "L-카르니틴이 많이 포함된 음식은 어떤 것들이 있나요?",
+    "reference_answer": "L-카르니틴은 주로 육류(소고기, 양고기 등 붉은 고기일수록 함량이 높음), 생선, 가금류, 우유 같은 동물 단백질 식품에 많이 들어있습니다.",
+    "source_content": "id: qa_008\nquestion: L-카르니틴은 어떤 음식에 많이 들어있나요?\nanswer: L-카르니틴은 주로 육류(소고기, 양고기 등 붉은 고기일수록 함량이 높음), 생선, 가금류, 우유 같은 동물 단백질 식품에 많이 들어있습니다. 또한 콩 등에 풍부한 필수 아미노산 라이신을 섭취하면 간에서 분해되는 과정에서 L-카르니틴이 합성되기도 합니다.\nsource_doc: doctornow_L카르니틴_효능부작용.txt\ncategory: 성분/식품\ndifficulty: easy",
+    "source_file": "json-data/qa_dataset_다이어트식품.json",
+    "category": "diet",
+    "language": "ko",
+    "paper_title": ""
+  },
+  {
+    "id": 63,
+    "question": "운동과 BCAA의 조합이 왜 중요하나요?",
+    "reference_answer": "운동은 BCAA의 산화와 에너지 생산을 촉진하며, BCAA 대사 효소를 증가시킵니다. 따라서 운동과 BCAA 섭취를 결합하면 대사 및 기능적 이득이 증대될 수 있습니다.",
+    "source_content": "mitochondrial function (10, 11).\nNevertheless, appropriate supplementation has shown promising \nresults in both human and animal models, suggesting enhancements \nin mitochondrial biogenesis, reductions in inflammation, and \npotential support for endurance and cognitive performance (12, 13). \nBecause both skeletal muscle and the brain rely heavily on \nmitochondrial energy production, restoring BCAA metabolism may \nbenefit both systems simultaneously.\nExercise, another proven non-pharmacological approach, \ninteracts synergistically with BCAAs. During endurance or resistance \nexercise, muscles oxidize BCAAs for energy, while training upregulates \nenzymes of BCAA catabolism (14, 15). Thus, combining exercise with \nBCAA intake may amplify metabolic and functional gains, especially \nin older adults with diminished exercise tolerance and anabolic \nsensitivity. In summary, aging disrupts the metabolic communication \nbetween muscle and brain, contributing to sarcopenia and cognitive",
+    "source_file": "pdf-data/BCAA_muscle_brain_energy_aging_2025.pdf",
+    "category": "general",
+    "language": "en",
+    "paper_title": "Effects of branched-chain amino acids on the muscle–brain metabolic axis: enhancing energy metabolism and neurological functions, and endurance exercise in aging-related conditions"
+  },
+  {
+    "id": 65,
+    "question": "녹차추출물 카테킨은 어떤 성분으로 인정받았나요?",
+    "reference_answer": "식약처 고시형 원료로 인정되었습니다.",
+    "source_content": "id: qa_011\nquestion: 녹차추출물 카테킨의 체지방 감소 기전은 무엇인가요?\nanswer: 녹차추출물의 주요 활성 성분인 카테킨은 에너지 소비를 증가시키고 지방산화를 촉진하는 방식으로 체지방 감소에 도움을 줍니다. 식약처 고시형 원료로 인정되었으며 하루 섭취량은 카테킨 기준 300~1,000mg입니다.\nsource_doc: 식약처_체지방감소_고시형원료_기능성정보.json\ncategory: 성분/효능\ndifficulty: medium",
+    "source_file": "json-data/qa_dataset_다이어트식품.json",
+    "category": "diet",
+    "language": "ko",
+    "paper_title": ""
+  },
+  {
+    "id": 66,
+    "question": "카제인과 유청 단백질이 혈장 아미노산 프로필과 위장 호르몬 분비에 미치는 차이는 무엇인가요?",
+    "reference_answer": "카제인과 유청 단백질은 혈장 아미노산 프로필, 위장 호르몬 분비 및 식욕에 다르게 영향을 미친다.",
+    "source_content": "jc.2006-0609\n46. Diepvens K, Häberer D, Westerterp-Plantenga M. Different proteins and\nbiopeptides differently affect satiety and anorexigenic/orexigenic hormones in\nhealthy humans. Int J Obes (Lond). (2008) 32:510–8. doi: 10.1038/sj.ijo.0803758\n47. Dougkas A, Östman E. Comparable effects of breakfast meals varying in protein\nsource on appetite and subsequent energy intake in healthy males. Eur J Nutr. (2018)\n57:1097–108. doi: 10.1007/s00394-017-1392-4\n48. Gunnerud UJ, Heinzle C, Holst JJ, Östman EM, Björck IM. Effects of pre-meal\ndrinks with protein and amino acids on glycemic and metabolic responses at a\nsubsequent composite meal. PloS One. (2012) 7:44731. doi: 10.1371/\njournal.pone.0044731\n49. Hall W, Millward D, Long S, Morgan L. Casein and whey exert different effects\non plasma amino acid proﬁles, gastrointestinal hormone secretion and appetite. Br J\nNutr. (2003) 89:239–48. doi: 10.1079/BJN2002760\n50. Hoeﬂe AS, Bangert AM, Stamfort A, Gedrich K, Rist MJ, Lee Y-M, et al.",
+    "source_file": "pdf-data/animal_plant_protein_weight_glycemic_control_2024.pdf",
+    "category": "diet",
+    "language": "en",
+    "paper_title": ""
+  },
+  {
+    "id": 67,
+    "question": "장기적인 식이요법의 효과에 대해 문서에서 어떤 언급이 있나요?",
+    "reference_answer": "문서에서는 장기적인 식이요법의 효과에 대해 언급하고 있지만, 구체적인 내용은 제공되지 않았습니다.",
+    "source_content": "keto acids, and acylcarnitines were signiﬁcantly higher in the HP\ngroup than in the LP group, with the exception of the branched-\nchain a-keto acid a-ketoisovalerate, which exhibited higher\npostprandial concentrations following LP intake; however, when\nBCAAs levels exceeded a certain threshold, their catabolic products\ndecreased (48). On the other hand, the effects of long-term diet may\nMei et al.\n10.3389/fendo.2025.1643231\nFrontiers in Endocrinology\nfrontiersin.org\n03",
+    "source_file": "pdf-data/BCAA_insulin_resistance_type2_diabetes_2025.pdf",
+    "category": "general",
+    "language": "en",
+    "paper_title": "Branched-chain amino acids and insulin resistance in type 2 diabetes: from metabolic dysregulation to therapeutic targets"
+  },
+  {
+    "id": 68,
+    "question": "간 손상으로 인해 유도되는 세포 사멸 또는 노화의 원인은 무엇인가요?",
+    "reference_answer": "간의 이차 손상은 세포 사멸 또는 노화를 유도할 수 있는 원인 중 하나입니다.",
+    "source_content": "secondary liver damage and further inducing cell death or\nsenescence\n(Mahlapuu\net\nal.,\n2022;\nXu\net\nal.,\n2020).\nIf\npathological factors persist, the liver will undergo repeated injury\nand repair processes and activate hepatic stellate cells, leading to\nﬁbroplasia and even cirrhosis (Taru et al., 2024). Inﬂammatory\ncytokines, adipokines, dietary, genetic and environmental factors\nhave important effects on IR and gut microbiota homeostasis, and\nconversely, IR and gut microbiota disorders exacerbate imbalance of\nlipid metabolism (Chen and Vitetta, 2020; Fujii et al., 2020; Khan\nFrontiers in Pharmacology\nfrontiersin.org\n02\nXiao et al.\n10.3389/fphar.2025.1540255",
+    "source_file": "pdf-data/ginseng_fatty_liver_pharmacology_2025.pdf",
+    "category": "research",
+    "language": "en",
+    "paper_title": ""
+  },
+  {
+    "id": 69,
+    "question": "일일 칼로리 제한을 따르는 그룹에서 어떤 불편함이 보고되었나요?",
+    "reference_answer": "일일 칼로리 제한을 따르는 그룹에서 다섯 명의 참가자가 추위, 두통, 에너지 감소 및 간헐적인 어지러움과 같은 다양한 불편함을 표현했습니다.",
+    "source_content": "elastography device, is utilized for assessing liver stiffness and \ndiagnosing liver fibrosis and hepatic steatosis (39). FS has been \nextensively studied, widely accepted, and integrated into major clinical \nguidelines (40). In 2013, FT employs vibration-controlled transient \nelastography to LSM and attenuation parameter, offering diagnostic \ncapabilities for liver fibrosis and hepatic steatosis comparable to those \nof FS (41).\nThree subjects documented experiencing sensations of hunger \nand fatigue on fasting days, whereas five participants expressed \nvarious discomforts such as feeling cold, headaches, diminished \nenergy levels, and sporadic dizziness within the group adhering to \ndaily calorie restriction. As anticipated, individuals adhering to the 5:2 \nIF diet experienced sensations of hunger and fatigue during fasting \nperiods, but few other unforeseen side effects. While intermittent \nfasting has not been associated with major adverse events, common",
+    "source_file": "pdf-data/5_2_fasting_vs_calorie_restriction_fatty_liver_2024.pdf",
+    "category": "general",
+    "language": "en",
+    "paper_title": "Effect of 5:2 intermittent fasting diet versus daily calorie restriction eating on metabolic-associated fatty liver disease—a randomized controlled trial"
+  },
+  {
+    "id": 70,
+    "question": "CRMs란 무엇을 의미하나요?",
+    "reference_answer": "CRMs는 칼로리 제한 없이 생리학적, 대사적, 호르몬 신호 전달 경로를 모방할 수 있는 화합물을 의미합니다.",
+    "source_content": "named GLP-1 drugs the breakthrough of 2023 (79). Coupled with the\npractical limitation of human subjects adhering to CR in non-\ncontrolled environments, we have seen increased research into\nCRMs - which can mimic one or more physiological, metabolic,\nand hormonal signaling cascades of CR without dietary restrictions.\nIn the following section, we focus on the role that some of these\ncompounds may have in the treatment of mental health disorders.\nNguyen et al.\n10.3389/fpsyt.2025.1584890\nFrontiers in Psychiatry\nfrontiersin.org\n04",
+    "source_file": "pdf-data/caloric_restriction_mental_health_2025.pdf",
+    "category": "general",
+    "language": "en",
+    "paper_title": ""
+  },
+  {
+    "id": 72,
+    "question": "L-카르니틴은 어떻게 합성되나요?",
+    "reference_answer": "콩 등에 풍부한 필수 아미노산 라이신을 섭취하면 간에서 분해되는 과정에서 L-카르니틴이 합성되기도 합니다.",
+    "source_content": "id: qa_008\nquestion: L-카르니틴은 어떤 음식에 많이 들어있나요?\nanswer: L-카르니틴은 주로 육류(소고기, 양고기 등 붉은 고기일수록 함량이 높음), 생선, 가금류, 우유 같은 동물 단백질 식품에 많이 들어있습니다. 또한 콩 등에 풍부한 필수 아미노산 라이신을 섭취하면 간에서 분해되는 과정에서 L-카르니틴이 합성되기도 합니다.\nsource_doc: doctornow_L카르니틴_효능부작용.txt\ncategory: 성분/식품\ndifficulty: easy",
+    "source_file": "json-data/qa_dataset_다이어트식품.json",
+    "category": "diet",
+    "language": "ko",
+    "paper_title": ""
+  },
+  {
+    "id": 73,
+    "question": "문서에서 어떤 정신 건강 장애 치료에 대해 논의하고 있나요?",
+    "reference_answer": "일부 화합물이 정신 건강 장애 치료에 미치는 역할에 대해 논의하고 있습니다.",
+    "source_content": "named GLP-1 drugs the breakthrough of 2023 (79). Coupled with the\npractical limitation of human subjects adhering to CR in non-\ncontrolled environments, we have seen increased research into\nCRMs - which can mimic one or more physiological, metabolic,\nand hormonal signaling cascades of CR without dietary restrictions.\nIn the following section, we focus on the role that some of these\ncompounds may have in the treatment of mental health disorders.\nNguyen et al.\n10.3389/fpsyt.2025.1584890\nFrontiers in Psychiatry\nfrontiersin.org\n04",
+    "source_file": "pdf-data/caloric_restriction_mental_health_2025.pdf",
+    "category": "general",
+    "language": "en",
+    "paper_title": ""
+  },
+  {
+    "id": 75,
+    "question": "WHR은 무엇의 약자인가요?",
+    "reference_answer": "WHR은 waist to hip ratio, 즉 허리와 엉덩이 비율의 약자입니다.",
+    "source_content": "circumference; WHR, waist to hip ratio; ALT, alanine aminotransferase; AST, aspartate aminotransferase; TC, total cholesterol; TG, riglycerides; HDL-C, high-density cholesterol; LDL-C, \nlow-density cholesterol; FBS, fasting blood sugar; HbA1c, glycated hemoglobin; HOMA-IR, insulin resistance index; hs-CRP, high-sensitivity C-reactive protein; 25(OH)D, \n25-hydroxyvitamin D.",
+    "source_file": "pdf-data/5_2_fasting_vs_calorie_restriction_fatty_liver_2024.pdf",
+    "category": "general",
+    "language": "en",
+    "paper_title": "Effect of 5:2 intermittent fasting diet versus daily calorie restriction eating on metabolic-associated fatty liver disease—a randomized controlled trial"
+  },
+  {
+    "id": 76,
+    "question": "IR과 장내 미생물 불균형은 어떤 관계가 있나요?",
+    "reference_answer": "IR과 장내 미생물 장애는 지질 대사의 불균형을 악화시키는 상호작용을 합니다.",
+    "source_content": "secondary liver damage and further inducing cell death or\nsenescence\n(Mahlapuu\net\nal.,\n2022;\nXu\net\nal.,\n2020).\nIf\npathological factors persist, the liver will undergo repeated injury\nand repair processes and activate hepatic stellate cells, leading to\nﬁbroplasia and even cirrhosis (Taru et al., 2024). Inﬂammatory\ncytokines, adipokines, dietary, genetic and environmental factors\nhave important effects on IR and gut microbiota homeostasis, and\nconversely, IR and gut microbiota disorders exacerbate imbalance of\nlipid metabolism (Chen and Vitetta, 2020; Fujii et al., 2020; Khan\nFrontiers in Pharmacology\nfrontiersin.org\n02\nXiao et al.\n10.3389/fphar.2025.1540255",
+    "source_file": "pdf-data/ginseng_fatty_liver_pharmacology_2025.pdf",
+    "category": "research",
+    "language": "en",
+    "paper_title": ""
+  },
+  {
+    "id": 77,
+    "question": "인슐린 신호 전달 과정에서 AKT의 역할은 무엇인가요?",
+    "reference_answer": "AKT는 인슐린 수용체 기질(IRS)이 활성화되면 PI3K에 의해 활성화되고, TSC2를 인산화하여 억제합니다.",
+    "source_content": "(11, 102, 103). Mitochondrial BCAAs aminotransferase (BCATm)\nmarkedly elevates plasma BCAAs levels, but is not affected by high-\nfat diet–induced obesity and IR (104, 105), suggesting that BCAAs-\nmediated effects such as mTOR activation alone are insufﬁcient to\ninduce IR.\nFurthermore, activation of mTORC1 stabilizes Grb10, reducing\nits degradation. Grb10 inhibits the interaction between insulinDiagram illustrating insulin signaling in a hepatocyte. Insulin bin\nFIGURE 3\nBCAA metabolism and insulin resistance. Elevated BCAA levels promote mTORC1 activation, which negatively regulates insulin signaling through\nphosphorylation of the downstream targets S6K and Grb10. First, PI3K activates AKT upon activation of the insulin receptor substrate (IRS). Activated\nAKT phosphorylates and inhibits TSC2, while phosphorylation of PRAS40 further enhances mTORC1 activity. Subsequently, mTORC1 activates S6K",
+    "source_file": "pdf-data/BCAA_insulin_resistance_type2_diabetes_2025.pdf",
+    "category": "general",
+    "language": "en",
+    "paper_title": "Branched-chain amino acids and insulin resistance in type 2 diabetes: from metabolic dysregulation to therapeutic targets"
+  },
+  {
+    "id": 78,
+    "question": "레우신이 강화된 그룹의 MyoPS 변화는 어떻게 되었나요?",
+    "reference_answer": "레우신이 강화된 그룹의 MyoPS는 5시간 후 약 90% 상승하였고, 24시간에 여전히 유의미하게 상승한 상태로 유지되었습니다.",
+    "source_content": "standard leucine concentration (1.85 g) or a leucine-enhanced \nformulation (3.5 g) 1 h subsequent to RE. Muscle biopsy analyses \nindicated that both cohorts exhibited an increase in p70 S6 kinase 1 \nphosphorylation at the 2-h mark; however, phosphorylation of 4E \nbinding protein 1 was observed to rise solely in the leucine-enriched \ncohort. MyoPS experienced an approximate elevation of 90% at 5 h \nfor both groups, yet it remained significantly elevated at the 24-h mark \nexclusively in the leucine-enriched group. In a similar vein, the mRNA \nexpression levels of amino acid transporters demonstrated early \nincreases in both groups (54).\nAn investigation assessed the impact of a 6-week endurance \ntraining regimen supplemented with BCAAs on the structural \ncharacteristics of skeletal muscle in older men (mean age 63). The \nparticipants were stratified into two distinct cohorts: one cohort \nreceived a daily dosage of BCAA supplements (2 g isoleucine, 16 g",
+    "source_file": "pdf-data/BCAA_muscle_brain_energy_aging_2025.pdf",
+    "category": "general",
+    "language": "en",
+    "paper_title": "Effects of branched-chain amino acids on the muscle–brain metabolic axis: enhancing energy metabolism and neurological functions, and endurance exercise in aging-related conditions"
+  },
+  {
+    "id": 79,
+    "question": "브랜치드 체인 아미노산의 대사 과정은 어떻게 이루어지나요?",
+    "reference_answer": "Neinast MD 외의 연구에서는 브랜치드 체인 아미노산의 전체 몸 대사 운명을 정량적으로 분석하였습니다.",
+    "source_content": "44. Holeček M. Branched-chain amino acids and branched-chain keto acids in\nhyperammonemic states: metabolism and as supplements. Metabolites. (2020) 10.\ndoi: 10.3390/metabo10080324\n45. Adeva-Andany MM, López-Maside L, Donapetry-Garcı́a C, Fernández-Fernández\nC, Sixto-Leal C. Enzymes involved in branched-chain amino acid metabolism in humans.\nAmino Acids. (2017) 49:1005–28. doi: 10.1007/s00726-017-2412-7\n46. Wynn RM, Kato M, Machius M, Chuang JL, Li J, Tomchick DR, et al. Molecular\nmechanism for regulation of the human mitochondrial branched-chain alpha-ketoacid\ndehydrogenase complex by phosphorylation. Structure. (2004) 12:2185–96.\ndoi: 10.1016/j.str.2004.09.013\n47. Neinast MD, Jang C, Hui S, Murashige DS, Chu Q, Morscher RJ, et al.\nQuantitative analysis of the whole-body metabolic fate of branched-chain amino\nacids. Cell Metab. (2019) 29:417–429.e4. doi: 10.1016/j.cmet.2018.10.013\n48. Newton-Tanzer E, Can SN, Demmelmair H, Horak J, Holdt L, Koletzko B, et al.",
+    "source_file": "pdf-data/BCAA_insulin_resistance_type2_diabetes_2025.pdf",
+    "category": "general",
+    "language": "en",
+    "paper_title": "Branched-chain amino acids and insulin resistance in type 2 diabetes: from metabolic dysregulation to therapeutic targets"
+  },
+  {
+    "id": 83,
+    "question": "브랜치드 체인 아미노산 대사에 관여하는 효소는 무엇인가요?",
+    "reference_answer": "Adeva-Andany MM 외의 연구에서 인간의 브랜치드 체인 아미노산 대사에 관여하는 효소에 대해 설명하고 있습니다.",
+    "source_content": "44. Holeček M. Branched-chain amino acids and branched-chain keto acids in\nhyperammonemic states: metabolism and as supplements. Metabolites. (2020) 10.\ndoi: 10.3390/metabo10080324\n45. Adeva-Andany MM, López-Maside L, Donapetry-Garcı́a C, Fernández-Fernández\nC, Sixto-Leal C. Enzymes involved in branched-chain amino acid metabolism in humans.\nAmino Acids. (2017) 49:1005–28. doi: 10.1007/s00726-017-2412-7\n46. Wynn RM, Kato M, Machius M, Chuang JL, Li J, Tomchick DR, et al. Molecular\nmechanism for regulation of the human mitochondrial branched-chain alpha-ketoacid\ndehydrogenase complex by phosphorylation. Structure. (2004) 12:2185–96.\ndoi: 10.1016/j.str.2004.09.013\n47. Neinast MD, Jang C, Hui S, Murashige DS, Chu Q, Morscher RJ, et al.\nQuantitative analysis of the whole-body metabolic fate of branched-chain amino\nacids. Cell Metab. (2019) 29:417–429.e4. doi: 10.1016/j.cmet.2018.10.013\n48. Newton-Tanzer E, Can SN, Demmelmair H, Horak J, Holdt L, Koletzko B, et al.",
+    "source_file": "pdf-data/BCAA_insulin_resistance_type2_diabetes_2025.pdf",
+    "category": "general",
+    "language": "en",
+    "paper_title": "Branched-chain amino acids and insulin resistance in type 2 diabetes: from metabolic dysregulation to therapeutic targets"
+  },
+  {
+    "id": 85,
+    "question": "FT 기술이 무엇을 사용하는지 설명해 주세요.",
+    "reference_answer": "FT는 진동 제어 일시적 엘라스토그래피를 사용하여 간 경직성 측정 및 감쇠 매개변수를 제공하며, 간 섬유증 및 간 지방증 진단에 대한 능력이 FS와 유사합니다.",
+    "source_content": "elastography device, is utilized for assessing liver stiffness and \ndiagnosing liver fibrosis and hepatic steatosis (39). FS has been \nextensively studied, widely accepted, and integrated into major clinical \nguidelines (40). In 2013, FT employs vibration-controlled transient \nelastography to LSM and attenuation parameter, offering diagnostic \ncapabilities for liver fibrosis and hepatic steatosis comparable to those \nof FS (41).\nThree subjects documented experiencing sensations of hunger \nand fatigue on fasting days, whereas five participants expressed \nvarious discomforts such as feeling cold, headaches, diminished \nenergy levels, and sporadic dizziness within the group adhering to \ndaily calorie restriction. As anticipated, individuals adhering to the 5:2 \nIF diet experienced sensations of hunger and fatigue during fasting \nperiods, but few other unforeseen side effects. While intermittent \nfasting has not been associated with major adverse events, common",
+    "source_file": "pdf-data/5_2_fasting_vs_calorie_restriction_fatty_liver_2024.pdf",
+    "category": "general",
+    "language": "en",
+    "paper_title": "Effect of 5:2 intermittent fasting diet versus daily calorie restriction eating on metabolic-associated fatty liver disease—a randomized controlled trial"
+  },
+  {
+    "id": 86,
+    "question": "BCAA 보충이 어떤 긍정적인 결과를 보여주었나요?",
+    "reference_answer": "BCAA 보충은 미토콘드리아 생합성을 촉진하고, 염증을 줄이며, 지구력과 인지 기능을 지원할 가능성을 보여주었습니다.",
+    "source_content": "mitochondrial function (10, 11).\nNevertheless, appropriate supplementation has shown promising \nresults in both human and animal models, suggesting enhancements \nin mitochondrial biogenesis, reductions in inflammation, and \npotential support for endurance and cognitive performance (12, 13). \nBecause both skeletal muscle and the brain rely heavily on \nmitochondrial energy production, restoring BCAA metabolism may \nbenefit both systems simultaneously.\nExercise, another proven non-pharmacological approach, \ninteracts synergistically with BCAAs. During endurance or resistance \nexercise, muscles oxidize BCAAs for energy, while training upregulates \nenzymes of BCAA catabolism (14, 15). Thus, combining exercise with \nBCAA intake may amplify metabolic and functional gains, especially \nin older adults with diminished exercise tolerance and anabolic \nsensitivity. In summary, aging disrupts the metabolic communication \nbetween muscle and brain, contributing to sarcopenia and cognitive",
+    "source_file": "pdf-data/BCAA_muscle_brain_energy_aging_2025.pdf",
+    "category": "general",
+    "language": "en",
+    "paper_title": "Effects of branched-chain amino acids on the muscle–brain metabolic axis: enhancing energy metabolism and neurological functions, and endurance exercise in aging-related conditions"
+  },
+  {
+    "id": 87,
+    "question": "아침 식사에서 단백질의 출처가 식욕과 이후 에너지 섭취에 미치는 영향은 어떤가요?",
+    "reference_answer": "아침 식사에서 단백질의 출처가 다른 경우 건강한 남성의 식욕과 이후 에너지 섭취에 유사한 영향을 미친다.",
+    "source_content": "jc.2006-0609\n46. Diepvens K, Häberer D, Westerterp-Plantenga M. Different proteins and\nbiopeptides differently affect satiety and anorexigenic/orexigenic hormones in\nhealthy humans. Int J Obes (Lond). (2008) 32:510–8. doi: 10.1038/sj.ijo.0803758\n47. Dougkas A, Östman E. Comparable effects of breakfast meals varying in protein\nsource on appetite and subsequent energy intake in healthy males. Eur J Nutr. (2018)\n57:1097–108. doi: 10.1007/s00394-017-1392-4\n48. Gunnerud UJ, Heinzle C, Holst JJ, Östman EM, Björck IM. Effects of pre-meal\ndrinks with protein and amino acids on glycemic and metabolic responses at a\nsubsequent composite meal. PloS One. (2012) 7:44731. doi: 10.1371/\njournal.pone.0044731\n49. Hall W, Millward D, Long S, Morgan L. Casein and whey exert different effects\non plasma amino acid proﬁles, gastrointestinal hormone secretion and appetite. Br J\nNutr. (2003) 89:239–48. doi: 10.1079/BJN2002760\n50. Hoeﬂe AS, Bangert AM, Stamfort A, Gedrich K, Rist MJ, Lee Y-M, et al.",
+    "source_file": "pdf-data/animal_plant_protein_weight_glycemic_control_2024.pdf",
+    "category": "diet",
+    "language": "en",
+    "paper_title": ""
+  },
+  {
+    "id": 88,
+    "question": "간 손상에 영향을 미치는 요인은 무엇인가요?",
+    "reference_answer": "염증성 사이토카인, 아디포카인, 식이, 유전적 및 환경적 요인들이 간 손상 및 장내 미생물 균형에 중요한 영향을 미칩니다.",
+    "source_content": "secondary liver damage and further inducing cell death or\nsenescence\n(Mahlapuu\net\nal.,\n2022;\nXu\net\nal.,\n2020).\nIf\npathological factors persist, the liver will undergo repeated injury\nand repair processes and activate hepatic stellate cells, leading to\nﬁbroplasia and even cirrhosis (Taru et al., 2024). Inﬂammatory\ncytokines, adipokines, dietary, genetic and environmental factors\nhave important effects on IR and gut microbiota homeostasis, and\nconversely, IR and gut microbiota disorders exacerbate imbalance of\nlipid metabolism (Chen and Vitetta, 2020; Fujii et al., 2020; Khan\nFrontiers in Pharmacology\nfrontiersin.org\n02\nXiao et al.\n10.3389/fphar.2025.1540255",
+    "source_file": "pdf-data/ginseng_fatty_liver_pharmacology_2025.pdf",
+    "category": "research",
+    "language": "en",
+    "paper_title": ""
+  },
+  {
+    "id": 90,
+    "question": "다양한 단백질과 생리활성 펩타이드가 건강한 인간의 포만감에 미치는 영향은 무엇인가요?",
+    "reference_answer": "다양한 단백질과 생리활성 펩타이드는 포만감과 식욕 억제/촉진 호르몬에 다르게 영향을 미친다.",
+    "source_content": "jc.2006-0609\n46. Diepvens K, Häberer D, Westerterp-Plantenga M. Different proteins and\nbiopeptides differently affect satiety and anorexigenic/orexigenic hormones in\nhealthy humans. Int J Obes (Lond). (2008) 32:510–8. doi: 10.1038/sj.ijo.0803758\n47. Dougkas A, Östman E. Comparable effects of breakfast meals varying in protein\nsource on appetite and subsequent energy intake in healthy males. Eur J Nutr. (2018)\n57:1097–108. doi: 10.1007/s00394-017-1392-4\n48. Gunnerud UJ, Heinzle C, Holst JJ, Östman EM, Björck IM. Effects of pre-meal\ndrinks with protein and amino acids on glycemic and metabolic responses at a\nsubsequent composite meal. PloS One. (2012) 7:44731. doi: 10.1371/\njournal.pone.0044731\n49. Hall W, Millward D, Long S, Morgan L. Casein and whey exert different effects\non plasma amino acid proﬁles, gastrointestinal hormone secretion and appetite. Br J\nNutr. (2003) 89:239–48. doi: 10.1079/BJN2002760\n50. Hoeﬂe AS, Bangert AM, Stamfort A, Gedrich K, Rist MJ, Lee Y-M, et al.",
+    "source_file": "pdf-data/animal_plant_protein_weight_glycemic_control_2024.pdf",
+    "category": "diet",
+    "language": "en",
+    "paper_title": ""
+  },
+  {
+    "id": 93,
+    "question": "BCAAs의 효과가 인슐린 저항성(IR)을 유도하는 데 충분하지 않은 이유는 무엇인가요?",
+    "reference_answer": "BCAAs-매개 효과인 mTOR 활성화만으로는 IR을 유도하기에 부족하기 때문입니다.",
+    "source_content": "(11, 102, 103). Mitochondrial BCAAs aminotransferase (BCATm)\nmarkedly elevates plasma BCAAs levels, but is not affected by high-\nfat diet–induced obesity and IR (104, 105), suggesting that BCAAs-\nmediated effects such as mTOR activation alone are insufﬁcient to\ninduce IR.\nFurthermore, activation of mTORC1 stabilizes Grb10, reducing\nits degradation. Grb10 inhibits the interaction between insulinDiagram illustrating insulin signaling in a hepatocyte. Insulin bin\nFIGURE 3\nBCAA metabolism and insulin resistance. Elevated BCAA levels promote mTORC1 activation, which negatively regulates insulin signaling through\nphosphorylation of the downstream targets S6K and Grb10. First, PI3K activates AKT upon activation of the insulin receptor substrate (IRS). Activated\nAKT phosphorylates and inhibits TSC2, while phosphorylation of PRAS40 further enhances mTORC1 activity. Subsequently, mTORC1 activates S6K",
+    "source_file": "pdf-data/BCAA_insulin_resistance_type2_diabetes_2025.pdf",
+    "category": "general",
+    "language": "en",
+    "paper_title": "Branched-chain amino acids and insulin resistance in type 2 diabetes: from metabolic dysregulation to therapeutic targets"
+  },
+  {
+    "id": 97,
+    "question": "제2형 당뇨병과 관련된 혈청 브랜치드 체인 아미노산의 변화는 어떤 의미가 있는가?",
+    "reference_answer": "제2형 당뇨병에서 혈청 브랜치드 체인 아미노산이 증가하며, 이는 죽상경화성 심혈관 질환과 연관이 있다.",
+    "source_content": "study of relevance for obesity and diabetes. Nutrients. (2020) 13. doi: 10.3390/\nnu13010095\n134. Karusheva Y, Koessler T, Strassburger K, Markgraf D, Mastrototaro L, Jelenik\nT, et al. Short-term dietary reduction of branched-chain amino acids reduces meal-\ninduced insulin secretion and modiﬁes microbiome composition in type 2 diabetes: a\nrandomized controlled crossover trial. Am J Clin Nutr. (2019) 110:1098–107.\ndoi: 10.1093/ajcn/nqz191\n135. Moreno-Vedia J, Llop D, Rodrı́guez-Calvo R, Plana N, Amigó N, Rosales R,\net al. Serum branch-chained amino acids are increased in type 2 diabetes and associated\nwith atherosclerotic cardiovascular disease. Cardiovasc Diabetol. (2023) 22:249.\ndoi: 10.1186/s12933-023-01958-6\n136. Sawicki KT, Ning H, Allen NB, Carnethon MR, Wallia A, Otvos JD, et al.\nLongitudinal trajectories of branched chain amino acids through young adulthood and\ndiabetes in later life. JCI Insight. (2024) 9. doi: 10.1172/jci.insight.181901",
+    "source_file": "pdf-data/BCAA_insulin_resistance_type2_diabetes_2025.pdf",
+    "category": "general",
+    "language": "en",
+    "paper_title": "Branched-chain amino acids and insulin resistance in type 2 diabetes: from metabolic dysregulation to therapeutic targets"
+  },
+  {
+    "id": 98,
+    "question": "세라올로지의 활력라인에 포함된 제품은 무엇인가요?",
+    "reference_answer": "활력라인에는 터보 붐, 에너지 붐, 블랙킹타임이 포함되어 있습니다.",
+    "source_content": "세라올로지:\n\n  활력라인:\n    터보 붐:\n      description: 국내산 아르기닌 (장어 36배)\n      ad_model: 윤성빈\n    에너지 붐:\n\n    블랙킹타임:\n\nad_models:\n  name: 서현\n  line: 브랜드 메인 모델\n  year: 2021\n\n  name: 옥택연(택연)\n  line: 맨올로지 컷 (파란통)\n  year: 2023\n\n  name: 신봉선\n  line: 40대 다이어트 프로젝트 / 신봉선 다이어트 세트\n  achievement: 체지방 11kg 감량\n\n  name: 강남\n  line: 강남 자기관리 세트\n\n  name: 윤성빈\n  line: 활력라인 (터보붐/에너지붐/블랙킹타임)\n  year: 2023\n\n  name: 김이나\n  line: 이너뷰티 핑크라인\n  year: 2023",
+    "source_file": "json-data/foodology_브랜드정보_구조화.json",
+    "category": "general",
+    "language": "ko",
+    "paper_title": ""
+  }
+]
