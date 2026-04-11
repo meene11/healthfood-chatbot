@@ -11,6 +11,10 @@ pinned: false
 
 # 건강식품·다이어트 RAG 챗봇
 
+[![HuggingFace Spaces](https://img.shields.io/badge/🤗%20HuggingFace-Spaces-blue)](https://huggingface.co/spaces/meene1212/healthfood-chatbot)
+
+> **라이브 데모**: [https://huggingface.co/spaces/meene1212/healthfood-chatbot](https://huggingface.co/spaces/meene1212/healthfood-chatbot)
+
 건강식품 및 다이어트 관련 논문·자료 기반의 RAG(Retrieval-Augmented Generation) 챗봇입니다.  
 18,682개 청크로 구성된 Supabase pgvector DB에서 하이브리드 검색 + 리랭킹으로 정확한 근거를 찾아 답변합니다.
 
@@ -62,7 +66,7 @@ pinned: false
 | 벡터 DB | Supabase pgvector (documents_v2, 18,682청크) |
 | 검색 방식 | Hybrid (HNSW 벡터 + PostgreSQL FTS) |
 | 웹 UI | Streamlit (app.py) |
-| 배포 | HuggingFace Spaces |
+| 배포 | [HuggingFace Spaces](https://huggingface.co/spaces/meene1212/healthfood-chatbot) |
 
 ---
 
