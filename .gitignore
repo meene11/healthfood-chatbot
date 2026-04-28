@@ -41,3 +41,6 @@ data/raw/claude-code-main (1)/
 # OS
 .DS_Store
 Thumbs.db
+
+# 개인 발표 준비 파일 (로컬 전용)
+멘토_발표준비_QA.md

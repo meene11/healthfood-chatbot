@@ -1,0 +1,43 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git push:*)",
+      "Bash(git add:*)",
+      "Bash(git commit -m ':*)",
+      "Bash(ls -lh /c/dev/healthfood_chatbot/data/generated/*.json)",
+      "Bash(wc:*)",
+      "Bash(git checkout:*)",
+      "Bash(venv/Scripts/python.exe:*)",
+      "Bash(sed:*)",
+      "Bash(python src/generate_qa_dataset.py)",
+      "Bash(where python:*)",
+      "Bash(python -c \"import supabase; print\\('ok'\\)\")",
+      "Bash(C:/Users/804/miniforge3/python.exe src/generate_qa_dataset.py)",
+      "Bash(python -c \"import sys; print\\(sys.executable\\)\")",
+      "Bash(python -c \"import supabase\")",
+      "Bash(C:/Users/804/AppData/Local/Programs/Python/Python312/python.exe:*)",
+      "Bash(python src/evaluate_v2.py --exp 5)",
+      "Bash(python:*)",
+      "Bash(ls *.cfg *.toml *.txt)",
+      "Bash(pip show:*)",
+      "Bash(ls C:/dev/healthfood_chatbot/*.py)",
+      "Bash(ls C:/dev/healthfood_chatbot/results/프로젝트*)",
+      "Read(//c/dev//**)",
+      "Read(//c/dev/**)",
+      "Bash(pip install:*)",
+      "Bash(C:/dev/healthfood_chatbot/venv/Scripts/python.exe:*)",
+      "Bash(printf 'protocol=https\\\\nhost=huggingface.co\\\\n')",
+      "Bash(git credential:*)",
+      "Bash(grep -v \"^$\")",
+      "Bash(tasklist)",
+      "Bash(findstr python:*)",
+      "Bash(taskkill /PID 7556 /F)",
+      "Bash(cmd /c \"taskkill /PID 7556 /F\")",
+      "Bash(cmd /c \"tasklist | findstr python\")",
+      "Bash(ls results/model_comparison/*.json)",
+      "Bash(ls:*)",
+      "Bash(tasklist /FI \"IMAGENAME eq python.exe\" /FO TABLE)",
+      "Bash(tasklist /FO TABLE)"
+    ]
+  }
+}
