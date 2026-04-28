@@ -37,7 +37,9 @@
       "Bash(ls results/model_comparison/*.json)",
       "Bash(ls:*)",
       "Bash(tasklist /FI \"IMAGENAME eq python.exe\" /FO TABLE)",
-      "Bash(tasklist /FO TABLE)"
+      "Bash(tasklist /FO TABLE)",
+      "Bash(git commit *)",
+      "Bash(git pull *)"
     ]
   }
 }
